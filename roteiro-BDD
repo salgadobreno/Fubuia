@@ -1,0 +1,61 @@
+TODO: end-time checking
+
+Home
+  root
+    menus *
+      'contato' *
+      'como funciona' *
+        should point to the 'como funciona section' *
+
+    should display city name *
+    should display today's date *
+
+    calendar and tags
+      should display weekly calendar *
+      should display a new event button *
+
+      when there's events
+        active events should appear on the calendar *
+        non active events should not appear on the calendar *
+
+      tags section
+        when there's events in calendar and they contain tags
+          should display the tags from the events
+
+          when selecting a tag
+            should filter events through that tag
+            should give option to remove filters
+
+Authentication *
+  when logged out
+    should display the log in button *
+  when logged in
+    should display user's name *
+    should display logout button *
+  clicking on logout should log the user out *
+
+
+Events
+  new
+    should display information about the importing proccess *
+    clicking on the start link
+      if the user's not logged in
+        should open oauth dialog -
+      user logged in
+        should retrieve user-created events from facebook *
+        events should be future only *
+        events should be public only *
+        selecting a event
+          should display event data from facebook *
+          should prompt user to input tags
+          inputing tags
+            clicking on add should add tag to list
+        saving
+          clicking on 'salvar' should save event and redirect to event page
+  show
+
+  edit
+
+  delete
+
+  Comments <= use app access token!!!

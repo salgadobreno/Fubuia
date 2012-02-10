@@ -1,0 +1,120 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+AddActiveFlagToEvents	db/migrate/20120127073737_add_active_flag_to_events.rb	/^class AddActiveFlagToEvents < ActiveRecord::Migration$/;"	c
+AddActiveFlagToUsers	db/migrate/20120111204404_add_active_flag_to_users.rb	/^class AddActiveFlagToUsers < ActiveRecord::Migration$/;"	c
+AddAuthlogicColumnsToUser	db/migrate/20120111024143_add_authlogic_columns_to_user.rb	/^class AddAuthlogicColumnsToUser < ActiveRecord::Migration$/;"	c
+AddLocationIdToUsers	db/migrate/20120112023559_add_location_id_to_users.rb	/^class AddLocationIdToUsers < ActiveRecord::Migration$/;"	c
+AddSessionsTable	db/migrate/20120112045212_add_sessions_table.rb	/^class AddSessionsTable < ActiveRecord::Migration$/;"	c
+AddStartAndEndTimeToEvents	db/migrate/20120124083644_add_start_and_end_time_to_events.rb	/^class AddStartAndEndTimeToEvents < ActiveRecord::Migration$/;"	c
+Application	config/application.rb	/^  class Application < Rails::Application$/;"	c	class:Fbk
+ApplicationController	app/controllers/application_controller.rb	/^class ApplicationController < ActionController::Base$/;"	c
+ApplicationHelper	app/helpers/application_helper.rb	/^module ApplicationHelper$/;"	m
+AuthenticationController	app/controllers/authentication_controller.rb	/^class AuthenticationController < ApplicationController$/;"	c
+AuthenticationHelper	app/helpers/authentication_helper.rb	/^module AuthenticationHelper$/;"	m
+CalendarController	app/controllers/calendar_controller.rb	/^class CalendarController < ApplicationController$/;"	c
+CalendarHelper	app/helpers/calendar_helper.rb	/^module CalendarHelper$/;"	m
+CalendarHelper	vendor/event_calendar/lib/event_calendar/calendar_helper.rb	/^  module CalendarHelper$/;"	m	class:EventCalendar
+ClassMethods	vendor/event_calendar/lib/event_calendar.rb	/^  module ClassMethods$/;"	m	class:EventCalendar
+CreateEvents	db/migrate/20120124073505_create_events.rb	/^class CreateEvents < ActiveRecord::Migration$/;"	c
+CreateUsers	db/migrate/20120110025317_create_users.rb	/^class CreateUsers < ActiveRecord::Migration$/;"	c
+CustomEvent	vendor/event_calendar/spec/fixtures/models.rb	/^class CustomEvent < ActiveRecord::Base$/;"	c
+Event	app/models/event.rb	/^class Event < ActiveRecord::Base$/;"	c
+Event	vendor/event_calendar/spec/fixtures/models.rb	/^class Event < ActiveRecord::Base$/;"	c
+EventCalendar	vendor/event_calendar/lib/event_calendar.rb	/^module EventCalendar$/;"	m
+EventCalendar	vendor/event_calendar/lib/event_calendar/calendar_helper.rb	/^module EventCalendar$/;"	m
+EventCalendar	vendor/event_calendar/lib/event_calendar/railtie.rb	/^module EventCalendar$/;"	m
+EventCalendarGenerator	vendor/event_calendar/generators/event_calendar/event_calendar_generator.rb	/^class EventCalendarGenerator < Rails::Generator::Base$/;"	c
+EventCalendarGenerator	vendor/event_calendar/lib/generators/event_calendar/event_calendar_generator.rb	/^class EventCalendarGenerator < Rails::Generators::Base$/;"	c
+EventsController	app/controllers/events_controller.rb	/^class EventsController < ApplicationController$/;"	c
+EventsHelper	app/helpers/events_helper.rb	/^module EventsHelper$/;"	m
+Facebook	config/initializers/koala.rb	/^module Facebook$/;"	m
+Fbk	config/application.rb	/^module Fbk$/;"	m
+InstanceMethods	vendor/event_calendar/lib/event_calendar.rb	/^  module InstanceMethods$/;"	m	class:EventCalendar
+MissingTokenException	app/controllers/application_controller.rb	/^  class MissingTokenException < Exception; end$/;"	c	class:ApplicationController
+Railtie	vendor/event_calendar/lib/event_calendar/railtie.rb	/^  class Railtie < Rails::Engine$/;"	c	class:EventCalendar
+Session	app/models/session.rb	/^class Session < Authlogic::Session::Base$/;"	c
+UnexpectedException	app/controllers/application_controller.rb	/^  class UnexpectedException < Exception; end$/;"	c	class:ApplicationController
+User	app/models/user.rb	/^class User < ActiveRecord::Base$/;"	c
+add_options!	vendor/event_calendar/generators/event_calendar/event_calendar_generator.rb	/^  def add_options!(opt)$/;"	f	class:EventCalendarGenerator
+adjust_all_day_dates	vendor/event_calendar/lib/event_calendar.rb	/^    def adjust_all_day_dates$/;"	f	class:EventCalendar.InstanceMethods
+all_day	vendor/event_calendar/lib/event_calendar.rb	/^    def all_day$/;"	f	class:EventCalendar.InstanceMethods
+app_access_token	app/controllers/application_controller.rb	/^  def app_access_token$/;"	f	class:ApplicationController
+beginning_of_week	vendor/event_calendar/lib/event_calendar.rb	/^    def beginning_of_week(date, start = 0)$/;"	f	class:EventCalendar.ClassMethods
+beginning_of_week	vendor/event_calendar/lib/event_calendar/calendar_helper.rb	/^    def beginning_of_week(date, start = 0)$/;"	f	class:EventCalendar.CalendarHelper
+cal_row_heights	vendor/event_calendar/lib/event_calendar/calendar_helper.rb	/^    def cal_row_heights(options)$/;"	f	class:EventCalendar.CalendarHelper
+calendar	vendor/event_calendar/lib/event_calendar/calendar_helper.rb	/^    def calendar(options = {}, &block)$/;"	f	class:EventCalendar.CalendarHelper
+change	db/migrate/20120110025317_create_users.rb	/^  def change$/;"	f	class:CreateUsers
+change	db/migrate/20120111024143_add_authlogic_columns_to_user.rb	/^  def change$/;"	f	class:AddAuthlogicColumnsToUser
+change	db/migrate/20120111204404_add_active_flag_to_users.rb	/^  def change$/;"	f	class:AddActiveFlagToUsers
+change	db/migrate/20120112023559_add_location_id_to_users.rb	/^  def change$/;"	f	class:AddLocationIdToUsers
+change	db/migrate/20120124073505_create_events.rb	/^  def change$/;"	f	class:CreateEvents
+change	db/migrate/20120124083644_add_start_and_end_time_to_events.rb	/^  def change$/;"	f	class:AddStartAndEndTimeToEvents
+change	db/migrate/20120127073737_add_active_flag_to_events.rb	/^  def change$/;"	f	class:AddActiveFlagToEvents
+clip_range	vendor/event_calendar/lib/event_calendar.rb	/^    def clip_range(start_d, end_d)$/;"	f	class:EventCalendar.InstanceMethods
+color	vendor/event_calendar/lib/event_calendar.rb	/^    def color$/;"	f	class:EventCalendar.InstanceMethods
+controller_class_name	vendor/event_calendar/lib/generators/event_calendar/event_calendar_generator.rb	/^  def controller_class_name$/;"	f	class:EventCalendarGenerator
+controller_name	vendor/event_calendar/lib/generators/event_calendar/event_calendar_generator.rb	/^  def controller_name$/;"	f	class:EventCalendarGenerator
+create	app/controllers/authentication_controller.rb	/^  def create$/;"	f	class:AuthenticationController
+create	app/controllers/events_controller.rb	/^  def create$/;"	f	class:EventsController
+create_event_strips	vendor/event_calendar/lib/event_calendar.rb	/^    def create_event_strips(strip_start, strip_end, events)$/;"	f	class:EventCalendar.ClassMethods
+current_user	app/controllers/application_controller.rb	/^  def current_user$/;"	f	class:ApplicationController
+current_user_session	app/controllers/application_controller.rb	/^  def current_user_session$/;"	f	class:ApplicationController
+day	vendor/event_calendar/lib/event_calendar.rb	/^    def day$/;"	f	class:EventCalendar.InstanceMethods
+day_link	vendor/event_calendar/lib/event_calendar/calendar_helper.rb	/^    def day_link(text, date, day_action)$/;"	f	class:EventCalendar.CalendarHelper
+days	vendor/event_calendar/lib/event_calendar.rb	/^    def days$/;"	f	class:EventCalendar.InstanceMethods
+days_between	vendor/event_calendar/lib/event_calendar.rb	/^    def days_between(first, second)$/;"	f	class:EventCalendar.ClassMethods
+days_between	vendor/event_calendar/lib/event_calendar/calendar_helper.rb	/^    def days_between(first, second)$/;"	f	class:EventCalendar.CalendarHelper
+defaults_end_at_to_start_at	app/models/event.rb	/^  def defaults_end_at_to_start_at$/;"	f	class:Event
+destroy	app/controllers/authentication_controller.rb	/^  def destroy$/;"	f	class:AuthenticationController
+destroy	app/controllers/events_controller.rb	/^  def destroy$/;"	f	class:EventsController
+dia_anterior_link	app/helpers/calendar_helper.rb	/^  def dia_anterior_link$/;"	f	class:CalendarHelper
+display_event_time	vendor/event_calendar/lib/event_calendar/calendar_helper.rb	/^    def display_event_time(event, day)$/;"	f	class:EventCalendar.CalendarHelper
+do_it	vendor/event_calendar/lib/generators/event_calendar/event_calendar_generator.rb	/^  def do_it$/;"	f	class:EventCalendarGenerator
+down	db/migrate/20120112045212_add_sessions_table.rb	/^  def down$/;"	f	class:AddSessionsTable
+edit	app/controllers/events_controller.rb	/^  def edit$/;"	f	class:EventsController
+end_of_week	vendor/event_calendar/lib/event_calendar/calendar_helper.rb	/^    def end_of_week(date, start = 0)$/;"	f	class:EventCalendar.CalendarHelper
+event_calendar	app/helpers/calendar_helper.rb	/^  def event_calendar$/;"	f	class:CalendarHelper
+event_calendar_opts	app/helpers/calendar_helper.rb	/^  def event_calendar_opts$/;"	f	class:CalendarHelper
+event_strips_for_month	vendor/event_calendar/lib/event_calendar.rb	/^    def event_strips_for_month(shown_date, first_day_of_week=0, find_options = {})$/;"	f	class:EventCalendar.ClassMethods
+event_strips_for_week	vendor/event_calendar/lib/event_calendar.rb	/^    def event_strips_for_week(shift = 0, find_options = {})$/;"	f	class:EventCalendar.ClassMethods
+events_for_date_range	vendor/event_calendar/lib/event_calendar.rb	/^    def events_for_date_range(start_d, end_d, find_options = {})$/;"	f	class:EventCalendar.ClassMethods
+facebook_events_mocks	spec/spec_helper.rb	/^def facebook_events_mocks$/;"	f
+flash_messages	app/helpers/application_helper.rb	/^  def flash_messages$/;"	f	class:ApplicationHelper
+friday?	vendor/event_calendar/lib/event_calendar/calendar_helper.rb	/^    def friday?(date)$/;"	f	class:EventCalendar.CalendarHelper
+get_start_and_end_dates	vendor/event_calendar/lib/event_calendar.rb	/^    def get_start_and_end_dates(shown_date, first_day_of_week=0)$/;"	f	class:EventCalendar.ClassMethods
+has_event_calendar	vendor/event_calendar/lib/event_calendar.rb	/^    def has_event_calendar(options={})$/;"	f	class:EventCalendar.ClassMethods
+helper_class_name	vendor/event_calendar/lib/generators/event_calendar/event_calendar_generator.rb	/^  def helper_class_name$/;"	f	class:EventCalendarGenerator
+helper_name	vendor/event_calendar/lib/generators/event_calendar/event_calendar_generator.rb	/^  def helper_name$/;"	f	class:EventCalendarGenerator
+i18n	spec/spec_helper.rb	/^def i18n(param)$/;"	f
+import	app/controllers/events_controller.rb	/^  def import$/;"	f	class:EventsController
+included	vendor/event_calendar/lib/event_calendar.rb	/^  def self.included(base)$/;"	F	class:EventCalendar
+index	app/controllers/calendar_controller.rb	/^  def index$/;"	f	class:CalendarController
+initialize	vendor/event_calendar/generators/event_calendar/event_calendar_generator.rb	/^  def initialize(args, runtime_options = {})$/;"	f	class:EventCalendarGenerator
+initialize_with_default_settings	config/initializers/koala.rb	/^  def initialize_with_default_settings(*args)$/;"	f
+initialize_without_default_settings	config/initializers/koala.rb	/^  def initialize_without_default_settings(*args)$/;"	f
+manifest	vendor/event_calendar/generators/event_calendar/event_calendar_generator.rb	/^  def manifest$/;"	f	class:EventCalendarGenerator
+model_class_name	vendor/event_calendar/lib/generators/event_calendar/event_calendar_generator.rb	/^  def model_class_name$/;"	f	class:EventCalendarGenerator
+model_name	vendor/event_calendar/lib/generators/event_calendar/event_calendar_generator.rb	/^  def model_name$/;"	f	class:EventCalendarGenerator
+month	vendor/event_calendar/lib/event_calendar.rb	/^    def month$/;"	f	class:EventCalendar.InstanceMethods
+month_link	app/helpers/calendar_helper.rb	/^  def month_link(month_date)$/;"	f	class:CalendarHelper
+named_route_name	vendor/event_calendar/lib/generators/event_calendar/event_calendar_generator.rb	/^  def named_route_name$/;"	f	class:EventCalendarGenerator
+new	app/controllers/events_controller.rb	/^  def new$/;"	f	class:EventsController
+next_migration_number	vendor/event_calendar/lib/generators/event_calendar/event_calendar_generator.rb	/^  def self.next_migration_number(dirname) #:nodoc:$/;"	F	class:EventCalendarGenerator
+no_event_bg?	vendor/event_calendar/lib/event_calendar/calendar_helper.rb	/^    def no_event_bg?(event, options)$/;"	f	class:EventCalendar.CalendarHelper
+proximo_dia_link	app/helpers/calendar_helper.rb	/^  def proximo_dia_link$/;"	f	class:CalendarHelper
+route_name	vendor/event_calendar/generators/event_calendar/lib/insert_routes.rb	/^  def route_name(name, path, route_options)$/;"	f
+route_resource	vendor/event_calendar/generators/event_calendar/lib/insert_routes.rb	/^  def route_resource(*resources)$/;"	f
+set_app_data	app/controllers/application_controller.rb	/^  def set_app_data$/;"	f	class:ApplicationController
+space_in_current_strips?	vendor/event_calendar/lib/event_calendar.rb	/^    def space_in_current_strips?(event_strips, range)$/;"	f	class:EventCalendar.ClassMethods
+start_import	app/controllers/events_controller.rb	/^  def start_import$/;"	f	class:EventsController
+table_name	vendor/event_calendar/lib/generators/event_calendar/event_calendar_generator.rb	/^  def table_name$/;"	f	class:EventCalendarGenerator
+tuesday?	vendor/event_calendar/lib/event_calendar/calendar_helper.rb	/^    def tuesday?(date)$/;"	f	class:EventCalendar.CalendarHelper
+up	db/migrate/20120112045212_add_sessions_table.rb	/^  def up$/;"	f	class:AddSessionsTable
+update	app/controllers/events_controller.rb	/^  def update$/;"	f	class:EventsController
+view_name	vendor/event_calendar/lib/generators/event_calendar/event_calendar_generator.rb	/^  def view_name$/;"	f	class:EventCalendarGenerator
+weekend?	vendor/event_calendar/lib/event_calendar/calendar_helper.rb	/^    def weekend?(date)$/;"	f	class:EventCalendar.CalendarHelper
+year	vendor/event_calendar/lib/event_calendar.rb	/^    def year$/;"	f	class:EventCalendar.InstanceMethods

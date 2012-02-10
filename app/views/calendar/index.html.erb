@@ -1,0 +1,26 @@
+<!-- Probably move the stylesheet to you layout. Also make sure you include the javascript. -->
+<%= stylesheet_link_tag "event_calendar" %>
+
+<h1>Calendar</h1>
+
+<h3>
+  <%= @region.name %>
+</h3>
+
+<h4>
+  <%=l(Date.today, :format => :cal_home) %>
+</h4>
+
+<%= raw(event_calendar) %>
+<% if @tag %>
+  <div>
+    <%= t('pages.tags.filtering', :tag => @tag.name) %>
+    <%= link_to 'limpar', {:shift => @shift, :tag => nil} %>
+  </div>
+<% end %>
+<div id="tags">
+  <% tag_cloud(@tags, %w(css1 css2 css3 css4 css5)) do |tag,css| %>
+    <%= link_to tag.name, {:shift => @shift, :tag => tag.name}, :class => css, :title => "Filtrar por essa tag" %>
+  <% end %>
+</div>
+<%= link_to t('pages.events.new'), new_event_path %>

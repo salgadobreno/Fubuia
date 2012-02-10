@@ -1,0 +1,54 @@
+<script type="text/javascript">
+  $(document).ready(function(){
+      FB.getLoginStatus(function(response){
+        if(response.status == 'connected'){
+          getFBFeed(response.authResponse.accessToken);
+          } else {
+            alert("erro");
+          }
+      })
+    });
+
+    function getFBFeed(at) {
+     FB.api('/151735461603995/feed', function(response){
+         fbFetch(response);
+      });
+    }
+
+function fbFetch(json){
+      //Set Url of JSON data from the facebook graph api. make sure callback is set with a '?' to overcome the cross domain problems with JSON
+      //var url = "http://graph.facebook.com/InTouchMinistries/feed?limit=20&callback=?"
+      //Use jQuery getJSON method to fetch the data from the url and then create our unordered list with the relevant data.
+      //$.getJSON(url,function(json){
+      var html = "<ul>";
+      //loop through and within data array's retrieve the message variable.
+      $.each(json.data,function(i,fb){
+          html += "<li>" + fb.from["name"] + ":";
+      if(fb.link){
+          html += "<img src='"+fb.picture+"'/><a href='" +fb.link+"'>"+ fb.message + "</a></li>";
+      }else{
+          html += fb.message + "</li>";
+          }
+          if("data" in fb["comments"]) {
+            $.each(fb["comments"]["data"], function(e, comment){
+            html += "<li style='margin-left:50px'>";
+            html += comment["from"]["name"] + ':';
+            html += comment["message"];
+            html += "</li>"
+            });
+          }
+      });
+      html += "</ul>";
+      //A little animation once fetched
+      $('.facebookfeed').animate({opacity:0}, 500, function(){
+      $('.facebookfeed').html(html);
+      });
+      $('.facebookfeed').animate({opacity:1}, 500);
+      $('.json').html(JSON.stringify(json));
+      };
+
+   </script>
+   <div class="facebookfeed"></div>
+   <br />
+   <br />
+   <div class="json"></div>

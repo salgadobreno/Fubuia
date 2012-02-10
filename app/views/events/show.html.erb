@@ -1,0 +1,67 @@
+<p>
+  <%= @event["name"] %>
+</p>
+<p>
+  <%= @event["location"] %>
+</p>
+<% if @creator %>
+  <p>
+    <%= link_to @creator["name"], @creator["profile_url"] %>
+    <%= image_tag @creator["pic_small"] %>
+  </p>
+<% end %>
+<p>
+  start: <%= Time.at(@event["start_time"]).to_s(:short) %>
+  <br>
+  end: <%= Time.at(@event["end_time"]).to_s(:short) %>
+</p>
+<p>
+  tags: <%= @event_db.tag_list %>
+</p>
+
+<script type="text/javascript">
+  eid = <%= @event_db.fid %>;
+$(document).ready(function(){
+    FB.getLoginStatus(function(response){
+      if(response.status == 'connected'){
+        getFBFeed(response.authResponse.accessToken);
+        } else {
+          alert("erro");
+        }
+    })
+    });
+
+    function getFBFeed(at) {
+      FB.api('/' + eid + '/feed', { limit: 20 } , function(response){
+            //TODO check if response
+            fbFetch(response);
+          });
+    }
+
+function fbFetch(json) {
+  var html = "<ul>";
+  $.each(json.data, function(i,fb){
+        html += "<li>" + fb.from["name"] + ":";
+        if(fb.link){
+          html += "<img src='"+fb.picture+"'/><a href='"+fb.link+"'>"+fb.message+"</a></li>";
+          } else {
+            html += fb.message + "</li>";
+            }
+            if("data" in fb["comments"]) {
+              $.each(fb["comments"]["data"], function(e, comment){
+                  html += "<li style='margin-left:50px'>";
+                  html += comment["from"]["name"] + ':';
+                  html += comment["message"];
+                  html += "</li>";
+                });
+            }
+            });
+          html += "</ul>";
+          $('.facebookfeed').animate({opacity:0}, 500, function(){
+              $('.facebookfeed').html(html);
+              });
+          $('.facebookfeed').animate({opacity:1}, 500);
+        };
+
+</script>
+<div class="facebookfeed"></div>

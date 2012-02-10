@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+  <title>Fbk</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application", "event_calendar" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div id="menu">
+    <ul>
+      <li>
+        <%= link_to t('pages.root.menu.contato'), "#", {:id => "contato"} %>
+      </li>
+      <li>
+        <%= link_to t('pages.root.menu.como_funciona'), '#como-funciona', {:id => "como-funciona-link"} %>
+      </li>
+    </ul>
+  </div>
+
+  <% if current_user %>
+    <% if session[:fuser] %>
+      Olá <%= session[:fuser][:name] %>
+    <% end %>
+    <%= link_to "logout", logout_path, {:id => "logout"} %>
+  <% else %>
+    <%= link_to "login", login_path, {:id => "login"} %>
+  <% end %>
+
+  <br />
+
+  <%= flash_messages %>
+  <%= yield %>
+  <div id="fb-root"></div>
+  <% unless Rails.env.test? %>
+    <script src="http://connect.facebook.net/en_US/all.js"></script>
+  <% else %>
+    <%= javascript_tag '$.fx.off = true;' %>
+    <%= javascript_include_tag "/assets/test/fb", "/assets/test/fb_stub", "/assets/test/commentstub" %>
+  <% end %>
+  <script>
+    FB.init({ appId: <%= @app_data["app_id"] %>, cookie: true, xfbml: true, oauth: true });
+
+    $('#login').click(function(event) {
+        event.preventDefault();
+        FB.login(function (response) {
+             if (response.authResponse) {
+                 var access_token = response.authResponse.accessToken;
+                 window.location.replace('/callback?code='+access_token)
+             } else {
+                 alert('denied access');
+             }
+             },{scope:'email,user_location,user_events,offline_access'})
+        });
+  </script>
+</body>
+</html>
