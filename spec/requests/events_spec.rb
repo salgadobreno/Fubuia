@@ -278,6 +278,7 @@ describe "Events" do
             specify "newly saved event should appear on calendar" do
               click_on 'salvar'
               visit '/'
+              save_and_open_page
               page.should have_content "Fim do Mundo - Eu vou!"
             end
 
