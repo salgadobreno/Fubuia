@@ -10,11 +10,11 @@ class EventsController < ApplicationController
   end
 
   def comments
-    render :file => "/events/commentsexample.html.erb"
+    render :file => "/events/commentsexample"
   end
 
   def new
-    render :file => "/events/new.html.erb"
+    render :file => "/events/new"
   end
 
   def start_import

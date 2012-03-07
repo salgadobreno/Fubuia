@@ -190,6 +190,7 @@ describe "Events" do
 
           today_mock = DateTime.civil(2012, 1, 26)
           Time.stubs(:now).returns(today_mock)
+          Date.stubs(:today).returns(today_mock.to_date)
           Koala::Facebook::API.any_instance.stubs(:get_connections).with('me', 'events').returns(connections_hash)
           Koala::Facebook::API.any_instance.stubs(:fql_query).returns(fql_hash)
           Koala::Facebook::API.any_instance.stubs(:get_object).with('me').returns(me)
@@ -278,7 +279,6 @@ describe "Events" do
             specify "newly saved event should appear on calendar" do
               click_on 'salvar'
               visit '/'
-              save_and_open_page
               page.should have_content "Fim do Mundo - Eu vou!"
             end
 

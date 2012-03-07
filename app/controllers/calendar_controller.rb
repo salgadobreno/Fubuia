@@ -19,7 +19,7 @@ class CalendarController < ApplicationController
 
     events = Event.events_for_date_range(strip_start, strip_end).active
 
-    events = events.tagged_with(@tag) if @tag
+    events = events.active.tagged_with(@tag) if @tag
 
     query = "SELECT eid,name FROM event WHERE eid in (%s)" % events.map(&:fid).join(',')
 
@@ -28,7 +28,7 @@ class CalendarController < ApplicationController
 
     filtered_events = events.each do |e|
       event_hashes.each do |fe|
-        e.send(:write_attribute, :name, fe["name"]) if fe.rassoc(e.fid)
+        e.define_singleton_method(:name) { fe["name"] } if fe.rassoc(e.fid)
       end
     end.reject {|x| !x.respond_to?(:name)}
     @event_strips = Event.create_event_strips(strip_start, strip_end, filtered_events)

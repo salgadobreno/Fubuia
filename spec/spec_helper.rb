@@ -151,3 +151,7 @@ def facebook_events_mocks
   Koala::Facebook::API.any_instance.stubs(:fql_query).returns(fql_hash)
   Koala::Facebook::API.any_instance.stubs(:get_object).with('me').returns(me)
 end
+
+ActiveSupport::Deprecation.behavior = Proc.new { |message, callstack|
+  raise message + "\n" + callstack.join("\n  ")
+}

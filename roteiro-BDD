@@ -1,5 +1,11 @@
 TODO: end-time checking
 TODO: Facebook connect explanation
+CACHE:
+  - comments(retrieved from fb)
+  + event(implement subscribe to event - sweepers)
+  + calendar(touched by event)
+  ? user fb info session
+  page cache: static shit
 
 Home
   root

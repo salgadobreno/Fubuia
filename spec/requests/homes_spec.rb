@@ -50,7 +50,6 @@ describe "Home" do
   context "when there's events" do
 
     before(:each) do
-      Date.stubs(:today).returns(Date.civil(2011, 1, 1))
       @event = Factory(:event, :fid => 12345678, :active => true, :start_at => Date.today)
       @event2 = Factory(:event, :fid => 666, :active => false, :start_at => Date.today)
       @facebook_events = [{"name"=>"Evento 1", "eid"=>12345678}, {"name" => "Evento 2", "eid" => 666}]
