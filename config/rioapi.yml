@@ -1,0 +1,11 @@
+development:
+  app_id: '2de49a5fddfd84c1e6dc81e440b5150f'
+  app_secret: 'm1jr9-e1yj3-1q52r'
+test:
+  app_id: '2de49a5fddfd84c1e6dc81e440b5150f'
+  app_secret: 'm1jr9-e1yj3-1q52r'
+production:
+  app_id: '2de49a5fddfd84c1e6dc81e440b5150f'
+  app_secret: 'm1jr9-e1yj3-1q52r'
+
+

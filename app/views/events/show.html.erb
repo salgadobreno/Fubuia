@@ -1,19 +1,19 @@
 <p>
-  <%= @event["name"] %>
+  <%= @event.name %>
 </p>
 <p>
-  <%= @event["location"] %>
+  <%= @event.location %>
 </p>
 <% if @creator %>
   <p>
-    <%= link_to @creator["name"], @creator["profile_url"] %>
-    <%= image_tag @creator["pic_small"] %>
+    <%= link_to @creator.name, @creator.profile_url %>
+    <%= image_tag @creator.pic_small %>
   </p>
 <% end %>
 <p>
-  start: <%= Time.at(@event["start_time"]).to_s(:short) %>
+  start: <%= Time.at(@event.start_time).to_s(:short) %>
   <br>
-  end: <%= Time.at(@event["end_time"]).to_s(:short) %>
+  end: <%= Time.at(@event.end_time).to_s(:short) %>
 </p>
 <p>
   tags: <%= @event_db.tag_list %>

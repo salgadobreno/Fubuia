@@ -15,6 +15,7 @@ gem 'authlogic'
 gem 'acts-as-taggable-on'
 #gem 'event-calendar', :require => 'event_calendar', :git => "/home/buzaga/Dropbox/railsapps/event_calendar.git"
 gem 'event-calendar', :require => 'event_calendar', :path => 'vendor/event_calendar'
+gem 'httparty'
 
 group :development do
   gem 'awesome_print'

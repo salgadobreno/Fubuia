@@ -1,8 +1,8 @@
 <% if @events_data_from_fql.empty? %>
   Não conseguimos achar nenhum evento público e futuro criado por você, entre em contato se achar que há algo de errado
 <% else %>
-  <% @events_data_from_fql.each do |e| %>
-    <%= e["name"] %> <%= link_to "import", import_event_path(:eid => e["eid"]), :class => "import" %>
+  <% @events.each do |e| %>
+    <%= e.name %> <%= link_to "import", import_event_path(:eid => e.eid), :class => "import" %>
     <br>
   <% end %>
 <% end %>

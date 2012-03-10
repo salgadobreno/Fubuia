@@ -27,7 +27,8 @@ describe "Authentications" do
 
       before do
         me = {'id' => '1','email' => 'eu@eu.com','name' => 'Breno Salgado'}
-        Koala::Facebook::API.any_instance.stubs(:get_object).returns(me)
+        Koala::Facebook::API.any_instance.stubs(:get_object).with("me").returns(me)
+        Koala::Facebook::API.any_instance.stubs(:fql_query).returns([])
       end
 
       it "redirects to root with the user signed in" do
@@ -47,7 +48,8 @@ describe "Authentications" do
 
       before(:each) do
         me = {'id' => '1','email' => 'eu@eu.com','name' => 'Breno Salgado'}
-        Koala::Facebook::API.any_instance.stubs(:get_object).returns(me)
+        Koala::Facebook::API.any_instance.stubs(:get_object).with("me").returns(me)
+        Koala::Facebook::API.any_instance.stubs(:fql_query).returns([])
         page.driver.get login_path(:code => "1234")
       end
 

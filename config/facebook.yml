@@ -4,3 +4,6 @@ development:
 test:
   app_id: 115184478532515
   secret_key: "fc8e0a96e42cea50b809c31ee1459ae6"
+production:
+  app_id: 115184478532515
+  secret_key: "fc8e0a96e42cea50b809c31ee1459ae6"

@@ -14,6 +14,11 @@ class Event < ActiveRecord::Base
   scope :active, lambda { where(:active => true) }
 
 
+  def attributes_for_facebook_event
+    attributes.select {|k,v| ['id','start_at','end_at'].include?(k)}
+  end
+
+
   private
 
   def cant_end_before_it_starts

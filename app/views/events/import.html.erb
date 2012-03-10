@@ -1,18 +1,18 @@
 <%= form_for @event_db, :url => create_event_path(@event_db), :html => {:method => 'POST'} do |f| %>
   <p>
-    <%= @event["name"] %>
+    <%= @event.name %>
   </p>
   <p>
-    <%= @event["location"] %>
+    <%= @event.location %>
   </p>
   <p>
-    <%= link_to @creator["name"], @creator["profile_url"] %>
-    <%= image_tag @creator["pic_small"] %>
+    <%= link_to @creator.name, @creator.profile_url %>
+    <%= image_tag @creator.pic_small %>
   </p>
   <p>
-    start: <%= Time.at(@event["start_time"]).to_s(:short) %>
+    start: <%= Time.at(@event.start_time).to_s(:short) %>
     <br>
-    end: <%= Time.at(@event["end_time"]).to_s(:short) %>
+    end: <%= Time.at(@event.end_time).to_s(:short) %>
   </p>
   <p>
     <%= f.text_field :tag_list, {:id => "event-tags"} %>

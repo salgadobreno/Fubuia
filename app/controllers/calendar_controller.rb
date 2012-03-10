@@ -12,26 +12,30 @@ class CalendarController < ApplicationController
 
     @tags = Tag.tag_counts_for_date_range('tags', Date.today - 3 + @shift, Date.today + 3 + @shift)
 
-    @graph = Koala::Facebook::API.new(app_access_token)
 
     @tag = Tag.find_by_name(params[:tag]) if params[:tag].present?
     flash[:error] = "Tag não encontrada" if params[:tag].present? && @tag.nil?
 
     events = Event.events_for_date_range(strip_start, strip_end).active
-
     events = events.active.tagged_with(@tag) if @tag
 
-    query = "SELECT eid,name FROM event WHERE eid in (%s)" % events.map(&:fid).join(',')
+    query = "select eid, name, creator, privacy, pic_small, pic_big, location, venue, start_time, end_time from event where eid in (%s)" % events.map(&:fid).join(',')
 
-    event_hashes = {}
-    event_hashes = @graph.fql_query(query) unless events.empty?
+    @graph = Koala::Facebook::API.new(app_access_token)
+    event_hashes = Hash[events.map { |e| [e.fid, e] }]
+    events_from_fql = @graph.fql_query(query)
+    @events = events_from_fql.map do |efql|
+      FacebookEvent.new(efql.merge( event_hashes[efql["eid"]].attributes_for_facebook_event )) unless event_hashes[efql["eid"]].blank?
+    end.compact
 
-    filtered_events = events.each do |e|
-      event_hashes.each do |fe|
-        e.define_singleton_method(:name) { fe["name"] } if fe.rassoc(e.fid)
-      end
-    end.reject {|x| !x.respond_to?(:name)}
-    @event_strips = Event.create_event_strips(strip_start, strip_end, filtered_events)
+    @event_strips = Event.create_event_strips(strip_start, strip_end, @events)
+
+    #rioevents
+
+    @rioapi = RioApi.new
+    @rioapi.retrieve_token!
+    @rio_events = @rioapi.get_eventos('start-date'=>Date.today.to_s,'end-date'=>Date.today.advance(:weeks => 2).to_s)['results']
+    @rio_events = @rio_events.map {|re| RioEvent.new(re)}
 
   end
 

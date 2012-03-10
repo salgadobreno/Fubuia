@@ -8,7 +8,10 @@ module Facebook
   SECRET = CONFIG['secret_key']
 end
 
+class KoalaInicializationException < Exception; end;
+
 Koala::Facebook::OAuth.class_eval do
+
   def initialize_with_default_settings(*args)
     case args.size
       when 0, 1
@@ -20,7 +23,7 @@ Koala::Facebook::OAuth.class_eval do
   end
 
   def initialize_without_default_settings(*args)
-    raise "Vai se fuder"
+    raise KoalaInicializationException #"Vai se fuder"
   end
 
   alias_method_chain :initialize, :default_settings
