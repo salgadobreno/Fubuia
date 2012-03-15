@@ -1,5 +1,6 @@
 Fbk::Application.routes.draw do
 
+  match '/show_request' => 'application#show_request'
   match '/comments' => 'events#comments' #TODO placeholder
 
 

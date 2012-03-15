@@ -37,6 +37,28 @@ RSpec.configure do |config|
 
   Capybara.javascript_driver = :webkit
   #config.filter_run_excluding :js => true
+
+  #load seed
+  config.before(:suite) do
+    load "#{Rails.root}/db/seeds.rb"
+  end
+
+  config.around(:each, :subdomain => 'rio') do |example|
+    Capybara.current_session.reset!
+    Capybara.default_host = 'http://rio.example.com'
+    example.run
+    Capybara.default_host = 'http://www.example.com'
+    Capybara.current_session.reset!
+  end
+
+  config.around(:each, :subdomain => 'brasilia') do |example|
+    Capybara.current_session.reset!
+    Capybara.default_host = 'http://brasilia.example.com'
+    example.run
+    Capybara.default_host = 'http://www.example.com'
+    Capybara.current_session.reset!
+  end
+
   # WebServices response mocks
   config.include DummyResponses
 

@@ -18,7 +18,7 @@ class EventsController < ApplicationController
   end
 
   def start_import
-    #TODO: 0 events check
+    require_login!
     @graph = Koala::Facebook::API.new(current_user.access_token)
     user_events_from_api = @graph.get_connections('me', 'events')
     eids_from_api = user_events_from_api.map {|e| e["id"]}
@@ -35,6 +35,7 @@ class EventsController < ApplicationController
   end
 
   def import
+    require_login!
     raise ActionController::RoutingError.new('Not found') if params[:eid].blank?
     @eid = params[:eid]
     @graph = Koala::Facebook::API.new(app_access_token)
@@ -53,6 +54,7 @@ class EventsController < ApplicationController
   end
 
   def create
+    require_login!
     @event_db = Event.find(params[:id])
     @event_db.update_attributes(params[:event])
     if @event_db.valid?
@@ -68,15 +70,15 @@ class EventsController < ApplicationController
   end
 
   def edit
-
+    require_login!
   end
 
   def update
-
+    require_login!
   end
 
   def destroy
-
+    require_login!
   end
 
 end

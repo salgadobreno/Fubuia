@@ -1,3 +1,4 @@
+#coding: UTF-8
 FactoryGirl.define do
   factory :user do
     facebook_uid '12345678'
@@ -10,5 +11,10 @@ FactoryGirl.define do
     association :user
     start_at Date.today
     active true
+  end
+
+  factory :city do
+    name 'Brasília'
+    subdomain 'brasilia'
   end
 end

@@ -9,6 +9,7 @@ pt-BR:
       new: Divulgue o seu!
       process: Buscamos os eventos públicos criados por vc no facebook<br>Então você pode selecionar um deles para importar para o Fubúia<br>Você nos ajuda(e a galera que for interessada no seu evento) adicionando algumas tags<br>E pronto!
       start: Começar!
+      login_required: É necessário estar logado para continuar
     tags:
       filtering: Filtrando pela tag %{tag}.
   date:
@@ -111,6 +112,9 @@ pt-BR:
   errors:
     format: ! '%{attribute} %{message}'
     messages:
+      not_logged_in: É preciso estar logado pra fazer isso, faça o login e tente novamente
+      event:
+        end_before_start: dia de término não pode ser menor que o dia de início
       accepted: deve ser aceito
       blank: não pode ficar em branco
       confirmation: não está de acordo com a confirmação
@@ -133,8 +137,6 @@ pt-BR:
       too_short: ! 'é muito curto (mínimo: %{count} caracteres)'
       wrong_length: não possui o tamanho esperado (%{count} caracteres)
       email_invalid: não possui formato de e-mail
-      event:
-        end_before_start: dia de término não pode ser menor que o dia de início
     template:
       body: ! 'Por favor, verifique o(s) seguinte(s) campo(s):'
       header:

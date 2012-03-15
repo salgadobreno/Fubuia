@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120207174004) do
+ActiveRecord::Schema.define(:version => 20120313140556) do
+
+  create_table "cities", :force => true do |t|
+    t.string   "name",       :null => false
+    t.string   "subdomain",  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "events", :force => true do |t|
     t.integer  "fid",        :limit => 8

@@ -6,21 +6,32 @@ class ApplicationController < ActionController::Base
   helper_method :current_user_session, :current_user
 
 
+  class NotLoggedIn < Exception; end
   class MissingTokenException < Exception; end
   class UnexpectedException < Exception; end
-  Struct.new("Region", :name)
-    #TODO: placeholder, change after implementing Region
 
   rescue_from MissingTokenException do |e|
     redirect_to root_url, :flash => {:error => "Missing AccessToken"}
+  end
+
+  rescue_from NotLoggedIn do |e|
+    redirect_to root_url, :flash => {:error => t('errors.messages.not_logged_in')}
+  end
+
+  #test
+  def show_request
+    render :text => "#{request.subdomain} <br><br><br> #{request.inspect}"
   end
 
   protected
 
   def set_app_data
     @app_data = Facebook::CONFIG.merge("callback_url" => "#{request.scheme}://#{request.host}/")
-    @region = Struct::Region.new("Brasília")
-    #TODO: placeholder
+    if request.subdomain.present? && request.subdomain != 'www'
+      @city = City.find_by_subdomain(request.subdomain)
+    else
+      @city = City.find_by_subdomain('brasilia')
+    end
   end
 
   def app_access_token
@@ -28,6 +39,10 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def require_login!
+    raise NotLoggedIn if session[:fuser].nil?
+  end
 
   def current_user_session
     return @current_user_session if defined? @current_user_session

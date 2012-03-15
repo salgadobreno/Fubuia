@@ -1,29 +1,24 @@
 <%=t('pages.events.process').html_safe %>
+<% if current_user.nil? || session[:fuser].nil? %>
+  <div>
+    <%= t('pages.events.login_required').html_safe %>
+  </div>
 
-<%= link_to t('pages.events.start'), start_events_import_path, {:id => "start"} %>
+  <%= link_to t('pages.events.start'), start_events_import_path, {:id => "start",:class => "disabled"} %>
+<% else %>
+  <%= link_to t('pages.events.start'), start_events_import_path, {:id => "start"} %>
+<% end %>
+
 
 <script type="text/javascript">
-//  $(document).ready(function(){
-//        FB.getLoginStatus(function(response) {
-//          if (response.status === 'connected') {
-//          FB.api('/me/permissions', function(response){
-//            alert(JSON.stringify(response));
-//            });
-//            // the user is logged in and connected to your
-//            // app, and response.authResponse supplies
-//            // the user's ID, a valid access token, a signed
-//            // request, and the time the access token
-//            // and signed request each expire
-//            var uid = response.authResponse.userID;
-//            var accessToken = response.authResponse.accessToken;
-//            //alert(uid);
-//            //alert(accessToken);
-//          } else if (response.status === 'not_authorized') {
-//            // the user is logged in to Facebook,
-//            //but not connected to the app
-//          } else {
-//            // the user isn't even logged in to Facebook.
-//          }
-//         });
-//      });
+  $(document).ready(function(){
+
+    $('#start').click(function (e) {
+      e.preventDefault();
+      if ($(this).hasClass('disabled'))
+        return false;
+      else
+        window.location.href = $(this).attr('href');
+      });
+    });
 </script>
