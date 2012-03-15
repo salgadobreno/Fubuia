@@ -1,5 +1,5 @@
 require 'ostruct'
-class TransitionalEvent < OpenStruct
+class TransientEvent < OpenStruct
   include ActiveModel::Validations
   include ActiveModel::Conversion
   extend ActiveModel::Naming
@@ -25,10 +25,6 @@ class TransitionalEvent < OpenStruct
   # faking AR behaviour
   def [](attr_name)
     self.instance_variable_get("@#{attr_name}")
-  end
-
-  def to_param
-    "#{self.id}-#{self.name}"
   end
 
 end

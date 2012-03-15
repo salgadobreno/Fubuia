@@ -10,16 +10,17 @@
 <h4>
   <%=l(Date.today, :format => :cal_home) %>
 </h4>
-
-<div>
-  <% for revent in @rio_events %>
-    <ul style="float:left">
-      <li><%= revent.name %></li>
-      <li><%= revent.short_text %></li>
-      <li><%= revent.local %></li>
-    </ul>
-  <% end %>
-</div>
+<% if @rio_events && @rio_events.present? %>
+  <div>
+    <% for revent in @rio_events %>
+      <ul style="float:left">
+        <li><%= revent.name %></li>
+        <li><%= revent.short_text %></li>
+        <li><%= revent.local %></li>
+      </ul>
+    <% end %>
+  </div>
+<% end %>
 
 <%= raw(event_calendar) %>
 <% if @tag %>

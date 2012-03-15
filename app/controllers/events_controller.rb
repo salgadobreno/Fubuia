@@ -5,8 +5,8 @@ class EventsController < ApplicationController
     @event_db = Event.find(params[:id])
     @graph = Koala::Facebook::API.new(app_access_token)
     @multiquery = @graph.fql_multiquery({"event"=>"select eid, name, creator, privacy, pic_small, pic_big, location, venue, start_time, end_time from event where eid = #{@event_db.fid}","creator"=>"select name, pic_small, profile_url from user where uid in (select creator from #event)"})
-    @event = TransitionalEvent.new(@multiquery['event'][0])
-    @creator = TransitionalUser.new(@multiquery["creator"][0]) if @multiquery["creator"][0]
+    @event = FacebookEvent.new(@multiquery['event'][0])
+    @creator = TransientUser.new(@multiquery["creator"][0]) if @multiquery["creator"][0]
   end
 
   def comments
@@ -24,7 +24,7 @@ class EventsController < ApplicationController
     eids_from_api = user_events_from_api.map {|e| e["id"]}
     unless eids_from_api.empty?
       @events_data_from_fql = @graph.fql_query("select eid, name, creator, privacy, pic_small, pic_big, location, venue, start_time, end_time from event where eid in (#{eids_from_api.join(', ')})")
-      @events = @events_data_from_fql.map { |efql| TransitionalEvent.new(efql)}
+      @events = @events_data_from_fql.map { |efql| FacebookEvent.new(efql)}
       @events.reject! {|e| e.creator != current_user.facebook_uid }
       #reject events not created by this user
       @events.reject! {|e| e.start_time < Time.now.to_i }
@@ -40,8 +40,8 @@ class EventsController < ApplicationController
     @graph = Koala::Facebook::API.new(app_access_token)
     @multiquery = @graph.fql_multiquery({"event"=>"select eid, name, creator, privacy, pic_small, pic_big, location, venue, start_time, end_time from event where eid = #{@eid}","creator"=>"select name, pic_small, profile_url from user where uid in (select creator from #event)"})
 
-    @event = TransitionalEvent.new( @multiquery["event"][0] )
-    @creator = TransitionalUser.new( @multiquery["creator"][0] )
+    @event = FacebookEvent.new( @multiquery["event"][0] )
+    @creator = TransientUser.new( @multiquery["creator"][0] )
 
     raise ActionController::RoutingError.new("Esse evento é privado!") if @event.privacy != "OPEN" #reject private events
     raise ActionController::RoutingError.new('Esse evento já passou!') if @event.end_time < Time.now.to_i #reject past events
@@ -61,8 +61,8 @@ class EventsController < ApplicationController
     else
       @graph = Koala::Facebook::API.new(app_access_token)
       @multiquery = @graph.fql_multiquery({"event"=>"select eid, name, creator, privacy, pic_small, pic_big, location, venue, start_time, end_time from event where eid = #{@event_db.fid}","creator"=>"select name, pic_small, profile_url from user where uid in (select creator from #event)"})
-      @event = TransitionalEvent.new( @multiquery["event"][0] )
-      @creator = TransitionalUser.new( @multiquery["creator"][0] )
+      @event = FacebookEvent.new( @multiquery["event"][0] )
+      @creator = TransientUser.new( @multiquery["creator"][0] )
       render :action => "show"
     end
   end

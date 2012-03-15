@@ -1,4 +1,4 @@
-class RioEvent < TransitionalEvent
+class RioEvent < TransientEvent
 
   #attr_accessor :name, :short_text, :text, :url
   #attr_accessor :email, :website, :phone
@@ -18,4 +18,9 @@ class RioEvent < TransitionalEvent
     h.merge!( h.delete('geoResult') { {} })
     super(h)
   end
+
+  def to_param
+    "#{self.id}-#{self.name}"
+  end
+
 end

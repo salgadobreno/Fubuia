@@ -1,8 +1,8 @@
 require 'spec_helper'
-describe TransitionalUser do
+describe TransientUser do
 
   before do
-    @model = TransitionalUser.new
+    @model = TransientUser.new
   end
 
   it_behaves_like "ActiveModel"
