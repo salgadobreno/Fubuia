@@ -23,6 +23,7 @@ class AuthenticationController < ApplicationController
 
   def destroy
     current_user_session.destroy
+    session[:fuser] = nil
     redirect_to root_url, :notice => "deslogado com sucesso"
   end
 
