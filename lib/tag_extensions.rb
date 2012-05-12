@@ -7,6 +7,8 @@ module TagExtensions
       extend ClassMethods
       include InstanceMethods
 
+      default_scope group("tags.id, tags.name")
+
       scope :join_events, lambda { joins(:taggings).joins("INNER JOIN events ON events.id = taggings.taggable_id").where("taggings.taggable_type = 'Event'") }
       scope :for_date_range, lambda {|start_at, end_at| where([ "taggings.taggable_type = 'Event' AND events.start_at BETWEEN :start_at AND :end_at OR events.end_at BETWEEN :start_at AND :end_at", { :start_at => start_at.at_beginning_of_day, :end_at => end_at.end_of_day } ]) }
       scope :event_tags_for_date_range, lambda { |start_at, end_at| join_events().for_date_range(start_at, end_at)}
