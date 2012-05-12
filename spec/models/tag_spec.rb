@@ -50,6 +50,16 @@ describe Tag do
 
   end
 
+  describe ".event_tags_for_date_range scope" do
+    it "should find any tags in events overlaping the range" do
+      @event = Factory(:event, :tag_list => "1, 2, in", :start_at => Date.today, :end_at => Date.today + 1)
+      @event2 = Factory(:event, :tag_list => "out", :start_at => Date.today, :end_at => Date.today)
+      @tags = Tag.event_tags_for_date_range(Date.today + 1, Date.today + 3)
+      @tags.should include(Tag.find_by_name("in"))
+      @tags.should_not include(Tag.find_by_name("out"))
+    end
+  end
+
   describe ".tag_counts_for_date_range" do
 
     it "should find any tags in events overlaping the range" do

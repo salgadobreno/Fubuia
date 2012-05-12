@@ -10,7 +10,7 @@ class CalendarController < ApplicationController
     strip_start = Date.today - 3 + @shift
     strip_end = Date.today + 4 + @shift
 
-    @tags = Tag.tag_counts_for_date_range('tags', Date.today - 3 + @shift, Date.today + 3 + @shift)
+    @tags = Tag.event_tags_for_date_range(Date.today - 3 + @shift, Date.today + 3 + @shift).in_city(@city)
 
     @tag = Tag.find_by_name(params[:tag]) if params[:tag].present?
     flash[:error] = "Tag não encontrada" if params[:tag].present? && @tag.nil?

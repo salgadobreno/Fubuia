@@ -63,7 +63,6 @@ describe "Hiperlocal" do
 
     specify "shouldn`t show tags in Rio event" do
       visit '/'
-      save_and_open_page
       page.should have_content "tagsilia"
       page.should_not have_content "tagrio"
     end
