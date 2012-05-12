@@ -6,4 +6,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_directory .
+//= require twitter/bootstrap
+//= require labels
+//  require_directory . # <- this is commented

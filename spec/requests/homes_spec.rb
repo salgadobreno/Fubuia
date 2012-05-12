@@ -3,6 +3,13 @@ require 'spec_helper'
 
 describe "Home" do
 
+  before do
+    @event = Factory(:event, :fid => 12345678, :active => true, :start_at => Date.today, :end_at => Date.today)
+    @event2 = Factory(:event, :fid => 666, :active => false, :start_at => Date.today, :end_at => Date.today)
+    @facebook_events = [{"name"=>"Evento 1", "eid"=>12345678}, {"name" => "Evento 2", "eid" => 666}]
+    Koala::Facebook::API.any_instance.stubs(:fql_query).returns(@facebook_events)
+  end
+
   describe "menus" do
     it "should have menu 'contato'" do
       visit '/'
@@ -48,13 +55,6 @@ describe "Home" do
   end
 
   context "when there's events" do
-
-    before(:each) do
-      @event = Factory(:event, :fid => 12345678, :active => true, :start_at => Date.today, :end_at => Date.today)
-      @event2 = Factory(:event, :fid => 666, :active => false, :start_at => Date.today, :end_at => Date.today)
-      @facebook_events = [{"name"=>"Evento 1", "eid"=>12345678}, {"name" => "Evento 2", "eid" => 666}]
-      Koala::Facebook::API.any_instance.stubs(:fql_query).returns(@facebook_events)
-    end
 
     specify "active events should appear on the calendar" do
       visit '/'

@@ -2,9 +2,13 @@
  * Smart event highlighting
  * Handles when events span rows, or don't have a background color
  */
+
+/*
+ * BRENO: Different approach to fit for Fubuia
+ */
 jQuery(document).ready(function($) {
   var highlight_color = "#2EAC6A";
-  
+
   // highlight events that have a background color
   $(".ec-event-bg").live("mouseover", function() {
     event_id = $(this).attr("data-event-id");
@@ -17,7 +21,7 @@ jQuery(document).ready(function($) {
     event_color = $(this).attr("data-color");
     $(".ec-"+event_class_name+"-"+event_id).css("background-color", event_color);
   });
-  
+
   // highlight events that don't have a background color
   $(".ec-event-no-bg").live("mouseover", function() {
     ele = $(this);

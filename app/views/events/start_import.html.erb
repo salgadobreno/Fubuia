@@ -1,9 +1,15 @@
-<% if @events.empty? %>
-  Não conseguimos achar nenhum evento público e futuro criado por você, entre em contato se achar que há algo de errado
-<% else %>
-  <% @events.each do |e| %>
-    <%= e.name %> <%= link_to "import", import_event_path(:eid => e.eid), :class => "import" %>
-    <br>
-  <% end %>
+
+<%= content_for :head do %>
+  <%= stylesheet_link_tag 'foundation-buttons' %>
 <% end %>
+<div class="container boxed">
+  <% if @events.empty? %>
+    Não conseguimos achar nenhum evento público e futuro criado por você, entre em contato se achar que há algo de errado
+  <% else %>
+    <% @events.each do |e| %>
+      <%= e.name %> <%= link_to "import", import_event_path(:eid => e.eid), :class => "import" %>
+      <br>
+    <% end %>
+  <% end %>
+</div>
 

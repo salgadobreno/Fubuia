@@ -9,6 +9,7 @@ FactoryGirl.define do
   factory :event do
     fid '12345678'
     association :user
+    city_id { City.find_by_subdomain('brasilia').id }
     start_at Date.today
     active true
   end
@@ -16,5 +17,9 @@ FactoryGirl.define do
   factory :city do
     name 'Brasília'
     subdomain 'brasilia'
+  end
+
+  factory :tag do
+    name 'tag'
   end
 end

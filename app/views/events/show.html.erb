@@ -1,67 +1,41 @@
-<p>
-  <%= @event.name %>
-</p>
-<p>
-  <%= @event.location %>
-</p>
-<% if @creator %>
-  <p>
-    <%= link_to @creator.name, @creator.profile_url %>
-    <%= image_tag @creator.pic_small %>
-  </p>
-<% end %>
-<p>
-  start: <%= Time.at(@event.start_time).to_s(:short) %>
-  <br>
-  end: <%= Time.at(@event.end_time).to_s(:short) %>
-</p>
-<p>
-  tags: <%= @event_db.tag_list %>
-</p>
+<style type="text/css">
+  span.faded {
+    color:gray;
+    opacity:0.3;
+  }
+</style>
 
-<script type="text/javascript">
-  eid = <%= @event_db.fid %>;
-$(document).ready(function(){
-    FB.getLoginStatus(function(response){
-      if(response.status == 'connected'){
-        getFBFeed(response.authResponse.accessToken);
-        } else {
-          alert("erro");
-        }
-    })
-    });
-
-    function getFBFeed(at) {
-      FB.api('/' + eid + '/feed', { limit: 20 } , function(response){
-            //TODO check if response
-            fbFetch(response);
-          });
-    }
-
-function fbFetch(json) {
-  var html = "<ul>";
-  $.each(json.data, function(i,fb){
-        html += "<li>" + fb.from["name"] + ":";
-        if(fb.link){
-          html += "<img src='"+fb.picture+"'/><a href='"+fb.link+"'>"+fb.message+"</a></li>";
-          } else {
-            html += fb.message + "</li>";
-            }
-            if("data" in fb["comments"]) {
-              $.each(fb["comments"]["data"], function(e, comment){
-                  html += "<li style='margin-left:50px'>";
-                  html += comment["from"]["name"] + ':';
-                  html += comment["message"];
-                  html += "</li>";
-                });
-            }
-            });
-          html += "</ul>";
-          $('.facebookfeed').animate({opacity:0}, 500, function(){
-              $('.facebookfeed').html(html);
-              });
-          $('.facebookfeed').animate({opacity:1}, 500);
-        };
-
-</script>
-<div class="facebookfeed"></div>
+<div class="container boxed">
+  <div style="float:right;position:relative;">
+    <i class="icon-picture" style="position:absolute;font-size:22px;"></i>
+    <%= image_tag @event.pic_big %>
+    </fieldset>
+  </div>
+  <h1>
+    <%= @event.name %>
+  </h1>
+  <h3>
+    <i class="icon-calendar"></i> &nbsp;
+    <%=l Time.at(@event.start_time) %>
+  </h3>
+  <h3>
+    <i class="icon-map-marker"></i> &nbsp;
+    <%= @event.location %>
+  </h3>
+  <% if @creator %>
+    <h4>
+      <i class="icon-user"></i> &nbsp;
+      <%= link_to @creator.name, @creator.profile_url %>
+      <%= image_tag @creator.pic_small, :style => "height:18px" %>
+    </h4>
+  <% end %>
+  <h3>
+    <i class="icon-tags"></i> &nbsp;
+    <% @event_db.tags.each do |tag| %>
+      <%= tag_span(tag) %>
+    <% end %>
+  </h3>
+  <blockquote>
+    <%= simple_format @event.description %>
+  </blockquote>
+</div>

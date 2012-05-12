@@ -5,7 +5,7 @@ describe "Events" do
 
   describe "show" do
     before do
-      @event_db = Factory(:event, :fid => 12345 )
+      @event_db = Factory(:event, :fid => 12345, :tag_list => "rock, 0800 beer" )
       @multiquery = multiquery()
       Koala::Facebook::API.any_instance.stubs(:fql_multiquery).returns(@multiquery)
       @event = @multiquery["event"][0]
@@ -14,9 +14,14 @@ describe "Events" do
 
     it "should display the event info from facebook" do
       visit event_path(@event_db)
-      page.should have_content "Breno Salgado"
-      page.should have_content "No mundo inteiro"
-      page.should have_content "Fim do Mundo - Eu vou!"
+      page.should have_content "Breno Salgado" #creator
+      page.should have_content "No mundo inteiro" #location
+      page.should have_content "Fim do Mundo - Eu vou!" #name
+      page.should have_content "rock" #tags
+      page.should have_content "0800" #tags
+      page.should have_content "beer" #tags
+      page.should have_content "OpenBar até o último cliente" #description
+      page.find('img', :src => "http://profile.ak.fbcdn.net/hprofile-ak-snc4/50236_105417699523664_1798087_n.jpg").should_not be_nil
     end
 
     #context "comments", :js => true do
@@ -51,13 +56,16 @@ describe "Events" do
 
     context "user not logged in" do
 
-      specify "should show a message requiring login" do
-        visit new_event_path
-        page.should have_content i18n('pages.events.login_required')
-      end
+      pending("Gotta change implementation") do
+        specify "should show a message requiring login" do
+          visit new_event_path
+          page.should have_content i18n('pages.events.login_required')
+        end
 
-      specify "start_import link should be disabled" do
-        page.find('#start')[:class].should include('disabled')
+        specify "start_import link should be disabled" do
+          page.find('#start')[:class].should include('disabled')
+        end
+
       end
 
     end

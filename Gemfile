@@ -10,9 +10,10 @@ gem 'execjs'
 gem 'therubyracer'
 gem 'koala'
 gem 'authlogic'
+gem 'twitter-bootstrap-rails'
 #gem 'cancan'
 #gem 'activeadmin'
-gem 'acts-as-taggable-on'
+gem 'acts-as-taggable-on', :git => "git://github.com/mbleigh/acts-as-taggable-on.git"
 #gem 'event-calendar', :require => 'event_calendar', :git => "/home/buzaga/Dropbox/railsapps/event_calendar.git"
 gem 'event-calendar', :require => 'event_calendar', :path => 'vendor/event_calendar'
 gem 'httparty'

@@ -17,10 +17,6 @@ class TransientEvent < OpenStruct
     self
   end
 
-  def end_at
-    @end_at || self.start_at
-  end
-
   # EventCalendar uses this form of attribute access
   # faking AR behaviour
   def [](attr_name)

@@ -1,5 +1,7 @@
 Fbk::Application.routes.draw do
 
+  match '/rio_events/:slug' => 'events#rio_event_show', :as => :rio_event
+
   match '/show_request' => 'application#show_request'
   match '/comments' => 'events#comments' #TODO placeholder
 

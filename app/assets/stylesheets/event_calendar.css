@@ -1,6 +1,6 @@
-/* 
+/*
   Event Calendar stylesheet
-  
+
   Colors:
   #d5d5d5 - border (gray)
   #303030 - day names bg (gray)
@@ -18,9 +18,10 @@
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 11px;
   line-height: 14px;
-  margin: 0;
+  margin: 0 20px;
   padding: 0;
   border-bottom: 1px solid #d5d5d5;
+  position:relative;
 }
 
 /* Month name header & links */
@@ -126,7 +127,7 @@ a.ec-day-link {
 }
 
 .ec-weekend-day-header {
-  
+
 }
 
 .ec-other-month-header {
@@ -135,7 +136,7 @@ a.ec-day-link {
 }
 
 .ec-other-month-bg {
-  
+
 }
 
 
@@ -235,3 +236,8 @@ a.ec-day-link {
   -khtml-border-radius: 2px;
   -moz-border-radius: 2px;
 }
+
+.ec-event a {
+  color:white;
+}
+

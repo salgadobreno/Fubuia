@@ -12,19 +12,18 @@ class CalendarController < ApplicationController
 
     @tags = Tag.tag_counts_for_date_range('tags', Date.today - 3 + @shift, Date.today + 3 + @shift)
 
-
     @tag = Tag.find_by_name(params[:tag]) if params[:tag].present?
     flash[:error] = "Tag não encontrada" if params[:tag].present? && @tag.nil?
 
-    events = Event.events_for_date_range(strip_start, strip_end).active
+    events = @city.events.for_date_range(strip_start, strip_end).active
     events = events.active.tagged_with(@tag) if @tag
 
-    query = "select eid, name, creator, privacy, pic_small, pic_big, location, venue, start_time, end_time from event where eid in (%s)" % events.map(&:fid).join(',')
+    query = "select eid, name, description, creator, privacy, pic_small, pic_big, location, venue, start_time, end_time from event where eid in (%s)" % events.map(&:fid).join(',')
 
     @graph = Koala::Facebook::API.new(app_access_token)
-    event_hashes = Hash[events.map { |e| [e.fid, e] }]
+    event_hashes = Hash[events.map { |e| [e.fid, e] }] #1
     events_from_fql = @graph.fql_query(query)
-    @events = events_from_fql.map do |efql|
+    @events = events_from_fql.map do |efql| #2
       FacebookEvent.new(efql.merge( event_hashes[efql["eid"]].attributes_for_facebook_event )) unless event_hashes[efql["eid"]].blank?
     end.compact
 
@@ -33,10 +32,14 @@ class CalendarController < ApplicationController
     #rioe
 
     if request.subdomain == 'rio'
-      @rioapi = RioApi.new
-      @rioapi.retrieve_token!
-      @rio_events = @rioapi.get_eventos('start-date'=>Date.today.to_s,'end-date'=>Date.today.advance(:weeks => 2).to_s)
-      @rio_events = @rio_events['results'].map {|re| RioEvent.new(re)} if @rio_events['results']
+
+      @rio_events = Rails.cache.fetch("rio-events-#{Date.today.to_s}") do
+        @rioapi = RioApi.new
+        @rioapi.retrieve_token!
+        @rio_events_from_api = @rioapi.get_eventos('start-date'=>Date.today.to_s,'end-date'=>Date.today.advance(:weeks => 2).to_s)
+        @rio_events = @rio_events_from_api['results'].map {|re| RioEvent.new(re)} if @rio_events_from_api['results']
+      end
+
     end
 
   end

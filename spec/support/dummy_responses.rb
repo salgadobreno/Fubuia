@@ -6,6 +6,7 @@ module DummyResponses
         {
           "eid": 105417699523664,
           "name": "Fim do Mundo - Eu vou!",
+          "description": "OpenBar até o último cliente.",
           "creator": 1,
           "privacy": "OPEN",
           "location": "No mundo inteiro",
@@ -91,6 +92,7 @@ module DummyResponses
     {"event"=>
       [{"eid"=>12345,
         "name"=>"Fim do Mundo - Eu vou!",
+        "description" => "OpenBar até o último cliente.",
         "creator"=>1,
         "privacy"=>"OPEN",
         "pic_small"=>

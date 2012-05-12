@@ -1,37 +1,76 @@
-<!-- Probably move the stylesheet to you layout. Also make sure you include the javascript. -->
-<%= stylesheet_link_tag "event_calendar" %>
-
-<h1>Calendar</h1>
-
-<h3>
-  <%= @city.name %>
-</h3>
-
-<h4>
-  <%=l(Date.today, :format => :cal_home) %>
-</h4>
-<% if @rio_events && @rio_events.present? %>
-  <div>
-    <% for revent in @rio_events %>
-      <ul style="float:left">
-        <li><%= revent.name %></li>
-        <li><%= revent.short_text %></li>
-        <li><%= revent.local %></li>
-      </ul>
-    <% end %>
-  </div>
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'event_calendar','jquery.fancybox', 'jquery.mediaTable' %>
+  <%= javascript_include_tag 'jquery.fancybox', 'jquery.mediaTable' %>
 <% end %>
 
-<%= raw(event_calendar) %>
-<% if @tag %>
-  <div>
-    <%= t('pages.tags.filtering', :tag => @tag.name) %>
-    <%= link_to 'limpar', {:shift => @shift, :tag => nil} %>
-  </div>
-<% end %>
-<div id="tags">
-  <% tag_cloud(@tags, %w(css1 css2 css3 css4 css5)) do |tag,css| %>
-    <%= link_to tag.name, {:shift => @shift, :tag => tag.name}, :class => css, :title => "Filtrar por essa tag" %>
-  <% end %>
-</div>
-<%= link_to t('pages.events.new'), new_event_path %>
+<script type="text/javascript">
+  $(document).ready(function(){
+      $('.mediaTable').mediaTable();
+      $('.fancybox').fancybox();
+      $(".open_iframe").fancybox({type: 'iframe'});
+      $(".open_ajax").fancybox({type: 'ajax'});
+      $("div.event_card").click(function(){
+        $.fancybox([$(this).data('url')], {'type':'ajax'});
+        })
+      $(".event_card").hover(function(){
+        $(this).css('cursor', 'pointer');
+        }, function(){
+        $(this).css('cursor','auto');
+        });
+      });
+    </script>
+    <div class="container boxed">
+      <%= flash_messages %>
+      <div class="row">
+        <div class="span7">
+          <h3>
+            <%= @city.name %>
+          </h3>
+
+          <h4>
+            <%=l(Date.today, :format => :cal_home) %>
+          </h4>
+          <% if @rio_events && @rio_events.present? %>
+            <div>
+              <% for revent in @rio_events %>
+                <%= content_tag 'div', class: 'event_card', style:"background:##{"%06x" % (rand * 0xffffff)}", data: {url: rio_event_path(revent)} do %>
+                  <p><%= link_to revent.name, rio_event_path(revent), :class => 'open_ajax' %></p>
+                  <p><%= revent.local %></p>
+                <% end %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+        <div class="span5">
+          <h3>Tags</h3>
+          <% if @tag %>
+            <div class="alert">
+              <%= t('pages.tags.filtering_html', :tag => tag_span(@tag)) %>
+              <%= link_to 'limpar', {:shift => @shift, :tag => nil} %>
+            </div>
+          <% end %>
+          <% if @tags %>
+            <div id="tags">
+              <% for tag in @tags %>
+                <%= link_to tag.name, {:shift => @shift, :tag => tag.name}, :title => "Filtrar por essa tag", :class => "label #{tag.css ?  "label-#{tag.css_class}" : ""}" %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-unit">
+      <%= raw(event_calendar) %>
+
+      <%= link_to new_event_path, :class => "button next new", :style => "float:right;margin-right:45px;margin-top:15px;"  do %>
+        <% t('pages.events.new').html_safe %>
+      <% end %>
+    </div>
+
+    <div class="container boxed">
+      <div class="row">
+        <div class="span10">
+        </div>
+      </div>
+    </div>

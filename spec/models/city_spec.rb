@@ -10,4 +10,8 @@ describe City do
     City.new(:subdomain => nil).should_not be_valid
   end
 
+  it "has many events" do
+    City.new.should respond_to(:events)
+  end
+
 end

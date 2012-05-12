@@ -20,7 +20,7 @@ class RioEvent < TransientEvent
   end
 
   def to_param
-    "#{self.id}-#{self.name}"
+    URI.encode(self.name.gsub(' ', '-'))
   end
 
 end

@@ -1,0 +1,55 @@
+@import "twitter/bootstrap/bootstrap";
+
+@import "twitter/bootstrap/responsive";
+
+// Set the correct sprite paths
+//@iconSpritePath: asset-path('twitter/bootstrap/glyphicons-halflings.png');
+//@iconWhiteSpritePath: asset-path('twitter/bootstrap/glyphicons-halflings-white.png');
+
+
+//Add the following lines to your "bootstrap_and_overrides.less" file to use FontAwesome instead of the default icons
+@fontAwesomeEotPath: asset-path('fontawesome-webfont.eot');
+@fontAwesomeWoffPath: asset-path('fontawesome-webfont.woff');
+@fontAwesomeTtfPath: asset-path('fontawesome-webfont.ttf');
+@fontAwesomeSvgzPath: asset-path('fontawesome-webfont.svgz');
+@fontAwesomeSvgPath: asset-path('fontawesome-webfont.svg');
+@import "font-awesome";
+
+// Your custom LESS stylesheets goes here
+//
+// Since bootstrap was imported above you have access to its mixins which
+// you may use and inherit here
+//
+// If you'd like to override bootstrap's own variables, you can do so here as well
+// See http://twitter.github.com/bootstrap/less.html for their names and documentation
+//
+// Example:
+// @linkColor: #ff0000;
+
+.navbar .brand {
+  color:black;
+}
+.container.boxed {
+  border: 1px solid #D9D9D9;
+  border-bottom: 0;
+  background: white;
+  padding: 40px;
+  border-radius: 3px;
+}
+.hero-unit {
+  padding: 60px 0px;
+  margin-bottom:0px;
+  background-image: url('/assets/landscape.png');
+  background-repeat: repeat-x;
+  background-position-y: 100%;
+  background-color:gray;
+}
+.nav > li > a:hover {
+  color:black !important;
+}
+body, h1, h2, h3, h4, h5, h6 {
+  font-family:"Proxima Nova Bold","Helvetica Neue",Arial,Helvetica,sans-serif
+}
+.label {
+  vertical-align:inherit;
+}:

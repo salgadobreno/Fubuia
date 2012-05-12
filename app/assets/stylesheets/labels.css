@@ -1,0 +1,13 @@
+.label.hover {
+  background-color:black;
+}
+.label.label-rock { background-color:#333; }
+.label.label-rock.hover {
+  background-color: #222222;
+}
+.label.label-0800 {
+  background-color:#F89406;
+}
+.label.label-0800.hover {
+  background-color:#C67605;
+}

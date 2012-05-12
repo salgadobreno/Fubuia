@@ -8,10 +8,11 @@ pt-BR:
     events:
       new: Divulgue o seu!
       process: Buscamos os eventos públicos criados por vc no facebook<br>Então você pode selecionar um deles para importar para o Fubúia<br>Você nos ajuda(e a galera que for interessada no seu evento) adicionando algumas tags<br>E pronto!
-      start: Começar!
+      start: Começar »
       login_required: É necessário estar logado para continuar
     tags:
-      filtering: Filtrando pela tag %{tag}.
+      filtering: "Filtrando por: %{tag}."
+      filtering_html: "Filtrando por: %{tag}."
   date:
     abbr_day_names:
     - Dom

@@ -25,9 +25,19 @@ describe Event do
     @event.should respond_to(:user)
   end
 
+  it "belongs to a city" do
+    @event.should respond_to(:city)
+  end
+
   context "validations" do
 
-    it "requires an event id" do
+    it "requires a city" do
+      @event.city = nil
+      @event.should_not be_valid
+      @event.errors[:city].should include(i18n 'errors.messages.blank')
+    end
+
+    it "requires an event facebook id" do
       @event.fid = nil
       @event.should_not be_valid
       @event.errors[:fid].should include(i18n 'errors.messages.blank')
@@ -59,6 +69,14 @@ describe Event do
 
     it "should save successfully" do
       @event.save.should == true
+    end
+
+  end
+
+  context "tags" do
+
+    specify "should retain inserted order" do
+      pending "pending"
     end
 
   end
