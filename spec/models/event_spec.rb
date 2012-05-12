@@ -74,9 +74,12 @@ describe Event do
   end
 
   context "tags" do
+    before do
+      Factory(:event, :fid => '41', :tag_list => "first, 2, four, three, rock, last")
+    end
 
     specify "should retain inserted order" do
-      pending "pending"
+      Event.find_by_fid(41).tag_list.should == ["first", "2", "four", "three", "rock", "last"]
     end
 
   end

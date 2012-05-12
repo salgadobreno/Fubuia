@@ -5,10 +5,6 @@ describe Tag do
     @tag = Tag.new
   end
 
-  it "has events" do
-    @tag.should respond_to(:events)
-  end
-
   it "has Parent Tag" do
     @tag.should respond_to(:parent)
   end

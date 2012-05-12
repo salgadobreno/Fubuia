@@ -4,7 +4,6 @@ class Event < ActiveRecord::Base
   acts_as_ordered_taggable
 
   belongs_to :city
-  has_many :tags, :through => :taggings, :source => :tag, :class_name => "Tag"
 
   validates :city, :presence => true
   validates :fid, :presence => true
