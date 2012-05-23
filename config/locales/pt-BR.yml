@@ -9,6 +9,7 @@ pt-BR:
       new: Divulgue o seu!
       process: Buscamos os eventos públicos criados por vc no facebook<br>Então você pode selecionar um deles para importar para o Fubúia<br>Você nos ajuda(e a galera que for interessada no seu evento) adicionando algumas tags<br>E pronto!
       start: Começar »
+      import: Importar »
       login_required: É necessário estar logado para continuar
     tags:
       filtering: "Filtrando por: %{tag}."
@@ -216,4 +217,5 @@ pt-BR:
       default: ! '%A, %d de %B de %Y, %H:%M h'
       long: ! '%A, %d de %B de %Y, %H:%M h'
       short: ! '%d/%m, %H:%M h'
+      import: ! '%d de %B, %H:%Mh'
     pm: ''
