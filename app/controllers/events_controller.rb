@@ -47,12 +47,12 @@ class EventsController < ApplicationController
     unless eids_from_api.empty?
       @events_data_from_fql = @graph.fql_query("select eid, name, creator, privacy, pic_small, pic_big, location, venue, start_time, end_time from event where eid in (#{eids_from_api.join(', ')})")
       @events = @events_data_from_fql.map { |efql| FacebookEvent.new(efql)}
-       @events.reject! {|e| e.creator != current_user.facebook_uid }
-#      #reject events not created by this user
-       @events.reject! {|e| e.start_time < Time.now.to_i }
-#      #reject past events
-       @events.reject! {|e| e.privacy != "OPEN"}
-#      #reject private events
+#       @events.reject! {|e| e.creator != current_user.facebook_uid }
+#       #reject events not created by this user
+#       @events.reject! {|e| e.start_time < Time.now.to_i }
+#       #reject past events
+#       @events.reject! {|e| e.privacy != "OPEN"}
+#       #reject private events
     end
   end
 
@@ -60,7 +60,8 @@ class EventsController < ApplicationController
     require_login!
     raise ActionController::RoutingError.new('Not found') if params[:eid].blank?
     @eid = params[:eid]
-    @graph = Koala::Facebook::API.new(app_access_token)
+    #@graph = Koala::Facebook::API.new(app_access_token)
+    @graph = Koala::Facebook::API.new(current_user.access_token)
     @multiquery = @graph.fql_multiquery({"event"=>"select eid, name, creator, privacy, pic_small, pic_big, location, venue, start_time, end_time from event where eid = #{@eid}","creator"=>"select name, pic_small, profile_url from user where uid in (select creator from #event)"})
 
     @event = FacebookEvent.new( @multiquery["event"][0] )

@@ -18,11 +18,6 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, :flash => {:error => t('errors.messages.not_logged_in')}
   end
 
-  #test
-  def show_request
-    render :text => "#{request.subdomain} <br><br><br> #{request.inspect}"
-  end
-
   protected
 
   def set_app_data

@@ -113,3 +113,26 @@ butt::-moz-focus-inner, input[type="reset"]::-moz-focus-inner, input[type="butto
   input[type=submit].large.butt		{ padding: 9px 48px 10px; }
 }
 
+.fdlabel { padding: 0 4px 2px; font-size: 11px; font-weight: bold; text-align: center; text-decoration: none; line-height: 1;  white-space: nowrap; display: inline; position: relative; bottom: 1px; color: #fff; background: #00a6fc; }
+.fdlabel.radius { -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px; }
+.fdlabel.round { padding: 1px 7px 2px; -moz-border-radius: 8px; -webkit-border-radius: 8px; border-radius: 8px; }
+
+/* Colors ---------- */
+.blue.fdlabel				{ background-color: #00a6fc; }
+.red.fdlabel				{ background-color: #e91c21; }
+.green.fdlabel			{ background-color: #7fae00; }
+.white.fdlabel			{ background-color: #e9e9e9; color: #333; }
+.black.fdlabel			{ background-color: #141414; }
+
+
+div.panel {
+  padding: 20px 20px 20px 20px;
+  background: #EFEFEF;
+  background: -moz-linear-gradient(top, white 0%, #F4F4F4 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,white), color-stop(100%,#F4F4F4));
+  background: -o-linear-gradient(top, white 0%,#F4F4F4 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FFFFFF', endColorstr='#F4F4F4',GradientType=0 );
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  -webkit-box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  -moz-box-shadow: 0 2px 5px rgba(0,0,0,0.25);
+}

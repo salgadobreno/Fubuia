@@ -17,9 +17,19 @@ body {
 .event_card {
   width:150px;
   float:left;
-  margin:0 0 5px 10px;
-  border:1px solid;
-  padding:5px;
+  margin:20px 20px 20px 0;
+  border:1px solid gray;
+  padding:20px;
+}
+.event_card .time {
+  color:gray;
+}
+.event_card .name {
+  color:black;
+  font-weight:bold;
+  font-size:18px;
+  display:block;
+  margin-bottom:5px;
 }
 ul.nav > li {
   float:left;
@@ -41,5 +51,7 @@ ul.nav > li {
   background-image: -o-linear-gradient(top, skyblue, skyblue);
   background-image: linear-gradient(top, skyblue, skyblue);
 }
-#tags {
+a.nodec, a.nodec:hover, a.nodec:active {
+  text-decoration:none;
+  color:white;
 }
