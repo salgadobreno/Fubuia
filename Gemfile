@@ -13,7 +13,7 @@ gem 'authlogic'
 gem 'twitter-bootstrap-rails'
 #gem 'cancan'
 #gem 'activeadmin'
-gem 'acts-as-taggable-on', :git => "git://github.com/mbleigh/acts-as-taggable-on.git"
+gem 'acts-as-taggable-on', :git => "http://github.com/mbleigh/acts-as-taggable-on.git" #removing git:// link cause of the shitty proxies here
 #gem 'event-calendar', :require => 'event_calendar', :git => "/home/buzaga/Dropbox/railsapps/event_calendar.git"
 gem 'event-calendar', :require => 'event_calendar', :path => 'vendor/event_calendar'
 gem 'httparty'
@@ -23,7 +23,7 @@ group :development do
 end
 
 group :test, :development do
-  gem 'ruby-debug19', :require => 'ruby-debug'
+  gem 'debugger'
   gem 'rspec-rails', '~> 2.6'
   #gem 'ZenTest'
   #gem 'autotest-rails'

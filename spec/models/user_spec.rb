@@ -3,7 +3,7 @@ require 'spec_helper'
 describe User do
 
   before do
-    @user = Factory.build(:user)
+    @user = build(:user)
   end
 
   it "has facebook UID" do
@@ -48,7 +48,7 @@ describe User do
   context "given it receives valid attributes" do
 
     it "should save successfully" do
-      @user = Factory.build(:user)
+      @user = build(:user)
       @user.save.should == true
     end
 

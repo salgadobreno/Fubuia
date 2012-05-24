@@ -4,8 +4,8 @@ require 'spec_helper'
 describe "Hiperlocal" do
 
   before do
-    @ebrasilia = Factory(:event, :city => City.find_by_subdomain('brasilia'), :fid => 1, :tag_list => "tagsilia")
-    @erio = Factory(:event, :city => City.find_by_subdomain('rio'), :fid => 2, :tag_list => "tagrio")
+    @ebrasilia = create(:event, :city => City.find_by_subdomain('brasilia'), :fid => 1, :tag_list => "tagsilia")
+    @erio = create(:event, :city => City.find_by_subdomain('rio'), :fid => 2, :tag_list => "tagrio")
     @events = JSON('[
       {
           "eid": 1,

@@ -4,8 +4,8 @@ require 'spec_helper'
 describe "Home" do
 
   before do
-    @event = Factory(:event, :fid => 12345678, :active => true, :start_at => Date.today, :end_at => Date.today)
-    @event2 = Factory(:event, :fid => 666, :active => false, :start_at => Date.today, :end_at => Date.today)
+    @event = create(:event, :fid => 12345678, :active => true, :start_at => Date.today, :end_at => Date.today)
+    @event2 = create(:event, :fid => 666, :active => false, :start_at => Date.today, :end_at => Date.today)
     @facebook_events = [{"name"=>"Evento 1", "eid"=>12345678}, {"name" => "Evento 2", "eid" => 666}]
     Koala::Facebook::API.any_instance.stubs(:fql_query).returns(@facebook_events)
   end

@@ -1,3 +1,21 @@
+<% content_for :head do %>
+  <%= javascript_include_tag 'jquery-ui-1.8.20.custom.min', 'tag-it' %>
+  <%= stylesheet_link_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css', 'jquery.tagit' %>
+  <style type="text/css">
+    li.tagit-choice.ui-widget-content.ui-state-default.ui-corner-all {
+      border:0;
+    }
+    span.tagit-label.label {
+      padding: .2em 18px .2em .5em;
+    }
+    ul.tagit li.tagit-choice {
+      padding: 0;
+      position: relative;
+      line-height: inherit;
+    }
+  </style>
+<% end %>
+
 <%= form_for @event_db, :url => create_event_path(@event_db), :html => {:method => 'POST'} do |f| %>
   <p>
     <%= @event.name %>
@@ -19,3 +37,16 @@
   </p>
   <%= f.submit "salvar", {:id => "salvar"} %>
 <% end %>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+      $("#event-tags").tagit({
+          removeConfirmation: true,
+          caseSensitive: false,
+          onTagAdded: function(event, tag) {
+          spam = tag.find("span:first")
+          tag.find("span:first").addClass("label label-"+spam.text().toLowerCase());
+          }
+        });
+      });
+</script>

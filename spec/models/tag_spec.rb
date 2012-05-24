@@ -36,24 +36,24 @@ describe Tag do
       end
 
       specify "returns parent's #css_class if parent" do
-        parent = Factory(:tag, :css => true, :name => "rock")
-        child = Factory(:tag, :css => false, :parent => parent)
+        parent = create(:tag, :css => true, :name => "rock")
+        child = create(:tag, :css => false, :parent => parent)
         child.css_class.should == "rock"
       end
 
     end
 
     it "returns the parent tag css_class if 'css' if false" do
-      parent = Factory(:tag, :name => "Rock")
-      child = Factory(:tag, :name => "Stoner Rock")
+      parent = create(:tag, :name => "Rock")
+      child = create(:tag, :name => "Stoner Rock")
     end
 
   end
 
   describe ".event_tags_for_date_range scope" do
     it "should find any tags in events overlaping the range" do
-      @event = Factory(:event, :tag_list => "1, 2, in", :start_at => Date.today, :end_at => Date.today + 1)
-      @event2 = Factory(:event, :tag_list => "out", :start_at => Date.today, :end_at => Date.today)
+      @event = create(:event, :tag_list => "1, 2, in", :start_at => Date.today, :end_at => Date.today + 1)
+      @event2 = create(:event, :tag_list => "out", :start_at => Date.today, :end_at => Date.today)
       @tags = Tag.event_tags_for_date_range(Date.today + 1, Date.today + 3)
       @tags.should include(Tag.find_by_name("in"))
       @tags.should_not include(Tag.find_by_name("out"))
@@ -63,8 +63,8 @@ describe Tag do
   describe ".tag_counts_for_date_range" do
 
     it "should find any tags in events overlaping the range" do
-      @event = Factory(:event, :tag_list => "1, 2, in", :start_at => Date.today, :end_at => Date.today + 1)
-      @event2 = Factory(:event, :tag_list => "out", :start_at => Date.today, :end_at => Date.today)
+      @event = create(:event, :tag_list => "1, 2, in", :start_at => Date.today, :end_at => Date.today + 1)
+      @event2 = create(:event, :tag_list => "out", :start_at => Date.today, :end_at => Date.today)
       @tag_counts = Tag.tag_counts_for_date_range("tags", Date.today + 1, Date.today + 3)
       @tag_counts.should include(Tag.find_by_name("in"))
       @tag_counts.should_not include(Tag.find_by_name("out"))
@@ -73,11 +73,11 @@ describe Tag do
     context "given there's 3 events today, one with '1' tag, two with '2' tag, three with '3' tag, plus one event tomorrow with tag 3 and one event yesterday with tag 1 and I ask for the tags and counts for TODAY" do
 
       before do
-        @event = Factory(:event, :tag_list => "1, 2, 3", :start_at => Date.today)
-        @event2 = Factory(:event, :tag_list => "2, 3", :start_at => Date.today)
-        @event3 = Factory(:event, :tag_list => "3", :start_at => Date.today)
-        @event4 = Factory(:event, :tag_list => "1", :start_at => Date.today - 1)
-        @event5 = Factory(:event, :tag_list => "3", :start_at => (Date.today + 1))
+        @event = create(:event, :tag_list => "1, 2, 3", :start_at => Date.today)
+        @event2 = create(:event, :tag_list => "2, 3", :start_at => Date.today)
+        @event3 = create(:event, :tag_list => "3", :start_at => Date.today)
+        @event4 = create(:event, :tag_list => "1", :start_at => Date.today - 1)
+        @event5 = create(:event, :tag_list => "3", :start_at => (Date.today + 1))
         @tag_counts = Tag.tag_counts_for_date_range("tags", Date.today, Date.today)
       end
       it "returns an array with 3 tags" do

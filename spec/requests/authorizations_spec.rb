@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "Authorizations" do
 
   before do
-    @event = Factory(:event, :id => 1, :fid => 1)
+    @event = create(:event, :id => 1, :fid => 1)
     #visit root_path
     #page.should have_selector '#login' #user logged out
   end

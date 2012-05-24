@@ -5,7 +5,7 @@ describe "Events" do
 
   describe "show" do
     before do
-      @event_db = Factory(:event, :fid => 12345, :tag_list => "rock, 0800 beer" )
+      @event_db = create(:event, :fid => 12345, :tag_list => "rock, 0800 beer" )
       @multiquery = multiquery()
       Koala::Facebook::API.any_instance.stubs(:fql_multiquery).returns(@multiquery)
       @event = @multiquery["event"][0]
@@ -27,7 +27,7 @@ describe "Events" do
     #context "comments", :js => true do
 
     #  it "should display the event feed from facebook" do
-    #    @event_db = Factory(:event, :fid => 12345 )
+    #    @event_db = create(:event, :fid => 12345 )
     #    @multiquery = multiquery()
     #    Koala::Facebook::API.any_instance.stubs(:fql_multiquery).returns(@multiquery)
     #    @event = @multiquery["event"][0]
@@ -98,13 +98,16 @@ describe "Events" do
           page.should have_content "Fim do Mundo - Eu vou!"
           page.should have_content "LONDON CALLING"
         end
-        specify "events should be future only" do
-          click_on 'start'
-          page.should have_no_content "Festa na Cobe do China"
+        it "should retrieve events user has RSVP'd" do
+
         end
         specify "events should be public only" do
           click_on 'start'
           page.should have_no_content "teste"
+        end
+        specify "events should be future only" do
+          click_on 'start'
+          page.should have_no_content "Festa na Cobe do China"
         end
         specify "there should be an import button" do
           click_on 'start'

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Event do
   before(:each) do
-    @event = Factory.build(:event)
+    @event = build(:event)
   end
 
   it "has an facebook event id" do
@@ -75,7 +75,7 @@ describe Event do
 
   context "tags" do
     before do
-      Factory(:event, :fid => '41', :tag_list => "first, 2, four, three, rock, last")
+      create(:event, :fid => '41', :tag_list => "first, 2, four, three, rock, last")
     end
 
     specify "should retain inserted order" do
