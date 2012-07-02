@@ -14,7 +14,7 @@ class EventsController < ApplicationController
     @creator = TransientUser.new(@multiquery["creator"][0]) if @multiquery["creator"][0]
 
     if request.xhr?
-      render :action => "show", :layout => false
+      render :partial => "show"
     end
   end
 

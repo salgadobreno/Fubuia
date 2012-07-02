@@ -9,22 +9,14 @@
       $('.fancybox').fancybox();
       $(".open_iframe").fancybox({type: 'iframe'});
       $(".open_ajax").fancybox({type: 'ajax'});
-      $("div.event_card").click(function(){
-        $.fancybox([$(this).data('url')], {'type':'ajax'});
-        })
-      $(".event_card").hover(function(){
-        $(this).css('cursor', 'pointer');
-        }, function(){
-        $(this).css('cursor','auto');
-        });
       });
 </script>
 <div class="container" style="margin-top:15px;">
-  <div class="quarter_wide" style="background-color:white;padding:10px;">
+  <div class="three columns" style="background-color:white;padding:10px;margin:0 20px 20px 0">
     <h3 style="line-height:10px;">O que rola?</h3>
     Fubuia é um app que te permite importar seus eventos no facebook pra além da sua ilha de conhecidos
   </div>
-  <div class="threequarter_wide" style="background-color:white;padding:10px;">
+  <div class="eight columns" style="background-color:white;padding:10px;margin:0 20px 20px 0">
     <h3 style="margin-bottom:0">Tags</h3>
     <h6>(clique pra filtrar)</h6>
     <% if @tag %>
@@ -41,7 +33,7 @@
       </div>
     <% end %>
   </div>
-  <div class="quarter_wide" style="background-color:white;padding:10px;">
+  <div class="three columns" style="background-color:white;padding:10px;margin:0 20px 20px 0">
     <h2><%= @city.name %></h3>
     <h4 style="line-height:0px;"><%= l(Date.today, :format => :cal_home) %></h4>
   </div>
