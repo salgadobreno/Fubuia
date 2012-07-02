@@ -3,9 +3,8 @@ require 'spec_helper'
 describe "Authorizations" do
 
   before do
+    Koala::Facebook::API.any_instance.stubs(:fql_query).returns({})
     @event = create(:event, :id => 1, :fid => 1)
-    #visit root_path
-    #page.should have_selector '#login' #user logged out
   end
 
   it "start import requires login" do

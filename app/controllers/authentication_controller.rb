@@ -15,16 +15,16 @@ class AuthenticationController < ApplicationController
     }
     if @user.save && Session.create(@user)
       session[:fuser] = @facebook_user
-      redirect_to root_url, :flash => {:success => "logado com sucesso"}
+      redirect_to root_url, :flash => {:success => t('messages.login_success') }
     else
       raise UnexpectedException
     end
   end
 
   def destroy
-    current_user_session.destroy
+    current_user_session.destroy unless current_user_session.blank?
     session[:fuser] = nil
-    redirect_to root_url, :flash => {:success => "deslogado com sucesso"}
+    redirect_to root_url, :flash => {:notice => t('messages.logout_success') }
   end
 
 end

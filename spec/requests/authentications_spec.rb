@@ -2,6 +2,10 @@ require 'spec_helper'
 
 describe "Authentications" do
 
+  before do
+    Koala::Facebook::API.any_instance.stubs(:fql_query).returns({})
+  end
+
   context "Logged out" do
 
     it "should display login button" do
@@ -33,10 +37,11 @@ describe "Authentications" do
 
       it "redirects to root with the user signed in" do
         visit login_path(:code => "1234")
-        page.should have_content "logado com sucesso"
+        page.should have_content i18n('messages.login_success')
       end
     end
 
+    #TODO
     context "user has not allowed access to app" do
       it "redirects to root with an error message" do
         visit login_path
@@ -69,7 +74,7 @@ describe "Authentications" do
           visit '/'
           click_on 'logout'
           page.should have_selector "#login"
-          page.should have_content "deslogado com sucesso"
+          page.should have_content i18n('messages.logout_success')
         end
 
       end

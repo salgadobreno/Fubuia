@@ -29,19 +29,6 @@ class CalendarController < ApplicationController
 
     @event_strips = Event.create_event_strips(strip_start, strip_end, @events)
 
-    #rioe
-
-    if request.subdomain == 'rio'
-
-      @rio_events = Rails.cache.fetch("rio-events-#{Date.today.to_s}") do
-        @rioapi = RioApi.new
-        @rioapi.retrieve_token!
-        @rio_events_from_api = @rioapi.get_eventos('start-date'=>Date.today.to_s,'end-date'=>Date.today.advance(:weeks => 2).to_s)
-        @rio_events = @rio_events_from_api['results'].map {|re| RioEvent.new(re)} if @rio_events_from_api['results']
-      end
-
-    end
-
   end
 
 end

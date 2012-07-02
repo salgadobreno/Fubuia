@@ -4,7 +4,7 @@
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  *= require_self
  *= require labels
- *= require bootstrap_and_overrides
+ // require bootstrap_and_overrides
 */
 
 body {
@@ -43,15 +43,31 @@ ul.nav > li {
 }
 
 .button.new {
-  background-color: skyblue;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(skyblue), to(skyblue));
-  background-image: -webkit-linear-gradient(top, skyblue, skyblue);
-  background-image: -moz-linear-gradient(top, skyblue, skyblue);
-  background-image: -ms-linear-gradient(top, skyblue, skyblue);
-  background-image: -o-linear-gradient(top, skyblue, skyblue);
-  background-image: linear-gradient(top, skyblue, skyblue);
+  background-color: #D74543;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#D74543), to(#D74543));
+  background-image: -webkit-linear-gradient(top, #D74543, #D74543);
+  background-image: -moz-linear-gradient(top, #D74543, #D74543);
+  background-image: -ms-linear-gradient(top, #D74543, #D74543);
+  background-image: -o-linear-gradient(top, #D74543, #D74543);
+  background-image: linear-gradient(top, #D74543, #D74543);
+  text-shadow:0 1px 0 #333;
+  color:white;
 }
 a.nodec, a.nodec:hover, a.nodec:active {
   text-decoration:none;
   color:white;
 }
+
+/* alert boxes */
+/* OPTIMIZE */
+.msg_box {padding:8px 20px 8px 46px;margin-bottom:10px;position:relative;color:#444;overflow:hidden}
+.msg_box img {background-image: url(/assets/lga_spr.png);background-repeat:no-repeat;width:9px;height:9px}
+.msg_error {background:#f2cac2 url(/assets/error_ico.png) no-repeat 14px center;border:1px solid #ae432e}
+.msg_error img {background-position:-47px 0}
+.msg_notice {background:#c2e2f2 url(/assets/info_ico.png) no-repeat 14px center;border:1px solid #058dc7}
+.msg_notice img {background-position:-47px -18px}
+.msg_success {background:#d5e5b8 url(/assets/ok_ico.png) no-repeat 14px center;border:1px solid #77ab13}
+.msg_success img {background-position:-47px -9px}
+.msg_alert {background:#faf5c8 url(/assets/alert_ico.png) no-repeat 14px center;border:1px solid #e6c26e}
+.msg_alert img {background-position:-47px -27px}
+.msg_box .msg_close {position:absolute;top:2px;right:2px;cursor:pointer}

@@ -2,8 +2,7 @@ module ApplicationHelper
 
   def flash_messages
     flash.collect do |key, msg|
-      content_tag(:div, :id => key, :class => "alert alert-#{key}") do
-        content_tag(:a, 'x', :class => "close", :data => {:dismiss => "alert"}) +
+      content_tag(:div, :id => key, :class => "msg_box msg_#{key}") do
         msg
       end
     end.join.html_safe

@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :set_app_data
   helper_method :current_user_session, :current_user
+  layout "reviewer"
 
 
   class NotLoggedIn < Exception; end

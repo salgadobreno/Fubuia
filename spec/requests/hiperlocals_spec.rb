@@ -38,6 +38,8 @@ describe "Hiperlocal" do
           "end_time": 1328013000
         }
       ]')
+
+      Koala::Facebook::API.any_instance.stubs(:fql_query).returns(@events)
   end
 
   it "Defaults city to Brasília" do
@@ -46,9 +48,6 @@ describe "Hiperlocal" do
   end
 
   context "brasilia.fubuia.com.br", :subdomain => 'brasilia' do
-    before do
-      Koala::Facebook::API.any_instance.stubs(:fql_query).returns(@events)
-    end
 
     specify "should point to Brasília" do
       visit '/'
@@ -71,18 +70,13 @@ describe "Hiperlocal" do
 
   context "rio.fubuia.com.br", :subdomain => 'rio' do
 
-    before do
-      RioApi.any_instance.stubs(:retrieve_token!).returns(nil)
-      RioApi.any_instance.stubs(:get_eventos).returns(rio_events())
-      Koala::Facebook::API.any_instance.stubs(:fql_query).returns(@events)
-    end
 
     specify "should point to Rio" do
       visit '/'
       page.should have_content "Rio de Janeiro"
     end
 
-    specify "shouldn`t show events from Brasília" do
+    specify "shouldn`t show event from Brasília" do
       visit '/'
       page.should have_content "botafogo"
       page.should_not have_content "gama"
@@ -92,28 +86,6 @@ describe "Hiperlocal" do
       visit '/'
       page.should have_content "tagrio"
       page.should_not have_content "tagsilia"
-    end
-
-    context "RioEvents" do
-
-      specify "should display RioEvents" do
-        visit '/'
-        page.should have_content "Vampire Weekend"
-        page.should have_content "Ensaio das Escolas de Samba"
-      end
-
-      context "Selecting a RioEvent" do
-
-        specify "should display it`s individual page" do
-          visit '/'
-          page.should have_content "Vampire Weekend"
-          click_on 'Vampire Weekend'
-          page.should have_content "A banda novaiorquina formada em 2006"
-          page.should have_content "Rio de Janeiro - Circo Voador"
-        end
-
-      end
-
     end
 
   end

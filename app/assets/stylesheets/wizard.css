@@ -1,0 +1,27 @@
+.wizard .hormenu { list-style: none; }
+.wizard .hormenu li { float: left; width: 33%; }
+.wizard .hormenu li a { display: block; }
+.wizard .hormenu li a:hover { text-decoration: none; }
+.wizard .hormenu li a span.h2 { font-size: 24px; color: #999; text-align: center; display: block; font-family: 'BebasNeueRegular', Arial, Helvetica, sans-serif; }
+.wizard .hormenu li a span.dot { display: block; height: 20px; margin-top: 5px; text-align: center; background: url(/assets/stepline.png) repeat-x center left; }
+.wizard .hormenu li span.desc { display: block; text-align: center; font-weight: bold; color: #999; }
+.wizard .hormenu li a span.dot span { width: 20px; height: 20px; display: inline-block; background: url(/assets/steps.png) no-repeat 0 -40px; }
+.wizard .hormenu li:first-child a span.dot { margin-left: 45%; text-align: left; }
+.wizard .hormenu li:last-child a span.dot { margin-right: 45%; text-align: right; }
+.wizard .hormenu li a.done span.h2,.wizard .hormenu li a.done span.desc { color: #333; }
+.wizard .hormenu li a.done span.dot span { background-position: 0 -20px; }
+.wizard .hormenu li:first-child a.done span.dot span { background-position: 0 0; }
+.wizard .hormenu li a.selected span.dot span { background-position: 0 -120px; }
+.wizard .hormenu li:first-child a.selected span.dot span { background-position: 0 -100px; }
+.wizard .hormenu li a.selected span.h2,.wizard .hormenu li a.selected span.desc { color: #333; }
+
+.wizard .tabbedmenu { list-style: none; background: #f7f7f7; padding: 10px; padding-bottom: 0; border: 1px solid #ddd; }
+.wizard .tabbedmenu li { display: inline-block; margin-right: 5px; position: relative; bottom: -1px; }
+.wizard .tabbedmenu li a { display: block; padding: 10px 20px; color: #999; border: 1px solid #ddd; background: #eee; }
+.wizard .tabbedmenu li a { -moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px; }
+.wizard .tabbedmenu li a span { font-weight: bold; }
+.wizard .tabbedmenu li a span.h2 { color: #999; display: block; font-size: 24px; font-family: 'BebasNeueRegular', Arial, Helvetica, sans-serif; font-weight: normal; }
+.wizard .tabbedmenu li a:hover { text-decoration: none; }
+.wizard .tabbedmenu li a.selected, .wizard .tabbedmenu li a.done { background: #fff; color: #333; border-bottom: 1px solid #fff; }
+.wizard .tabbedmenu li a.selected span.h2, .wizard .tabbedmenu li a.selected span { color: #333; }
+.wizard .tabbedmenu li a.done span.h2, .wizard .tabbedmenu li a.done span { color: #333; }

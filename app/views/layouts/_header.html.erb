@@ -1,0 +1,37 @@
+<div id="header">
+  <div id="logo_area">
+    <div class="logo_holder">
+      <a href="/" title="Fubúia" class="left">
+        <%= image_tag "g7327.png", :alt => "Fubúia", :id => "logo" %>
+      </a>
+    </div>
+  </div>
+  <div class="menu" id="category_menu">
+    <div class="container">
+      <div class="menu-categories-container">
+        <ul id="menu-categories" class="menu">
+          <li>
+            <%= link_to t('pages.root.menu.contato'), "#contato", :id => "contato" %>
+          </li>
+          <li>
+            <%= link_to t('pages.root.menu.como_funciona'), "#como-funciona", :id => "a-como-funciona" %>
+          </li>
+          <li><a href="" title="Archive">Blog</a></li>
+        </ul>
+      </div>
+      <div class="login">
+        <% if current_user %>
+          <%= content_tag 'div' do %>
+            <% if session[:fuser] %>
+              <%= session[:fuser][:name] %>
+            <% end %>
+            <%= link_to "Logout", logout_path, {:id => "logout", :class => "button" } %>
+          <% end %>
+        <% else %>
+          <a id="login" class="button fb" href="">Login</a>
+        <% end %>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div><!-- end #header -->

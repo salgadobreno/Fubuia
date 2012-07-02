@@ -19,14 +19,31 @@ describe "Home" do
     describe "como funciona" do
       it "should have menu 'como funciona'" do
         visit '/'
-        page.should have_selector "#como-funciona-link"
+        page.should have_selector "#a-como-funciona"
+        page.should have_content i18n 'pages.root.menu.como_funciona'
       end
 
       specify "it points to 'como funciona' section" do
         visit '/'
-        page.find_link("como-funciona-link")["href"].should match /#como-funciona/
+        page.find_link("a-como-funciona")["href"].should match /#como-funciona/
       end
     end
+  end
+
+  describe "sections" do
+
+    describe "#como funciona" do
+      it "should exist" do
+        visit '/'
+        page.should have_content i18n 'pages.root.step1'
+        page.should have_content i18n 'pages.root.step2'
+        page.should have_content i18n 'pages.root.step3'
+        page.should have_content i18n 'pages.root.step1_d'
+        page.should have_content i18n 'pages.root.step2_d'
+        page.should have_content i18n 'pages.root.step3_d'
+      end
+    end
+
   end
 
   it "should display city name" do
@@ -93,13 +110,13 @@ describe "Home" do
           click_on '1'
           page.should_not have_content "Evento 2"
           page.should have_content i18n('pages.tags.filtering', :tag => '1')
-          page.should have_link 'limpar'
+          page.should have_link 'x'
         end
 
         specify "clicking on 'limpar' should get back at the original state" do
           click_on '1'
           page.should_not have_content "Evento 2"
-          click_link 'limpar'
+          click_link 'x'
           page.should have_content "Evento 2"
         end
 

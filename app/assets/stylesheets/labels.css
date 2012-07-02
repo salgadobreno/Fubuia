@@ -1,13 +1,32 @@
-.label.hover {
-  background-color:black;
+.label,
+.badge {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 10.998px;
+  line-height: 14px;
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  white-space: nowrap;
+  vertical-align: baseline;
+  background-color:#333;
 }
-.label.label-rock { background-color:#333; }
-.label.label-rock.hover {
-  background-color: #222222;
+.label {
+  padding: 1px 4px 2px;
+  -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+          border-radius: 3px;
+}
+.label.label-rock {
+  background-color:#333;
 }
 .label.label-0800 {
   background-color:#F89406;
 }
-.label.label-0800.hover {
+/*.label.label-0800.hover {
   background-color:#C67605;
+}
+.label.label-rock.hover {
+  background-color: #222222;
+}
+.label.hover {
+  background-color:black;
 }

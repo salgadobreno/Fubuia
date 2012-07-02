@@ -1,10 +1,18 @@
 pt-BR:
+  messages:
+    login_success: Logado com sucesso!
+    logout_success: Deslogado com sucesso.
   pages:
     root:
-      how_it_works: PLACEHOLDER
       menu:
         contato: Contato
         como_funciona: Como funciona?
+      step1: ''
+      step1_d: Você loga pelo Facebook
+      step2: ''
+      step2_d: O app busca seus eventos no Facebook
+      step3: ''
+      step3_d: Você escolhe o evento para importar, confirma e pronto!
     events:
       new: Divulgue o seu!
       process: Buscamos os eventos públicos criados por vc no facebook<br>Então você pode selecionar um deles para importar para o Fubúia<br>Você nos ajuda(e a galera que for interessada no seu evento) adicionando algumas tags<br>E pronto!
