@@ -56,7 +56,9 @@ class EventsController < ApplicationController
     #    raise ActionController::RoutingError.new("Esse evento não é seu!") if @event.creator != current_user.facebook_uid #reject events not created by this user
 
     @event_db = Event.find_or_initialize_by_fid(@event.eid)
-    @event_db.attributes = {:user => current_user, :city => @city, :start_at => Time.at(@event.start_time).to_datetime, :end_at => Time.at(@event.end_time).to_datetime, :active => false}
+    #TODO: why keep this?
+    #@event_db.attributes = {:user => current_user, :city => @city, :start_at => Time.at(@event.start_time).to_datetime, :end_at => Time.at(@event.end_time).to_datetime }
+    #@event_db.attributes = { :active => false } unless @event_db.active?
     raise UnexpectedException unless @event_db.save
   end
 

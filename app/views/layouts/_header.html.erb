@@ -11,12 +11,19 @@
       <div class="menu-categories-container">
         <ul id="menu-categories" class="menu">
           <li>
-            <%= link_to t('pages.root.menu.contato'), "#contato", :id => "contato" %>
+            <a href="" title="Archive">Blog</a>
           </li>
           <li>
             <%= link_to t('pages.root.menu.como_funciona'), "#como-funciona", :id => "a-como-funciona" %>
           </li>
-          <li><a href="" title="Archive">Blog</a></li>
+          <li>
+            <%= link_to t('pages.root.menu.contato'), "#contato", :id => "contato" %>
+          </li>
+          <li>
+            <%= link_to new_event_path, :style => "color:red;font-size:13px;font-weight:normal;text-decoration:underline;"  do %>
+              <% t('pages.events.new').html_safe %>
+            <% end %>
+          </li>
         </ul>
       </div>
       <div class="login">

@@ -24,9 +24,9 @@ class ApplicationController < ActionController::Base
   def set_app_data
     @app_data = Facebook::CONFIG.merge("callback_url" => "#{request.scheme}://#{request.host}/")
     if request.subdomain.present? && request.subdomain != 'www'
-      @city = City.find_by_subdomain(request.subdomain)
+      @city = City.find_by_subdomain(request.subdomain) || City.find_by_subdomain('brasilia')
     else
-      @city = City.find_by_subdomain('brasilia')
+      @city ||= City.find_by_subdomain('brasilia')
     end
   end
 

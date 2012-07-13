@@ -11,12 +11,12 @@
       $(".open_ajax").fancybox({type: 'ajax'});
       });
 </script>
-<div class="container" style="margin-top:15px;">
-  <div class="three columns" style="background-color:white;padding:10px;margin:0 20px 20px 0">
+<div class="container">
+  <div class="three columns card">
     <h3 style="line-height:10px;">O que rola?</h3>
-    Fubuia é um app que te permite importar seus eventos no facebook pra além da sua ilha de conhecidos
+    <%= t 'pages.root.fastdesc' %>
   </div>
-  <div class="eight columns" style="background-color:white;padding:10px;margin:0 20px 20px 0">
+  <div class="eight columns card">
     <h3 style="margin-bottom:0">Tags</h3>
     <h6>(clique pra filtrar)</h6>
     <% if @tag %>
@@ -33,15 +33,18 @@
       </div>
     <% end %>
   </div>
-  <div class="three columns" style="background-color:white;padding:10px;margin:0 20px 20px 0">
+  <div class="three columns card">
     <h2><%= @city.name %></h3>
     <h4 style="line-height:0px;"><%= l(Date.today, :format => :cal_home) %></h4>
   </div>
 </div>
 <div class="hero-unit featured_banner_dark" style="padding:50px 0; clear:both;">
   <%= raw(event_calendar) %>
-  <%= link_to new_event_path, :class => "button next new", :style => "float:right;margin-right:19px;margin-top:12px;"  do %>
-    <% t('pages.events.new').html_safe %>
+  <% if false %>
+    <%= link_to new_event_path, :class => "button next new", :style => "float:right;margin-right:19px;margin-top:12px;"  do %>
+      <% t('pages.events.new').html_safe %>
+
+    <% end %>
   <% end %>
 </div>
 <div class="container">

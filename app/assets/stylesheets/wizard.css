@@ -2,7 +2,7 @@
 .wizard .hormenu li { float: left; width: 33%; }
 .wizard .hormenu li a { display: block; }
 .wizard .hormenu li a:hover { text-decoration: none; }
-.wizard .hormenu li a span.h2 { font-size: 24px; color: #999; text-align: center; display: block; font-family: 'BebasNeueRegular', Arial, Helvetica, sans-serif; }
+.wizard .hormenu li a span.h2 { font-size: 13px; color: #999; text-align: center; display: block; font-family: 'BebasNeueRegular', Arial, Helvetica, sans-serif; }
 .wizard .hormenu li a span.dot { display: block; height: 20px; margin-top: 5px; text-align: center; background: url(/assets/stepline.png) repeat-x center left; }
 .wizard .hormenu li span.desc { display: block; text-align: center; font-weight: bold; color: #999; }
 .wizard .hormenu li a span.dot span { width: 20px; height: 20px; display: inline-block; background: url(/assets/steps.png) no-repeat 0 -40px; }
@@ -25,3 +25,8 @@
 .wizard .tabbedmenu li a.selected, .wizard .tabbedmenu li a.done { background: #fff; color: #333; border-bottom: 1px solid #fff; }
 .wizard .tabbedmenu li a.selected span.h2, .wizard .tabbedmenu li a.selected span { color: #333; }
 .wizard .tabbedmenu li a.done span.h2, .wizard .tabbedmenu li a.done span { color: #333; }
+
+.wizard .hormenu li a span.h2 {
+  position:relative;
+  left:50%;
+}

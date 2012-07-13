@@ -12,21 +12,47 @@
 .label {
   padding: 1px 4px 2px;
   -webkit-border-radius: 3px;
-     -moz-border-radius: 3px;
-          border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
 }
 .label.label-rock {
-  background-color:#333;
+  background-color:#E8272C;
 }
 .label.label-0800 {
-  background-color:#F89406;
+  background-color:#FE7A15;
+}
+.label.label-gospel {
+  background-color:#bec0cb;
+}
+.label.label-dubstep {
+  background-color:#73abb3;
+}
+.label.label-black {
+  background-color:#293a5d;
+}
+.label.label-beer {
+  background-color:gold;
+}
+.label.label-gls {
+  background-color:deepPink;
+}
+.label.label-brasiliacapitaldorock {
+  background: #a90329; /* Old browsers */
+  background: -moz-linear-gradient(top,  #a90329 0%, #8f0222 44%, #6d0019 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a90329), color-stop(44%,#8f0222), color-stop(100%,#6d0019)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #a90329 0%,#8f0222 44%,#6d0019 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #a90329 0%,#8f0222 44%,#6d0019 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #a90329 0%,#8f0222 44%,#6d0019 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #a90329 0%,#8f0222 44%,#6d0019 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', endColorstr='#6d0019',GradientType=0 ); /* IE6-9 */
+
 }
 /*.label.label-0800.hover {
-  background-color:#C67605;
+background-color:#C67605;
 }
 .label.label-rock.hover {
-  background-color: #222222;
+background-color: #222222;
 }
 .label.hover {
-  background-color:black;
+background-color:black;
 }

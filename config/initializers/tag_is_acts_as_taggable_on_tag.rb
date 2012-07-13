@@ -5,10 +5,4 @@ ActionDispatch::Callbacks.to_prepare do
     include TagExtensions
 
   end
-
-  ActsAsTaggableOn::Tagging.class_eval do
-
-    default_scope :include => :taggings, :order => 'taggings.id'
-
-  end
 end

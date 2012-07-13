@@ -1,0 +1,96 @@
+<% content_for :head do %>
+  <%= javascript_include_tag 'jquery-ui-1.8.20.custom.min', 'tag-it' %>
+  <%= stylesheet_link_tag 'http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/flick/jquery-ui.css', 'jquery.tagit' %>
+  <style type="text/css">
+    li.tagit-choice.ui-widget-content.ui-state-default.ui-corner-all {
+      border:0;
+    }
+    span.tagit-label.label {
+      padding: .2em 18px .2em .5em;
+    }
+    ul.tagit li.tagit-choice {
+      padding: 0;
+      position: relative;
+      line-height: inherit;
+    }
+    .tagit-label.label {
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 10.998px;
+      line-height: 14px;
+      color: white;
+      text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+      white-space: nowrap;
+      vertical-align: baseline;
+      font-weight:normal;
+    }
+  </style>
+<% end %>
+<%= content_for :head do %>
+  <%= stylesheet_link_tag 'wizard' %>
+<% end %>
+<div id="wizard" class="wizard clearfix" style="margin-top:30px;">
+
+  <ul class="hormenu anchor">
+    <li>
+      <a href="#wiz1step1" class="" isdone="1" rel="1">
+        <span class="h2"><%= t 'pages.root.step1' %></span>
+        <span class="dot"><span></span></span>
+        <span class="desc"><%= t 'pages.root.step1_d' %></span>
+      </a>
+    </li>
+    <li>
+      <a href="#wiz1step2" class="" isdone="1" rel="2">
+        <span class="h2"><%= t 'pages.root.step2' %></span>
+        <span class="dot"><span></span></span>
+        <span class="desc"><%= t 'pages.root.step2_d' %></span>
+      </a>
+    </li>
+    <li>
+      <a href="#wiz1step3" class="selected" isdone="0" rel="3">
+        <span class="h2"><%= t 'pages.root.step3' %></span>
+        <span class="dot"><span></span></span>
+        <span class="desc"><%= t 'pages.root.step3_d' %></span>
+      </a>
+    </li>
+  </ul>
+
+</div>
+<div class="card fourteen columns">
+
+  <%= form_for @event_db, :url => create_event_path(@event_db), :html => {:method => 'POST'} do |f| %>
+    <div class="four columns">
+      <%= image_tag @event.pic_big, :style => "border:1px solid black;" %>
+    </div>
+    <div class="eight columns">
+      <h1>
+        <%= @event.name %>
+      </h1>
+      <h3>
+        <i class="icon-calendar"></i> &nbsp;
+        <%=l Time.at(@event.start_time) %>
+      </h3>
+      <h3>
+        <i class="icon-map-marker"></i> &nbsp;
+        <%= @event.location %>
+      </h3>
+      <p>
+        <%= f.text_field :tag_list, {:id => "event-tags"} %>
+      </p>
+      <%= f.submit "salvar", {:id => "salvar"} %>
+    </div>
+  <% end %>
+</div>
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+      $("#event-tags").tagit({
+removeConfirmation: true,
+caseSensitive: false,
+onTagAdded: function(event, tag) {
+spam = tag.find("span:first")
+tag.find("span:first").addClass("label label-"+spam.text().toLowerCase());
+}
+});
+      });
+</script>

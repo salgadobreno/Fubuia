@@ -19,8 +19,13 @@
     <%= javascript_include_tag "application" %>
 
     <!-- The Favicon -->
-    <link rel="shortcut icon" href="assets/favicon.png" />
+    <link rel="shortcut icon" href="/assets/favicon.png" />
     <%= yield :head %>
+    <style type="text/css">
+      #category_menu li a {
+       font-size:15px;
+       }
+    </style>
   </head>
   <body class="sidebar_right">
     <div id="wrapper">

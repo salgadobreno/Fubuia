@@ -7,14 +7,15 @@ pt-BR:
       menu:
         contato: Contato
         como_funciona: Como funciona?
-      step1: ''
-      step1_d: Você loga pelo Facebook
-      step2: ''
-      step2_d: O app busca seus eventos no Facebook
-      step3: ''
-      step3_d: Você escolhe o evento para importar, confirma e pronto!
+      step1: (o app busca seus eventos lá)
+      step1_d: Login pelo Facebook
+      step2: (marque umas tags)
+      step2_d: Selecionar evento
+      step3: '.'
+      step3_d: Confirmar
+      fastdesc: O Fubúia é um app que permite qualquer um divulgar seus eventos do Facebook aqui, além das ilhas de conhecidos ;)
     events:
-      new: Divulgue o seu!
+      new: Divulga pelo Facebook? Divulgue aqui também!
       process: Buscamos os eventos públicos criados por vc no facebook<br>Então você pode selecionar um deles para importar para o Fubúia<br>Você nos ajuda(e a galera que for interessada no seu evento) adicionando algumas tags<br>E pronto!
       start: Começar »
       import: Importar »

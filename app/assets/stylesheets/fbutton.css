@@ -33,6 +33,7 @@
   background-image: -ms-linear-gradient(top, #fafafa, #ddd);
   background-image: -o-linear-gradient(top, #fafafa, #ddd);
   background-image: linear-gradient(top, #fafafa, #ddd);
+  text-decoration:none;
 }
 
 .button:active

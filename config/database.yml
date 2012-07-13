@@ -1,5 +1,5 @@
 # MySQL.  Versions 4.1 and 5.0 are recommended.
-# 
+#
 # Install the MYSQL driver
 #   gem install mysql2
 #
@@ -36,6 +36,17 @@ production:
   encoding: utf8
   reconnect: false
   database: fbk_production
+  pool: 5
+  username: root
+  password:
+  host: localhost
+
+
+mock:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: fbk_mock
   pool: 5
   username: root
   password:

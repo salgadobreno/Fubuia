@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120412102330) do
+ActiveRecord::Schema.define(:version => 20120710021600) do
 
   create_table "action_codes", :force => true do |t|
     t.string   "code"
@@ -117,7 +117,7 @@ ActiveRecord::Schema.define(:version => 20120412102330) do
 
   create_table "tags", :force => true do |t|
     t.string  "name"
-    t.boolean "css",       :default => false
+    t.boolean "css",       :default => true
     t.integer "parent_id"
   end
 

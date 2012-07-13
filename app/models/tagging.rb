@@ -1,0 +1,1 @@
+Tagging = ActsAsTaggableOn::Tagging

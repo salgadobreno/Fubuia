@@ -46,6 +46,11 @@ describe "Home" do
 
   end
 
+  it "should display the fast description" do
+    visit '/'
+    page.should have_content i18n 'pages.root.fastdesc'
+  end
+
   it "should display city name" do
     visit '/'
     page.should have_content "Brasília"

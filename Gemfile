@@ -5,7 +5,6 @@ gem 'rails', '~> 3.2.1'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-gem 'thin'
 gem 'mysql2'
 gem 'execjs'
 gem 'therubyracer'
@@ -17,10 +16,10 @@ gem 'twitter-bootstrap-rails'
 gem 'acts-as-taggable-on', :git => "http://github.com/mbleigh/acts-as-taggable-on.git" #removing git:// link cause of the shitty proxies here
 #gem 'event-calendar', :require => 'event_calendar', :git => "/home/buzaga/Dropbox/railsapps/event_calendar.git"
 gem 'event-calendar', :require => 'event_calendar', :path => 'vendor/event_calendar'
-gem 'httparty'
 
 group :development do
   gem 'awesome_print'
+  gem 'localtunnel'
 end
 
 group :test, :development do
@@ -29,6 +28,14 @@ group :test, :development do
   #gem 'ZenTest'
   #gem 'autotest-rails'
   gem 'test_notifier'
+  gem 'mocha'
+end
+
+group :mock do
+  gem 'awesome_print'
+  gem 'debugger'
+  gem 'factory_girl_rails'
+  gem 'mocha'
 end
 
 group :test do
