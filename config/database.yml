@@ -12,7 +12,7 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: fbk_development
+  database: fubuia_development
   pool: 5
   username: root
   password:
@@ -25,7 +25,7 @@ test:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: fbk_test
+  database: fubuia_test
   pool: 5
   username: root
   password:
@@ -35,7 +35,7 @@ production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: fbk_production
+  database: fubuia_production
   pool: 5
   username: root
   password:
@@ -46,7 +46,7 @@ mock:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: fbk_mock
+  database: fubuia_mock
   pool: 5
   username: root
   password:

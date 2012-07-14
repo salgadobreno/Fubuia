@@ -4,7 +4,7 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Fbk::Application.load_tasks
+Fubuia::Application.load_tasks
 
 require 'rake'
 require 'rake/testtask'

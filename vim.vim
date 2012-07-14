@@ -1,2 +1,2 @@
-set tags+=/media/sda8/RockerCoder/railsapps/fbk/gems
-set tags+=/media/sda8/RockerCoder/railsapps/fbk/tags
+set tags+=/media/sda8/RockerCoder/railsapps/fubuia/gems
+set tags+=/media/sda8/RockerCoder/railsapps/fubuia/tags

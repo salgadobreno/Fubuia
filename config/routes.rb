@@ -1,4 +1,4 @@
-Fbk::Application.routes.draw do
+Fubuia::Application.routes.draw do
 
   match '/rio_events/:slug' => 'events#rio_event_show', :as => :rio_event
 
