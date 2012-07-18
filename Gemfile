@@ -19,8 +19,8 @@ gem 'twitter-bootstrap-rails'
 #gem 'cancan'
 #gem 'activeadmin'
 gem 'acts-as-taggable-on', :git => "http://github.com/mbleigh/acts-as-taggable-on.git" #removing git:// link cause of the shitty proxies here
-#gem 'event-calendar', :require => 'event_calendar', :git => "/home/buzaga/Dropbox/railsapps/event_calendar.git"
-gem 'event-calendar', :require => 'event_calendar', :path => 'vendor/event_calendar'
+gem 'event-calendar', :require => 'event_calendar', :git => "/home/ubuntu/Dropbox/server/event_calendar.git"
+#gem 'event-calendar', :require => 'event_calendar', :path => 'vendor/event_calendar'
 
 group :development do
   gem 'awesome_print'
