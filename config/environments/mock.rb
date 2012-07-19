@@ -32,7 +32,6 @@ Fubuia::Application.configure do
     events_query.each do |x|
       Factory.create(:event, :active => true, :city => City.first, :user => User.first, :fid => x["eid"], :start_at => rand_time(DateTime.now - 3.days, DateTime.now + 3.days), :tag_list => random_tags.sample(4).join(',') ) unless Event.where(fid:x["eid"]).present?
     end
-    Rails.logger.debug("Erro: #{e}")
   end
 
   # In the development environment your application's code is reloaded on
