@@ -2,40 +2,37 @@
 Fubuia::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
   config.after_initialize do
-    begin
-      load 'spec/support/dummy_responses.rb'
-      Object.class_eval do
-        include DummyResponses
-      end
-
-
-      connections_hash = [{"name"=>"Fim do Mundo - Eu vou!", "id"=>"105417699523664"}, {"name"=>"CAMPANHA: CID, DOE SEU SALÁRIO!", "id"=>"226420880736785"}, {"name"=>"LONDON CALLING Summer Edition**show com JOHNNY FLIRT e CASSINO SUPERNOVA",  "id"=>"317163524988819"}, {"name"=>"teste", "id"=>"372742442742194"}, {"name"=>"Festa na Cobe do China", "id"=>"228651767221196"}]
-
-      today_mock = DateTime.civil(2012, 1, 26)
-
-      Time.stubs(:now).returns(today_mock)
-      DateTime.stubs(:now).returns(today_mock)
-      Date.stubs(:today).returns(today_mock.to_date)
-
-
-      Koala::Facebook::API.any_instance.stubs(:get_connections).with('me', 'events').returns(connections_hash)
-      Koala::Facebook::API.any_instance.stubs(:fql_query).returns(events_query())
-
-      def rand_time(from, to)
-        Time.at(rand_in_range(from.to_f, to.to_f))
-      end
-
-      def rand_in_range(from, to)
-        rand * (to - from) + from
-      end
-
-      random_tags = "rock, 0800, gls, open-bar, gospel, black, dubstep, brasiliacapitaldorock".split(',')
-      events_query.each do |x|
-        Factory.create(:event, :active => true, :city => City.first, :user => User.first, :fid => x["eid"], :start_at => rand_time(DateTime.now - 3.days, DateTime.now + 3.days), :tag_list => random_tags.sample(4).join(',') ) unless Event.where(fid:x["eid"]).present?
-      end
-    rescue Exception => e
-      Rails.logger.debug("Erro: #{e}")
+    load 'spec/support/dummy_responses.rb'
+    Object.class_eval do
+      include DummyResponses
     end
+
+
+    connections_hash = [{"name"=>"Fim do Mundo - Eu vou!", "id"=>"105417699523664"}, {"name"=>"CAMPANHA: CID, DOE SEU SALÁRIO!", "id"=>"226420880736785"}, {"name"=>"LONDON CALLING Summer Edition**show com JOHNNY FLIRT e CASSINO SUPERNOVA",  "id"=>"317163524988819"}, {"name"=>"teste", "id"=>"372742442742194"}, {"name"=>"Festa na Cobe do China", "id"=>"228651767221196"}]
+
+    today_mock = DateTime.civil(2012, 1, 26)
+
+    Time.stubs(:now).returns(today_mock)
+    DateTime.stubs(:now).returns(today_mock)
+    Date.stubs(:today).returns(today_mock.to_date)
+
+
+    Koala::Facebook::API.any_instance.stubs(:get_connections).with('me', 'events').returns(connections_hash)
+    Koala::Facebook::API.any_instance.stubs(:fql_query).returns(events_query())
+
+    def rand_time(from, to)
+      Time.at(rand_in_range(from.to_f, to.to_f))
+    end
+
+    def rand_in_range(from, to)
+      rand * (to - from) + from
+    end
+
+    random_tags = "rock, 0800, gls, open-bar, gospel, black, dubstep, brasiliacapitaldorock".split(',')
+    events_query.each do |x|
+      Factory.create(:event, :active => true, :city => City.first, :user => User.first, :fid => x["eid"], :start_at => rand_time(DateTime.now - 3.days, DateTime.now + 3.days), :tag_list => random_tags.sample(4).join(',') ) unless Event.where(fid:x["eid"]).present?
+    end
+    Rails.logger.debug("Erro: #{e}")
   end
 
   # In the development environment your application's code is reloaded on
