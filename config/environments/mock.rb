@@ -10,11 +10,13 @@ Fubuia::Application.configure do
 
     connections_hash = [{"name"=>"Fim do Mundo - Eu vou!", "id"=>"105417699523664"}, {"name"=>"CAMPANHA: CID, DOE SEU SALÁRIO!", "id"=>"226420880736785"}, {"name"=>"LONDON CALLING Summer Edition**show com JOHNNY FLIRT e CASSINO SUPERNOVA",  "id"=>"317163524988819"}, {"name"=>"teste", "id"=>"372742442742194"}, {"name"=>"Festa na Cobe do China", "id"=>"228651767221196"}]
 
-    today_mock = DateTime.civil(2012, 1, 26)
+    date_today = Date.civil(2012, 1, 26)
+    datetime_today = DateTime.civil(2012,1,26)
+    time_today = Date.civil(2012,1,26)
 
-    Time.stubs(:now).returns(today_mock)
-    DateTime.stubs(:now).returns(today_mock)
-    Date.stubs(:today).returns(today_mock.to_date)
+    Time.stubs(:now).returns(time_today)
+    DateTime.stubs(:now).returns(datetime_today)
+    Date.stubs(:today).returns(date_today)
 
 
     Koala::Facebook::API.any_instance.stubs(:get_connections).with('me', 'events').returns(connections_hash)
