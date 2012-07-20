@@ -12,11 +12,11 @@ Fubuia::Application.configure do
 
     date_today = Date.civil(2012, 1, 26)
     datetime_today = DateTime.civil(2012,1,26)
-    time_today = Date.civil(2012,1,26)
+    time_today = datetime_today.to_time
 
-    Time.stubs(:now).returns(time_today)
-    DateTime.stubs(:now).returns(datetime_today)
     Date.stubs(:today).returns(date_today)
+    DateTime.stubs(:now).returns(datetime_today)
+    Time.stubs(:now).returns(time_today)
 
 
     Koala::Facebook::API.any_instance.stubs(:get_connections).with('me', 'events').returns(connections_hash)
