@@ -1,7 +1,5 @@
 Fubuia::Application.routes.draw do
 
-  match '/rio_events/:slug' => 'events#rio_event_show', :as => :rio_event
-
 
   post '/events/:id/create' => 'events#create', :as => :create_event
   match '/events/import/:eid' => 'events#import', :as => :import_event
