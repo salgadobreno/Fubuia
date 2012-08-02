@@ -3,28 +3,51 @@
 <% end %>
 <div id="wizard" class="wizard" style="margin-top:30px;">
   <div id="como-funciona" style="text-align:center"><h1>Como funciona?</h1></div>
+  <div style="text-align:center">
+    <ul>
+      <li>Sem e-mails.</li>
+      <li>Nem cadastro.</li>
+      <li style="color:red">Sem humanos.</li>
+    </ul>
+  </div>
 
-  <ul class="hormenu anchor">
-    <li>
+  <% if false %>
+
+  <% end %>
+  <ul style="width:100%;float:left;">
+    <li style="float:left;width:25%;margin-left:20%;">
+      <span class="h2"><%= t 'pages.root.step1' %></span>
+    </li>
+    <li style="float:left;width:25%;margin-left:20%">
+      <span class="h2"><%= t 'pages.root.step2' %></span>
+    </li>
+  </ul>
+  <ul class="hormenu anchor" style="float:left;width:100%">
+    <li style="width:45%;float:left">
       <a href="" class="selected" isdone="1" rel="1">
-        <span class="h2"><%= t 'pages.root.step1' %></span>
-        <span class="dot"><span></span></span>
-        <span class="desc"><%= t 'pages.root.step1_d' %></span>
+        <span class="dot" style="text-align:left"><span></span></span>
       </a>
     </li>
-    <li>
+    <li style="width:10%;float:left">
       <a href="" class="selected" isdone="0" rel="2">
-        <span class="h2"><%= t 'pages.root.step2' %></span>
         <span class="dot"><span></span></span>
-        <span class="desc"><%= t 'pages.root.step2_d' %></span>
       </a>
     </li>
-    <li>
+    <li style="width:45%;float:left">
       <a href="" class="selected" isdone="0" rel="3">
-        <span class="h2">&nbsp;</span>
         <span class="dot"><span></span></span>
-        <span class="desc"><%= t 'pages.root.step3_d' %></span>
       </a>
+    </li>
+  </ul>
+  <ul style="width:100%;float:left;">
+    <li style="width:35%;float:left;text-align:left">
+      <span class="desc"><%= t 'pages.root.step1_d' %></span>
+    </li>
+    <li style="width:30%;float:left;text-align:center">
+      <span class="desc"><%= t 'pages.root.step2_d' %></span>
+    </li>
+    <li style="width:35%;float:left;text-align:right;">
+      <span class="desc"><%= t 'pages.root.step3_d' %></span>
     </li>
   </ul>
 

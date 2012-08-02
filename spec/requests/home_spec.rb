@@ -48,7 +48,7 @@ describe "Home" do
 
   it "should display the fast description" do
     visit '/'
-    page.should have_content i18n 'pages.root.fastdesc'
+    page.should have_content i18n 'pages.root.fastdesc_html'
   end
 
   it "should display city name" do
@@ -72,8 +72,9 @@ describe "Home" do
 
   it "should display new event button" do
     visit '/'
-    page.should have_content i18n 'pages.events.new'
-    page.find_link(i18n('pages.events.new'))["href"].should == new_event_path
+    decoded_str = HTMLEntities.new.decode(i18n('pages.events.new'))
+    page.body.should have_content decoded_str
+    page.find_link(decoded_str)["href"].should == new_event_path
   end
 
   context "when there's events" do

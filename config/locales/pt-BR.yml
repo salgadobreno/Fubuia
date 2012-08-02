@@ -7,13 +7,13 @@ pt-BR:
       menu:
         contato: Contato
         como_funciona: Como funciona?
-      step1: (o app busca seus eventos lá)
-      step1_d: Login pelo Facebook
-      step2: (marque umas tags)
-      step2_d: Selecionar evento
+      step1: (O app busca seus eventos lá)
+      step1_d: Logue pelo Facebook
+      step2: (Marque umas tags)
+      step2_d: Escolha o Evento
       step3: '.'
-      step3_d: Confirmar
-      fastdesc: O Fubúia é um mural pra eventos do Facebook.
+      step3_d: Confirma, pronto!
+      fastdesc_html: O Fubúia é um mural pra eventos do Facebook.
       #fastdesc: O Fubúia é um app que permite qualquer um divulgar seus eventos do Facebook aqui, além das ilhas de conhecidos ;)
     events:
       new: Põe o meu! &rarr;

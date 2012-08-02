@@ -57,7 +57,7 @@
 </div>
 <div class="card fourteen columns">
 
-  <%= form_for @event_db, :url => create_event_path(@event_db), :html => {:method => 'POST'} do |f| %>
+  <%= form_for Event.new, :url => create_event_path(@event.eid), :html => {:method => 'POST'} do |f| %>
     <div class="four columns">
       <%= image_tag @event.pic_big, :style => "border:1px solid black;" %>
     </div>

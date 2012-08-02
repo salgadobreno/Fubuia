@@ -24,3 +24,10 @@ event_calendar.js
 event_calendar.css
 brand
 .rvmrc
+resources
+/config/rubber
+Capfile
+/script/rubber
+/script/collectd
+/config/deploy.rb
+briefing

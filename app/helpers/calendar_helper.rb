@@ -29,7 +29,7 @@ module CalendarHelper
       :event_strips => @event_strips,
       :previous_month_text => dia_anterior_link,
       :next_month_text => proximo_dia_link,
-      :month_name_text => ''
+      :month_name_text => "<span style='color:white;text-shadow:0 1px 0 black;'>Hoje &darr;</span>"
       #:previous_month_text => "<< " + month_link(@shown_month.prev_month),
       #:next_month_text => month_link(@shown_month.next_month) + " >>"    }
     }

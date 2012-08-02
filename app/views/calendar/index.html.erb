@@ -1,6 +1,6 @@
 <% content_for :head do %>
   <%= stylesheet_link_tag 'event_calendar','jquery.fancybox', 'jquery.mediaTable' %>
-  <%= javascript_include_tag 'jquery.fancybox', 'jquery.mediaTable' %>
+  <%= javascript_include_tag 'jquery.fancybox', 'jquery.mediaTable', 'jquery.fittext.js' %>
 <% end %>
 
 <script type="text/javascript">
@@ -8,13 +8,13 @@
       //$('.mediaTable').mediaTable(); TODO
       $('.fancybox').fancybox();
       $(".open_iframe").fancybox({type: 'iframe'});
-      $(".open_ajax").fancybox({type: 'ajax'});
+      $(".open_ajax").fancybox({type: 'ajax',fixed:true,minHeight:'100%',closeClick:true});
       });
 </script>
 <div class="container">
   <div class="three columns card">
     <h3 style="line-height:10px;">O que rola?</h3>
-    <%= t 'pages.root.fastdesc' %>
+    <%= t 'pages.root.fastdesc_html' %>
   </div>
   <div class="eight columns card">
     <h3 style="margin-bottom:0">Tags</h3>
@@ -38,7 +38,7 @@
     <h4 style="line-height:0px;"><%= l(Date.today, :format => :cal_home) %></h4>
   </div>
 </div>
-<div class="hero-unit featured_banner_dark" style="padding:50px 0; clear:both;">
+<div class="hero-unit featured_banner_dark" style="padding:25px 0 50px 0; clear:both;">
   <%= raw(event_calendar) %>
   <% if false %>
     <%= link_to new_event_path, :class => "button next new", :style => "float:right;margin-right:19px;margin-top:12px;"  do %>
