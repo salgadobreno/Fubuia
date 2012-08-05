@@ -590,6 +590,9 @@ h3#comments, h3#pings {
   display:block;
   font-size:16px;
 }
+#menu-categories li.last a {
+  margin:0;
+}
 
 #category_menu li a:hover, #category_menu li.current-menu-item a, #category_menu li.current_page_item a {
   text-decoration:none;
