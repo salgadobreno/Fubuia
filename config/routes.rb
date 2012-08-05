@@ -1,5 +1,6 @@
 Fubuia::Application.routes.draw do
 
+  mount Monologue::Engine, :at => '/blog'
 
   post '/events/:id/create' => 'events#create', :as => :create_event
   match '/events/import/:eid' => 'events#import', :as => :import_event

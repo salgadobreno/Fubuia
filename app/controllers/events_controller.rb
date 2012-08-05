@@ -8,7 +8,7 @@ class EventsController < ApplicationController
 
   def show
     @event_db = Event.find(params[:id])
-    @graph = Koala::Facebook::API.new(current_token)
+    @graph = Koala::Facebook::API.new(app_access_token)
     @multiquery = @graph.fql_multiquery({"event"=>"select eid, name, creator, privacy, pic_small, pic_big, location, description, venue, start_time, end_time from event where eid = #{@event_db.fid}","creator"=>"select name, pic_small, profile_url from user where uid in (select creator from #event)"})
     @event = FacebookEvent.new(@multiquery['event'][0])
     @creator = TransientUser.new(@multiquery["creator"][0]) if @multiquery["creator"][0]

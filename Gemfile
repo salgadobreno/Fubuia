@@ -9,6 +9,8 @@ gem 'rails', '~> 3.2.1'
 gem 'unicorn'
 #gem 'pg'
 
+#gem 'hitchens'
+gem 'monologue'
 
 gem 'mysql2'
 gem 'execjs'
