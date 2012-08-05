@@ -46,6 +46,14 @@
       <%= javascript_tag '$.fx.off = true;' %>
       <%= javascript_include_tag "/assets/test/fb", "/assets/test/fb_stub", "/assets/test/commentstub" %>
     <% end %>
-    <script> FB.init({ appId: <%= @app_data["app_id"] %>, cookie: true, xfbml: true, oauth: true }); $('#login').click(function(event) { event.preventDefault(); FB.login(function (response) { if (response.authResponse) { var access_token = response.authResponse.accessToken; window.location.replace('/callback?code='+access_token) } else { alert('denied access'); } },{scope:'email,user_location,user_events,offline_access'}) }); </script>
+    <script> FB.init({ appId: <%= @app_data["app_id"] %>, cookie: true, xfbml: true, oauth: true }); $('#login').click(function(event) { event.preventDefault(); FB.login(function (response) { if (response.authResponse) { var access_token = response.authResponse.accessToken; window.location.replace('/callback?code='+access_token) } else { /*alert('denied access');*/ } },{scope:'email,user_location,user_events,offline_access'}) }); </script>
+    <script type="text/javascript">
+      var uvOptions = {};
+(function() {
+ var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
+ uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/yNjNbUXI6x6AV8lufo36Q.js';
+ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
+ })();
+</script>
   </body>
 </html>

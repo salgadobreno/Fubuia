@@ -1,6 +1,10 @@
 <div id="header">
   <div id="logo_area">
     <div class="logo_holder">
+      <div class="hide-mobile" style="position:absolute;right:18px;top:5px;-webkit-transform:rotate(25deg);-moz-transform:rotate(25deg);-o-transform:rotate(25deg);-ms-transform:rotate(25deg);transform:rotate(25deg);">
+        <%= content_tag 'span', t('mobile-friendly') %>
+        <%= image_tag "iphone_front_128px.png", :style => "height:70px;" %>
+      </div>
       <a href="/" title="Fubúia" class="left">
         <%= image_tag "afento.png", :alt => "Fubúia", :id => "logo" %>
       </a>
@@ -26,7 +30,7 @@
           </li>
         </ul>
       </div>
-      <div class="login">
+      <div class="login hide-mobile">
         <% if current_user %>
           <%= content_tag 'div' do %>
             <% if session[:fuser] %>

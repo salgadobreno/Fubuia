@@ -1,4 +1,5 @@
 pt-BR:
+  mobile-friendly: site celulável!
   messages:
     login_success: Logado com sucesso!
     logout_success: Deslogado com sucesso.
