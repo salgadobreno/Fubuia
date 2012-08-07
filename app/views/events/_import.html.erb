@@ -28,33 +28,8 @@
 <%= content_for :head do %>
   <%= stylesheet_link_tag 'wizard' %>
 <% end %>
-<div id="wizard" class="wizard clearfix" style="margin-top:30px;">
-
-  <ul class="hormenu anchor">
-    <li>
-      <a href="#wiz1step1" class="" isdone="1" rel="1">
-        <span class="h2"><%= t 'pages.root.step1' %></span>
-        <span class="dot"><span></span></span>
-        <span class="desc"><%= t 'pages.root.step1_d' %></span>
-      </a>
-    </li>
-    <li>
-      <a href="#wiz1step2" class="" isdone="1" rel="2">
-        <span class="h2"><%= t 'pages.root.step2' %></span>
-        <span class="dot"><span></span></span>
-        <span class="desc"><%= t 'pages.root.step2_d' %></span>
-      </a>
-    </li>
-    <li>
-      <a href="#wiz1step3" class="selected" isdone="0" rel="3">
-        <span class="h2"><%= t 'pages.root.step3' %></span>
-        <span class="dot"><span></span></span>
-        <span class="desc"><%= t 'pages.root.step3_d' %></span>
-      </a>
-    </li>
-  </ul>
-
-</div>
+<%= render :partial => "/calendar/como_funciona" %>
+<div class="clear"></div>
 <div class="card fourteen columns">
 
   <%= form_for Event.new, :url => create_event_path(@event.eid), :html => {:method => 'POST'} do |f| %>

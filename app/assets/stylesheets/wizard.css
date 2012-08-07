@@ -14,6 +14,7 @@
 .wizard .hormenu li a.selected span.dot span { background-position: 0 -120px; }
 .wizard .hormenu li:first-child a.selected span.dot span { background-position: 0 -100px; }
 .wizard .hormenu li a.selected span.h2,.wizard .hormenu li a.selected span.desc { color: #333; }
+span.desc { font-weight:bold; }
 
 .wizard .tabbedmenu { list-style: none; background: #f7f7f7; padding: 10px; padding-bottom: 0; border: 1px solid #ddd; }
 .wizard .tabbedmenu li { display: inline-block; margin-right: 5px; position: relative; bottom: -1px; }

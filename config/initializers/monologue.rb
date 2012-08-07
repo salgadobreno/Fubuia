@@ -1,10 +1,10 @@
 #coding: utf-8
-Monologue.site_name = "Fubúia &arr; Blog"
-Monologue.site_subtitle = "Só um blog. Brinks."
+Monologue.site_name = "Blog"
+Monologue.site_subtitle = "de blog."
 Monologue.site_url = 'http://www.fubuia.com.br'
 Monologue.disqus_shortname = "fubia"
-Monologue.meta_description = "todo"
-Monologue.meta_keyword = "todo"
+#Monologue.meta_description = "" TODO
+#Monologue.meta_keyword = "" TODO
 Monologue.twitter_username = "salgadobreno"
 Monologue.twitter_locale = "en"
 Monologue.facebook_like_locale = "en_US"

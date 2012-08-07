@@ -2,17 +2,15 @@
   <%= stylesheet_link_tag 'wizard' %>
 <% end %>
 <div id="wizard" class="wizard" style="margin-top:30px;">
-  <div id="como-funciona" style="text-align:center"><h1>Como funciona?</h1></div>
-  <div style="text-align:center">
-    <ul>
-      <li>Sem e-mails.</li>
-      <li>Nem cadastro.</li>
-      <li style="color:red">Sem humanos.</li>
-    </ul>
-  </div>
-
-  <% if false %>
-
+  <% if params[:action] == "index" %>
+    <div id="como-funciona" style="text-align:center"><h1>Como funciona?</h1></div>
+    <div style="text-align:center">
+      <ul>
+        <li>Sem e-mails.</li>
+        <li>Nem cadastro.</li>
+        <li style="color:red">Sem humanos.</li>
+      </ul>
+    </div>
   <% end %>
   <ul style="width:100%;float:left;">
     <li style="float:left;width:25%;margin-left:20%;">

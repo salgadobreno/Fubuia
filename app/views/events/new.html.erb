@@ -1,35 +1,6 @@
-<%= content_for :head do %>
-  <%= stylesheet_link_tag 'wizard' %>
-<% end %>
-
 <div class="container">
-  <div id="wizard" class="wizard clearfix" style="margin-top:30px;">
-
-    <ul class="hormenu anchor">
-      <li>
-        <a href="#wiz1step1" class="selected" isdone="0" rel="1">
-          <span class="h2"><%= t 'pages.root.step1' %></span>
-          <span class="dot"><span></span></span>
-          <span class="desc"><%= t 'pages.root.step1_d' %></span>
-        </a>
-      </li>
-      <li>
-        <a href="#wiz1step2" class="" isdone="0" rel="2">
-          <span class="h2"><%= t 'pages.root.step2' %></span>
-          <span class="dot"><span></span></span>
-          <span class="desc"><%= t 'pages.root.step2_d' %></span>
-        </a>
-      </li>
-      <li>
-        <a href="#wiz1step3" class="" isdone="0" rel="3">
-          <span class="h2"><%= t 'pages.root.step3' %></span>
-          <span class="dot"><span></span></span>
-          <span class="desc"><%= t 'pages.root.step3_d' %></span>
-        </a>
-      </li>
-    </ul>
-
-  </div>
+  <%= render :partial => "/calendar/como_funciona" %>
+  <div class="clear"></div>
   <div class="card">
     <%=t('pages.events.process').html_safe %>
     <div class="msg_box msg_notice" style="margin-top:15px;margin-bottom:15px;">

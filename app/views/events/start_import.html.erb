@@ -9,33 +9,8 @@
   <%= javascript_include_tag 'jquery.fancybox' %>
 <% end %>
 <div class="container" style="margin-top:15px;">
-  <div id="wizard" class="wizard" style="margin-top:30px;">
-
-    <ul class="hormenu anchor">
-      <li>
-        <a href="#wiz1step1" class="" isdone="1" rel="1">
-          <span class="h2"><%= t 'pages.root.step1' %></span>
-          <span class="dot"><span></span></span>
-          <span class="desc"><%= t 'pages.root.step1_d' %></span>
-        </a>
-      </li>
-      <li>
-        <a href="#wiz1step2" class="selected" isdone="0" rel="2">
-          <span class="h2"><%= t 'pages.root.step2' %></span>
-          <span class="dot"><span></span></span>
-          <span class="desc"><%= t 'pages.root.step2_d' %></span>
-        </a>
-      </li>
-      <li>
-        <a href="#wiz1step3" class="" isdone="0" rel="3">
-          <span class="h2"><%= t 'pages.root.step3' %></span>
-          <span class="dot"><span></span></span>
-          <span class="desc"><%= t 'pages.root.step3_d' %></span>
-        </a>
-      </li>
-    </ul>
-
-  </div>
+  <%= render :partial => "/calendar/como_funciona" %>
+  <div class="clear"></div>
   <h2>
     Seus Eventos no Facebook
   </h2>
