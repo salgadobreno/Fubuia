@@ -1,10 +1,10 @@
 <div class="card fourteen columns">
-  <div class="four columns">
+  <div class="four columns" style="float:left; margin:10px 10px;">
     <%= image_tag @event.pic_big, :style => "border:1px solid black;" %>
   </div>
-  <div class="eight columns">
+  <div class="eight columns" style="word-wrap:break-word;">
     <h1>
-      <%= @event.name %>
+      <%= word_wrap(@event.name, 60) %>
     </h1>
     <h3>
       <i class="icon-calendar"></i> &nbsp;
@@ -28,7 +28,7 @@
       <% end %>
     </h3>
     <blockquote>
-      <%= simple_format @event.description %>
+      <%= simple_format(word_wrap(@event.description, 60)) %>
     </blockquote>
   </div>
 </div>

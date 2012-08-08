@@ -1,5 +1,5 @@
 pt-BR:
-  mobile-friendly: site celulável!
+  mobile-friendly: Acesse da rua!
   messages:
     login_success: Logado com sucesso!
     logout_success: Deslogado com sucesso.
@@ -13,7 +13,7 @@ pt-BR:
       step2: (Marque umas tags)
       step2_d: Escolha o Evento
       step3: '.'
-      step3_d: Confirma, pronto!
+      step3_d: Pronto!
       fastdesc_html: O Fubúia é um mural pra eventos do Facebook.
       #fastdesc: O Fubúia é um app que permite qualquer um divulgar seus eventos do Facebook aqui, além das ilhas de conhecidos ;)
     events:

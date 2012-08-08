@@ -10,7 +10,7 @@
             <%= link_to t('pages.root.menu.como_funciona'), '#como-funciona' %>
           </li>
           <li>
-            <a href="">Blog</a>
+            <a href="/blog">Blog</a>
           </li>
           <li>
             <%= link_to t('pages.root.menu.contato'), '#contato' %>
@@ -21,17 +21,18 @@
     <div class="footer_widget">
       <h3 class="widgettitle">Do Blog</h3>
       <ul id="recentcomments">
-        <li class="recentcomments"><a href="#" title="Commenter">Sobre as permissões</a></li>
-        <li class="recentcomments"><a href="#" title="Commenter">Nasceu!</a></li>
+        <% for post in Monologue::Post.published %>
+          <li class="recentcomments">
+            <%= link_to post.latest_revision.title, "/blog/#{post.latest_revision.title}" %>
+          </li>
+        <% end %>
       </ul>
     </div>
     <div class="footer_widget">
       <div class="featured_reviewer">
         <h3 class="widgettitle">Criador</h3><!--Now we print out speciifc user informations to screen!-->
         <div class="specific_user">
-          <a href="archive.php" title="">
-            <img alt="" src="/assets/granudo.jpg" class="avatar avatar-48 photo" height="48" width="48" />
-          </a>
+          <img alt="" src="/assets/granudo.jpg" class="avatar avatar-48 photo" height="48" width="48" />
           <h4><span class="featured_reviewer_name">Buzaga Sauro</span>
           </h4>
           <p>Sacrificando a própria vida social pra você passar menos tempo no Facebook.</p>
