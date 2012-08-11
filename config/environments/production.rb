@@ -9,6 +9,7 @@ Fubuia::Application.configure do
   config.action_controller.perform_caching = true
 
   # Disable Rails's static asset server (Apache or nginx will already do this)
+  #config.serve_static_assets = true
   config.serve_static_assets = false
 
   # Compress JavaScripts and CSS
@@ -43,7 +44,7 @@ Fubuia::Application.configure do
   # config.action_controller.asset_host = "http://assets.example.com"
 
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
-  # config.assets.precompile += %w( search.js )
+  config.assets.precompile += %w( calendar.js calendar.css events.js events.css )
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false

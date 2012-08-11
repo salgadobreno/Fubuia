@@ -13,10 +13,12 @@
     <link href="http://fonts.googleapis.com/css?family=Brawler" rel="stylesheet" type="text/css" />
 
     <!-- Get the Stylesheet -->
-    <%= stylesheet_link_tag    "application", "fbutton", "style", "skeleton", :media => "all" %>
+    <%= stylesheet_link_tag    "application" %>
+    <%= stylesheet_link_tag params[:controller] %>
 
     <!-- Get the JS -->
     <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag params[:controller]  %>
 
     <!-- The Favicon -->
     <link rel="shortcut icon" href="/assets/favicon.png" />

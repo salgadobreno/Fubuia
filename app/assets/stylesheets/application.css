@@ -5,9 +5,10 @@
  *= require_self
  *= require skeleton
  *= require labels
+ *= require style
  *= require font-awesome-include
  *= require responsivene
- // require bootstrap_and_overrides
+ *= require fbutton
 */
 
 body {

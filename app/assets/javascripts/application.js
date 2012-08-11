@@ -8,5 +8,3 @@
 //= require jquery_ujs
 //= require labels
 //= require jQuery.menutron.js
-//  require_directory .
-//  require twitter/bootstrap

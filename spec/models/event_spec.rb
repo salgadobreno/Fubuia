@@ -57,10 +57,17 @@ describe Event do
     end
 
     it "defaults end date day to start day, if none given" do
-      @event.start_at = DateTime.civil(2011, 1 ,1)
+      @event.start_at = DateTime.civil(2011, 1, 1)
       @event.end_at = nil
       @event.save.should be_true
       @event.end_at.should == DateTime.civil(2011, 1, 1)
+    end
+
+    it "tries to guess if the event is really multiday and limits it" do
+      @event.start_at = DateTime.parse('3rd Feb 2012 08:00:00 PM')
+      @event.end_at = DateTime.parse('4th Feb 2012 06:00:00 AM') #shouldn`t coun't as multiday event
+      @event.save.should be_true
+      @event.end_at.should be <= DateTime.parse('4th Feb 2012 11:59:00 PM')
     end
 
   end
