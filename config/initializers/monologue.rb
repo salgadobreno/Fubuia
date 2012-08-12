@@ -1,6 +1,6 @@
 #coding: utf-8
-Monologue.site_name = "Blog"
-Monologue.site_subtitle = "de blog."
+Monologue.site_name = "Blog | Fubúia"
+Monologue.site_subtitle = ""
 Monologue.site_url = 'http://www.fubuia.com.br'
 Monologue.disqus_shortname = "fubia"
 #Monologue.meta_description = "" TODO
