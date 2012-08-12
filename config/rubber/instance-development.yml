@@ -1,0 +1,59 @@
+---
+- !ruby/object:Rubber::Configuration::InstanceItem
+  name: development
+  domain: foo.com
+  roles:
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: web
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: haproxy
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: app
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: passenger_nginx
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: db
+    options:
+      primary: true
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: mysql
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: mysql_master
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: collectd
+    options: {}
+  - !ruby/object:Rubber::Configuration::RoleItem
+    name: monit
+    options: {}
+  instance_id: i-cdba18b6
+  image_type: m1.small
+  image_id: ami-3c994355
+  security_groups:
+  - fubuia_development_default
+  - fubuia_development_web
+  - fubuia_development_development
+  - fubuia_development_haproxy
+  - fubuia_development_app
+  - fubuia_development_passenger_nginx
+  - fubuia_development_db
+  - fubuia_development_mysql
+  - fubuia_development_mysql_master
+  - fubuia_development_collectd
+  - fubuia_development_monit
+  external_host: ec2-23-23-100-154.compute-1.amazonaws.com
+  external_ip: 23.23.100.154
+  internal_host: ip-10-144-9-247.ec2.internal
+  internal_ip: 10.144.9.247
+  zone: us-east-1a
+  platform: linux
+  root_device_type: instance-store
+  static_ip: 23.23.100.154
+- volumes: {}
+  static_ips:
+    development: 23.23.100.154
