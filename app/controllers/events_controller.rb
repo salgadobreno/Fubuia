@@ -31,12 +31,12 @@ class EventsController < ApplicationController
     unless eids_from_api.empty?
       @events_data_from_fql = @graph.fql_query("select eid, name, creator, privacy, pic_small, pic_big, location, venue, start_time, end_time from event where eid in (#{eids_from_api.join(', ')})")
       @events = @events_data_from_fql.map { |efql| FacebookEvent.new(efql)}
-      #       @events.reject! {|e| e.creator != current_user.facebook_uid }
-      #       #reject events not created by this user
-      #       @events.reject! {|e| e.start_time < Time.now.to_i }
-      #       #reject past events
-      #       @events.reject! {|e| e.privacy != "OPEN"}
-      #       #reject private events
+      #@events.reject! {|e| e.creator != current_user.facebook_uid }
+      ##reject events not created by this user
+      #@events.reject! {|e| e.start_time < Time.now.to_i } #XXX danger
+      ##reject past events
+      @events.reject! {|e| e.privacy.upcase != "OPEN"}
+      #reject private events
     end
   end
 
@@ -52,8 +52,8 @@ class EventsController < ApplicationController
     @creator = TransientUser.new( @multiquery["creator"][0] )
 
     #TODO: resolve this shit
-    #    raise ActionController::RoutingError.new("Esse evento é privado!") if @event.privacy != "OPEN" #reject private events
-    #    raise ActionController::RoutingError.new('Esse evento já passou!') if @event.end_time < Time.now.to_i #reject past events
+    raise ActionController::RoutingError.new("Esse evento é privado!") if @event.privacy != "OPEN" #reject private events
+    #    raise ActionController::RoutingError.new('Esse evento já passou!') if @event.end_time < Time.now.to_i #reject past events XXX danger
     #    raise ActionController::RoutingError.new("Esse evento não é seu!") if @event.creator != current_user.facebook_uid #reject events not created by this user
 
     #@event_db = Event.find_or_initialize_by_fid(@event.eid)
@@ -63,6 +63,7 @@ class EventsController < ApplicationController
     #raise UnexpectedException unless @event_db.save
   end
 
+  #TODO possible security flaw here
   def create
     require_login!
     @graph = Koala::Facebook::API.new(current_user.access_token)
@@ -73,7 +74,7 @@ class EventsController < ApplicationController
     @creator = TransientUser.new( @multiquery["creator"][0] )
 
     @event_db = Event.find_or_initialize_by_fid(params[:id])
-    @event_db.attributes = {:user => current_user, :city => @city, :start_at => Time.at(@event.start_time).to_datetime, :end_at => Time.at(@event.end_time).to_datetime}
+    @event_db.attributes = {:user => current_user, :city => @city, :start_at => Time.zone.parse(@event.start_time), :end_at => Time.zone.parse(@event.end_time)}
     @event_db.tag_list = params[:event][:tag_list]
 
     if @event_db.save

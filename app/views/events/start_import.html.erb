@@ -10,7 +10,7 @@
     <% @events.each do |e| %>
       <div class="event_card card" data-href="<%= import_event_path(:eid => e.eid) %>">
         <span class="time">
-          <%=l(Time.at(e.start_time), :format => :import) %>
+          <%=l(Time.zone.parse(e.start_time), :format => :import) %>
         </span>
         <span class="name"><%= e.name %></span>
         <%= link_to t('pages.events.import'), import_event_path(eid:e.eid), :class => "fdlabel import" %>

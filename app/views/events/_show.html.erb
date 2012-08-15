@@ -8,7 +8,7 @@
     </h1>
     <h3>
       <i class="icon-calendar"></i> &nbsp;
-      <%=l Time.at(@event.start_time) %>
+      <%=l Time.zone.parse(@event.start_time) %>
     </h3>
     <h3>
       <i class="icon-map-marker"></i> &nbsp;

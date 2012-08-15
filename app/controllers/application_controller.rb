@@ -30,7 +30,8 @@ class ApplicationController < ActionController::Base
   end
 
   def app_access_token
-    "115184478532515|hHi14dQEY9-VLL_Tw4v9SczDbkg"
+    #"115184478532515|hHi14dQEY9-VLL_Tw4v9SczDbkg"
+    "495058763843807|3HXV1gMmTu1lbHsYXEUSs9IzVeI"
   end
 
   private
