@@ -6,5 +6,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.fancybox
+//= require jquery.mediaTable
+//= require jquery.fittext.js
 //= require labels
 //= require jQuery.menutron.js

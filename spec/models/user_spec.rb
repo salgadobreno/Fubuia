@@ -7,11 +7,11 @@ describe User do
   end
 
   it "has facebook UID" do
-    @user.should respond_to(:facebook_uid)
+    @user.should respond_to(:uid)
   end
 
-  it "has an Access Token" do
-    @user.should respond_to(:access_token)
+  it "has an Oauth Token" do
+    @user.should respond_to(:oauth_token)
   end
 
   it "has an e-mail" do
@@ -25,15 +25,15 @@ describe User do
   context "validations" do
 
     it "requires facebook UID" do
-      @user.facebook_uid =  nil
+      @user.uid =  nil
       @user.should_not be_valid
-      @user.errors[:facebook_uid].should include(i18n 'errors.messages.blank')
+      @user.errors[:uid].should include(i18n 'errors.messages.blank')
     end
 
     it "requires Access Token" do
-      @user.access_token = nil
+      @user.oauth_token = nil
       @user.should_not be_valid
-      @user.errors[:access_token].should include(i18n 'errors.messages.blank')
+      @user.errors[:oauth_token].should include(i18n 'errors.messages.blank')
     end
 
     it "requires a valid e-mail" do

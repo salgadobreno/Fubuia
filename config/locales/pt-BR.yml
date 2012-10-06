@@ -17,7 +17,7 @@ pt-BR:
       fastdesc_html: O Fubúia é um mural pra eventos do Facebook.
       #fastdesc: O Fubúia é um app que permite qualquer um divulgar seus eventos do Facebook aqui, além das ilhas de conhecidos ;)
     events:
-      new: Põe o meu! &rarr;
+      new: Veja vc mesmo!
       process: Buscamos os eventos públicos criados por vc no facebook<br>Então você pode selecionar um deles para importar para o Fubúia<br>Você nos ajuda(e a galera que for interessada no seu evento) adicionando algumas tags<br>E pronto!
       start: Começar »
       import: Importar »

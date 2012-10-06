@@ -13,6 +13,7 @@ require 'authlogic/test_case'
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
+
 RSpec.configure do |config|
 
   config.include FactoryGirl::Syntax::Methods
@@ -43,6 +44,24 @@ RSpec.configure do |config|
   #load seed
   config.before(:suite) do
     load "#{Rails.root}/db/seeds.rb"
+  end
+
+  config.before type: :request do
+    OmniAuth.config.test_mode = true
+    Koala::Facebook::API.any_instance.stubs(:fql_query).returns({})
+    OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new({
+      :provider => 'facebook',
+      :uid => '1234567',
+      :info => {
+        :email => 'salgado@breno.com',
+        :name => 'Breno Salgado',
+      },
+      :credentials => {
+        :token => 'ABCDEF...',
+        :expires_at => 1321747205,
+        :expires => true
+      }
+    })
   end
 
   config.around(:each, :subdomain => 'rio') do |example|

@@ -27,10 +27,15 @@
 	@media only screen and (max-width: 959px) {}
 
 	/* Tablet Portrait size to standard 960 (devices and browsers) */
-	@media only screen and (min-width: 768px) and (max-width: 959px) {}
+	@media only screen and (min-width: 768px) and (max-width: 959px) {
+          #seta {
+            width:215px;
+          }
+        }
 
 	/* All Mobile Sizes (devices and browser) */
 	@media only screen and (max-width: 767px) {
+          #seta {display:none}
           #uvTab {
             display:none !important;
           }

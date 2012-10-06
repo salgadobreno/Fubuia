@@ -1,9 +1,14 @@
 # coding: UTF-8
 class EventsController < ApplicationController
 
-  #garbage
-  def comments
-    render :file => "/events/commentsexample.html.erb"
+  def f_e_s
+    render :text => params['hub.challenge'], :layout => false
+  end
+  def f_e_u
+    render :text => "text to render...", :layout => false
+  end
+  def gmailtest
+    render :file => "events/gmailtest.html.erb", :layout => false
   end
 
   def show
@@ -25,19 +30,17 @@ class EventsController < ApplicationController
 
   def start_import
     require_login!
-    @graph = Koala::Facebook::API.new(current_user.access_token)
-    user_events_from_api = @graph.get_connections('me', 'events')
-    eids_from_api = user_events_from_api.map {|e| e["id"]}
-    unless eids_from_api.empty?
-      @events_data_from_fql = @graph.fql_query("select eid, name, creator, privacy, pic_small, pic_big, location, venue, start_time, end_time from event where eid in (#{eids_from_api.join(', ')})")
-      @events = @events_data_from_fql.map { |efql| FacebookEvent.new(efql)}
-      #@events.reject! {|e| e.creator != current_user.facebook_uid }
-      ##reject events not created by this user
-      #@events.reject! {|e| e.start_time < Time.now.to_i } #XXX danger
-      ##reject past events
-      @events.reject! {|e| e.privacy.upcase != "OPEN"}
-      #reject private events
-    end
+    @graph = Koala::Facebook::API.new(current_user.oauth_token)
+    @events_data_from_fql = @graph.fql_query("select eid, name, creator, privacy, pic_small, pic_big, location, venue, start_time, end_time from event where eid in (SELECT eid FROM event_member WHERE uid=me())")
+    @events = @events_data_from_fql.map { |efql| FacebookEvent.new(efql)}
+    #@events.reject! {|e| e.creator != current_user.facebook_uid }
+    ##reject events not created by this user
+    @events.reject! {|e| Time.zone.parse(e.start_time) < Time.now } #XXX danger
+    ##reject past events
+    @events.reject! {|e| e.privacy.upcase != "OPEN"}
+    #reject private events
+
+    @events.sort_by! {|e| e.start_time}
   end
 
   def import
@@ -45,7 +48,7 @@ class EventsController < ApplicationController
     raise ActionController::RoutingError.new('Not found') if params[:eid].blank?
     @eid = params[:eid]
     #@graph = Koala::Facebook::API.new(app_access_token)
-    @graph = Koala::Facebook::API.new(current_user.access_token)
+    @graph = Koala::Facebook::API.new(current_user.oauth_token)
     @multiquery = @graph.fql_multiquery({"event"=>"select eid, name, creator, privacy, pic_small, pic_big, location, venue, start_time, end_time from event where eid = #{@eid}","creator"=>"select name, pic_small, profile_url from user where uid in (select creator from #event)"})
 
     @event = FacebookEvent.new( @multiquery["event"][0] )
@@ -61,12 +64,16 @@ class EventsController < ApplicationController
     #@event_db.attributes = {:user => current_user, :city => @city, :start_at => Time.at(@event.start_time).to_datetime, :end_at => Time.at(@event.end_time).to_datetime }
     #@event_db.attributes = { :active => false } unless @event_db.active?
     #raise UnexpectedException unless @event_db.save
+
+    if request.xhr?
+      render :partial => "import", :layout => false
+    end
   end
 
   #TODO possible security flaw here
   def create
     require_login!
-    @graph = Koala::Facebook::API.new(current_user.access_token)
+    @graph = Koala::Facebook::API.new(current_user.oauth_token)
 
     @multiquery = @graph.fql_multiquery({"event"=>"select eid, name, creator, privacy, pic_small, pic_big, location, description, venue, start_time, end_time from event where eid = #{params[:id]}","creator"=>"select name, pic_small, profile_url from user where uid in (select creator from #event)"})
 
@@ -74,7 +81,7 @@ class EventsController < ApplicationController
     @creator = TransientUser.new( @multiquery["creator"][0] )
 
     @event_db = Event.find_or_initialize_by_fid(params[:id])
-    @event_db.attributes = {:user => current_user, :city => @city, :start_at => Time.zone.parse(@event.start_time), :end_at => Time.zone.parse(@event.end_time)}
+    @event_db.attributes = {:user => current_user, :city => @city, :start_at => Time.zone.parse(@event.start_time.to_s), :end_at => Time.zone.parse(@event.end_time.to_s)}
     @event_db.tag_list = params[:event][:tag_list]
 
     if @event_db.save

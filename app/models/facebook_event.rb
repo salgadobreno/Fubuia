@@ -8,7 +8,7 @@ class FacebookEvent < TransientEvent
   include EventCalendar::InstanceMethods
 
   def to_param
-    "#{self.id}-#{self.name}".gsub(' ', '-')
+    URI.escape("#{self.id}-#{self.name}".gsub(/\ |\//, '-'))
   end
 
 end

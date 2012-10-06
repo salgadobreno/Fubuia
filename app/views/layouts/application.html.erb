@@ -7,8 +7,8 @@
     <meta name="Keywords" content="festa balada hoje brasilia show rock underground" />
     <meta name="Description" content="Fubúia é um mural pra eventos do Facebook. Publique e ache eventos sem dor." />
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="google-site-verification" content="uM5NhhzmH7zarpF73MznnObmREQsZRQUymk-SGfwZHA" />
     <%= csrf_meta_tags %>
-
     <!-- Google Fonts Call -->
     <link href="http://fonts.googleapis.com/css?family=Brawler" rel="stylesheet" type="text/css" />
 
@@ -18,7 +18,7 @@
 
     <!-- Get the JS -->
     <%= javascript_include_tag "application" %>
-    <%= javascript_include_tag params[:controller]  %>
+    <%= javascript_include_tag params[:controller] %>
 
     <!-- The Favicon -->
     <link rel="shortcut icon" href="/assets/favicon.png" />
@@ -41,16 +41,13 @@
       <%= render :partial => "/layouts/footer" %>
 
     </div>
-    <div id="fb-root"></div>
-    <% unless Rails.env.test? %>
-      <script src="http://connect.facebook.net/en_US/all.js"></script>
-    <% else %>
-      <%= javascript_tag '$.fx.off = true;' %>
-      <%= javascript_include_tag "/assets/test/fb", "/assets/test/fb_stub", "/assets/test/commentstub" %>
-    <% end %>
-    <script> FB.init({ appId: <%= @app_data["app_id"] %>, cookie: true, xfbml: true, oauth: true }); $('#login').click(function(event) { event.preventDefault(); FB.login(function (response) { if (response.authResponse) { var access_token = response.authResponse.accessToken; window.location.replace('/callback?code='+access_token) } else { /*alert('denied access');*/ } },{scope:'email,user_location,user_events,offline_access'}) }); </script>
     <script type="text/javascript">
-      var uvOptions = {};
+      $(document).ready(function() {
+          $(".open_ajax").fancybox({type: 'ajax',fixed:true,minHeight:'100%',closeClick:true});
+          $(".open_ajax_2").fancybox({type: 'ajax',fixed:true,minHeight:'100%'});
+          });
+
+var uvOptions = {};
 (function() {
  var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
  uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/yNjNbUXI6x6AV8lufo36Q.js';
@@ -58,11 +55,22 @@
  })();
 </script>
 <script type="text/javascript">
-$(function(){
-    $('#nav-main').menutron({
-      menuTitle:"Menu"
-      });
+  $(function(){
+      $('#nav-main').menutron({
+menuTitle:"Menu"
 });
+      });
+    </script>
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-29502628-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+       })();
 </script>
   </body>
 </html>

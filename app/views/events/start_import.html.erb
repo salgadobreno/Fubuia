@@ -1,11 +1,12 @@
 <div class="container" style="margin-top:15px;">
   <%= render :partial => "/calendar/como_funciona" %>
   <div class="clear"></div>
-  <h2>
+  <h2 style="margin-top:15px;text-decoration:underline;font-weight:bold;">
     Seus Eventos no Facebook
   </h2>
   <% if @events.empty? %>
-    Não conseguimos achar nenhum evento público e futuro criado por você, entre em contato se achar que há algo de errado
+    <div>Ops! não pudemos achar nenhum evento publico que você tenha criado, marcado pra ir ou criado!<br>
+      Se achar que há algo de errado, entre em contato.</div>
   <% else %>
     <% @events.each do |e| %>
       <div class="event_card card" data-href="<%= import_event_path(:eid => e.eid) %>">
@@ -13,7 +14,7 @@
           <%=l(Time.zone.parse(e.start_time), :format => :import) %>
         </span>
         <span class="name"><%= e.name %></span>
-        <%= link_to t('pages.events.import'), import_event_path(eid:e.eid), :class => "fdlabel import" %>
+        <%= link_to t('pages.events.import'), import_event_path(eid:e.eid), :class => "fdlabel import open_ajax_2" %>
       </div>
     <% end %>
   <% end %>

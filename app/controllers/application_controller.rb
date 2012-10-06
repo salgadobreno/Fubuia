@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
   private
 
   def require_login!
-    raise NotLoggedIn if session[:fuser].nil?
+    raise NotLoggedIn unless current_user
   end
 
   def current_user_session

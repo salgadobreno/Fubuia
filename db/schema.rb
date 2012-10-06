@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120802024609) do
+ActiveRecord::Schema.define(:version => 20120927000453) do
 
   create_table "cities", :force => true do |t|
     t.string   "name",       :null => false
@@ -92,21 +92,21 @@ ActiveRecord::Schema.define(:version => 20120802024609) do
   end
 
   create_table "users", :force => true do |t|
-    t.integer  "facebook_uid",       :limit => 8
-    t.string   "access_token"
     t.string   "email"
-    t.datetime "created_at",                                     :null => false
-    t.datetime "updated_at",                                     :null => false
-    t.string   "persistence_token"
-    t.integer  "login_count",                     :default => 0, :null => false
-    t.integer  "failed_login_count",              :default => 0, :null => false
+    t.boolean  "active",            :default => true
+    t.string   "name"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
     t.datetime "last_request_at"
     t.datetime "current_login_at"
     t.datetime "last_login_at"
     t.string   "current_login_ip"
     t.string   "last_login_ip"
-    t.boolean  "active"
-    t.integer  "location_id",        :limit => 8
+    t.string   "persistence_token"
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
   end
 
 end

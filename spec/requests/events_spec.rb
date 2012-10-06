@@ -2,6 +2,12 @@
 require 'spec_helper'
 
 describe "Events" do
+  before do
+    @event = create(:event, :fid => 12345678, :active => true, :start_at => Date.today, :end_at => Date.today)
+    @event2 = create(:event, :fid => 666, :active => false, :start_at => Date.today, :end_at => Date.today)
+    @facebook_events = [{"name"=>"Evento 1", "eid"=>12345678}, {"name" => "Evento 2", "eid" => 666}]
+    Koala::Facebook::API.any_instance.stubs(:fql_query).returns(@facebook_events)
+  end
 
   describe "show" do
     before do
@@ -24,50 +30,29 @@ describe "Events" do
       page.find('img', :src => "http://profile.ak.fbcdn.net/hprofile-ak-snc4/50236_105417699523664_1798087_n.jpg").should_not be_nil
     end
 
-    #context "comments", :js => true do
-
-    #  it "should display the event feed from facebook" do
-    #    @event_db = create(:event, :fid => 12345 )
-    #    @multiquery = multiquery()
-    #    Koala::Facebook::API.any_instance.stubs(:fql_multiquery).returns(@multiquery)
-    #    @event = @multiquery["event"][0]
-    #    @creator = @multiquery["creator"][0]
-    #    visit event_path(@event_db)
-    #    page.should have_content "Vitor Agrello"
-    #    page.should have_content "Vai pedir Identidade?"
-    #    page.should have_content "hahahahaha demais"
-    #  end
-
-    #end
   end
 
   describe "new" do
-    before(:each) do
+
+    it "requires log in" do
       visit new_event_path
+      page.should have_content page.should have_content i18n('errors.messages.not_logged_in')
     end
 
-    it "should display information about the importing proccess" do
-      page.should have_content i18n('pages.events.process').split(' ')[0..2].join(' ')
-    end
-
-    it "should display a 'start' link" do
-      page.should have_selector '#start'
-    end
-
-    context "user not logged in" do
-
-      pending("Gotta change implementation") do
-        specify "should show a message requiring login" do
-          visit new_event_path
-          page.should have_content i18n('pages.events.login_required')
-        end
-
-        specify "start_import link should be disabled" do
-          page.find('#start')[:class].should include('disabled')
-        end
-
+    context "user logged in" do
+      before do
+        visit '/'
+        page.find_link('Login')["href"].should =~ /first.log.in/
       end
 
+      context "first visit" do
+        pending
+      end
+
+      it "displays user's events from facebook" do
+        visit new_event_path
+        p
+      end
     end
 
     context "clicking on 'start' link" do
@@ -87,9 +72,8 @@ describe "Events" do
           #CID, DOE SEU SALÁRIO! <- not created by me, open, future
           #teste <- created by me, secret, future
           #Festa na Cobe do China <- not created by me, secret, past
-          me = {'id' => '1','email' => 'eu@eu.com','name' => 'Breno Salgado'}
-          Koala::Facebook::API.any_instance.stubs(:get_object).with('me').returns(me)
-          page.driver.get login_path(:code => "1234")
+
+          visit login_path
           visit new_event_path
         end
 
@@ -129,9 +113,9 @@ describe "Events" do
           it "should display event data from facebook" do
             page.should have_content "Fim do Mundo - Eu vou!"
             page.should have_content "No mundo inteiro"
-            page.should have_content I18n.l Time.at(@event["start_time"])
+            page.should have_content I18n.l Time.zone.parse(@event["start_time"])
             #TODO
-            #page.should have_content Time.at(@event["end_time"]).to_s(:short)
+            #page.should have_content Time.zone.parse(@event["end_time"]).to_s(:short)
             page.should have_content "Breno Salgado"
           end
 

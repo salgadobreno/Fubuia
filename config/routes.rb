@@ -1,4 +1,9 @@
 Fubuia::Application.routes.draw do
+  post '/f_e_s', :to => "events#f_e_u"
+  get '/f_e_s', :to => "events#f_e_s"
+  get '/facebook_subscription', :to => "events#f_e_u"
+  post '/facebook/subscription', :to => "events#f_e_u"
+  match '/test', :to => "events#gmailtest"
 
   mount Monologue::Engine, :at => '/blog'
 
@@ -7,8 +12,9 @@ Fubuia::Application.routes.draw do
   match '/events/start_import' => 'events#start_import', :as => :start_events_import
   resources :events, :except => [:index, :create]
 
+  match 'auth/failure', to: redirect('/')
   match '/logout' => 'authentication#destroy', :as => :logout
-  match '/callback' => 'authentication#create', :as => :login
+  match 'auth/:provider/callback', to: "authentication#create", :as => :login, :defaults => {provider:"facebook"}
   root :to => "calendar#index"
 
   # The priority is based upon order of creation:

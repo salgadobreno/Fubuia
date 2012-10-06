@@ -39,6 +39,7 @@ flogin.png: flogin-d8500dd5cb1c6916c9aeff8de8dc5a1f.png
 fubuia.png: fubuia-bf40a36dd258c5197fb054b9fc9aae3b.png
 g3170.png: g3170-adaddf1f04dc3d93bd74f560dd03b077.png
 g7327.png: g7327-66fc170f25e87180ca4d359372e749dd.png
+gmail-css3-menu-more.png: gmail-css3-menu-more-1a2c75ad6b35aec5a27db2c7f0f13276.png
 granudo.jpg: granudo-d42f1549c5e1c4baa029057fa33eae42.jpg
 graylogo.png: graylogo-db835f723f631c7c7fe752ad945e134c.png
 iconMegaphone.png: iconMegaphone-5262be42f35b902ab5bc9f0e05d33c18.png
@@ -64,6 +65,7 @@ rails.png: rails-be8732dac73d845ac5b142c8fb5f9fb0.png
 redlogo.png: redlogo-e2d3b08f982e194c4fb8cf9dd8339e25.png
 right-arrow.png: right-arrow-4b60e57d4fec65d24aff44d777ceba91.png
 rio.png: rio-e30cb4ba83025918b9893c994a6303f9.png
+seta.png: seta-45b2c40d289d503762075f869d80409a.png
 smartphone2.png: smartphone2-58716642cb0bed4263984f1259ecf1b5.png
 socnets/dribbble.png: socnets/dribbble-e5c658b7dcaf8ed79367831826accbd4.png
 socnets/facebook.png: socnets/facebook-34e880535d5e28334c9a648722562433.png
@@ -84,11 +86,13 @@ stripe_2.png: stripe_2-44c7a519611dbff27cb9f85390538ccc.png
 stripe_3.png: stripe_3-bb9893a44b93027bba894c7c635094f0.png
 stripe_db689cf37735fbe35d35c8a7d4fc0ce8.png: stripe_db689cf37735fbe35d35c8a7d4fc0ce8-9233536492991852c02b49210a8a7c08.png
 tscbg.png: tscbg-6e5bb67b8d118385f753debdafb275ae.png
-application.js: application-1341c741fd166a21441d77c82cbb8986.js
-calendar.js: calendar-4903f73e5fa45597c62377444fbedf72.js
+tscbg2.png: tscbg2-59af5ebba04eda1eec48b884d157a24d.png
+tscbg2.xcf: tscbg2-79a27d4ddfbe4acb39e8d893d55171f6.xcf
+application.js: application-58933b3c5cf753a4a46ab34180b20754.js
+calendar.js: calendar-3af39f1da6f167c2cbf453ed74daff3d.js
 events.js: events-ccadcc1b74aaf400ef94cc824d6e30de.js
-application.css: application-907b69e263d1624bdffc1ed8e35abd2d.css
-calendar.css: calendar-59ab7e79bcc236e056b6691d125833ff.css
+application.css: application-08050f7502b110d8152b866f7303d7fa.css
+calendar.css: calendar-759030bb5dd861255d77f5ed61eb7a32.css
 events.css: events-24de34a0aaece69bd17aaa2e2f64d394.css
 font-awesome: font-awesome
 twitter/bootstrap/glyphicons-halflings-white.png: twitter/bootstrap/glyphicons-halflings-white-13553a5bf21ae3cc374006592488ec64.png

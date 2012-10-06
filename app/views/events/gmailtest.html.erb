@@ -1,0 +1,20 @@
+
+                <article>
+                <%= content_tag 'div', :class => "demo-common" do %>
+                  <%= stylesheet_link_tag 'gmail-but' %>
+                  <nav><ul id="ui-more">
+                      <li class="ui-more parent">
+                        <a href="#">
+                          <%= current_user.name %>
+                        </a>
+                        <ul>
+                          <li class="ui-settings-mark-read">
+                            <a href="#">Logout</a>
+                          </li>
+                        </ul>
+                      </li>
+                  </ul></nav>
+                  <% current_user.name %>
+                  <% link_to "Logout", logout_path, {:id => "logout", :class => "button" } %>
+                <% end %>
+                </article>

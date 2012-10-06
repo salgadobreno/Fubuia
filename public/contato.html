@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<head>
+  <title>Contato | Fubúia</title>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <script type="text/javascript" src="https://jquery-jsonp.googlecode.com/files/jquery.jsonp-2.2.0.min.js"></script>
+  <style type="text/css">
+    #contact_form { margin: 20px auto; width: 500px; }
+    #contact_form textarea {
+      width:470px;
+    }
+  </style>
+  <div id="contact_form">
+    <form id="test_form" name="contact" method="post" action="http://whatever.you.want.com/up_to_you" class="well">
+      <label for="name">Nome</label>
+      <input type="text" name="name" id="name" value="" class="span3" />
+
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" value="" class="span3" />
+
+      <label for="subject">Assunto</label>
+      <input type="text" name="subject" id="subject" value="" class="span3" />
+
+      <label for="message">Mensagem</label>
+      <textarea name="message" id="message"></textarea>
+
+      <div class="form-actions">
+        <button class="btn btn-primary" type="submit">Enviar</button>
+        <button class="btn">Cancelar</button>
+      </div>
+    </form>
+  </div>
+  <script type="text/javascript">
+    $('#test_form').submit(function(evt) {
+        evt.preventDefault();  // Don't do default action
+
+        // Replace this with your subdomain!
+        var uvSubdomain = "fubuia";
+
+        // Create an API client (non-trusted) within the UserVoice settings/channels section.  Paste the key only here.
+        var uvKey = "thOQHcIU1cFFwX9YWj5Iw";
+
+        // Grab the data we need to send
+        var message = $('#message').val();
+        var subject = $('#subject').val();
+        var name = $('#name').val();
+        var email = $('#email').val();
+
+        // Execute the JSONP request to submit the ticket
+        $.jsonp({
+url: 'https://' + uvSubdomain + '.uservoice.com/api/v1/tickets/create_via_jsonp.json?callback=?',
+data: {
+client: uvKey,
+ticket: {
+message: message,
+subject: subject
+},
+name: name,
+email: email
+},
+success: function(data) {
+alert('Successfully submitted ticket!');  // You might want to redirect the user here, or show a stylized message to them.
+},
+error: function(d, msg) {
+alert("Error");  // Darn -- something went wrong.  You might want to display a message to the user.
+}
+});
+
+return false;
+});
+</script>
+</body>
+</html>

@@ -10,6 +10,8 @@ gem 'unicorn'
 #gem 'pg'
 
 #gem 'hitchens'
+gem 'omniauth-facebook'
+gem 'whenever', :require => false
 gem 'monologue'
 
 gem 'mysql2'

@@ -398,7 +398,12 @@ h3#comments, h3#pings {
   -moz-box-shadow: inset 0 0 5px #222222;
   -webkit-box-shadow: inset 0 0 5px #222222;
   box-shadow: inner 0 0 5px #222222;
-  background-color:#444444;
+  /*background-color:#444444;*/
+  /*background-color:#573F57;*/
+  background-color:#574557;
+  background:-moz-linear-gradient(top, #14051F, #382147);
+  background:-webkit-linear-gradient(top, #14051F, #382147);
+  background:linear-gradient(top, #14051F, #382147);
 }
 
 .featured_banner {

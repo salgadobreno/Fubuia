@@ -1,6 +1,6 @@
 development:
-  app_id: 495058763843807
-  secret_key: "40a6a4d50382f2d8b258ab4a9ffd4db7"
+  app_id: 115184478532515
+  secret_key: "fc8e0a96e42cea50b809c31ee1459ae6"
 mock:
   app_id: 495058763843807
   secret_key: "40a6a4d50382f2d8b258ab4a9ffd4db7"

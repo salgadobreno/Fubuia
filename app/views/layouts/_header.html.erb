@@ -21,26 +21,9 @@
             <li>
               <%= link_to t('pages.root.menu.como_funciona'), "#como-funciona", :id => "a-como-funciona" %>
             </li>
-            <li>
-              <%= link_to t('pages.root.menu.contato'), "#contato", :id => "contato" %>
-            </li>
             <li class="last">
-              <%= link_to new_event_path, :style => "color:red;font-size:13px;font-weight:normal;text-decoration:underline;"  do %>
-                <% t('pages.events.new').html_safe %>
-              <% end %>
+              <%= link_to t('pages.root.menu.contato'), "/contato.html", :id => "contato", :class => "open_ajax_2" %>
             </li>
-            <div class="login hide-mobile">
-              <% if current_user %>
-                <%= content_tag 'div' do %>
-                  <% if session[:fuser] %>
-                    <%= session[:fuser][:name] %>
-                  <% end %>
-                  <%= link_to "Logout", logout_path, {:id => "logout", :class => "button" } %>
-                <% end %>
-              <% else %>
-                <a id="login" class="button fb" href="">Login</a>
-              <% end %>
-            </div>
           </ul>
         </nav>
       </div>
