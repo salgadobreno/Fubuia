@@ -12,6 +12,9 @@
  *= require jquery.fancybox
 */
 
+body {
+  background: #F2F2F2 url(/assetsbg.jpg) repeat-x top !important;
+}
 .ec-calendar {
   margin: 0 15px;
 }
