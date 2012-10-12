@@ -1,7 +1,11 @@
 desc "importa os eventos do breno"
 task :importa => :environment  do
 
-  buzaga = User.find_by_facebook_uid 100000532533860
+  buzaga = User.find_by_email "salgado.breno@gmail.com"
+  unless buzaga.present?
+    Rails.logger.warn "PERFIL dO BRENO N DISPONIVEL"
+    return
+  end
   @graph = Koala::Facebook::API.new(buzaga.access_token)
 
   @all_fucking_events = @graph.fql_query("select eid, name, creator, privacy, pic_small, pic_big, location, venue, start_time, end_time from event where eid in (SELECT eid FROM event_member WHERE uid=me())")
