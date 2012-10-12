@@ -15,7 +15,7 @@ development:
   database: fubuia_development
   pool: 5
   username: root
-  password:
+  password: secret
   host: localhost
 
 # Warning: The database defined as "test" will be erased and
@@ -28,7 +28,7 @@ test:
   database: fubuia_test
   pool: 5
   username: root
-  password:
+  password: secret
   host: localhost
 
 production:
@@ -38,7 +38,7 @@ production:
   database: fubuia_production
   pool: 5
   username: root
-  password:
+  password: secret
   host: localhost
 
 
@@ -49,5 +49,5 @@ mock:
   database: fubuia_mock
   pool: 5
   username: root
-  password:
+  password: secret
   host: localhost
