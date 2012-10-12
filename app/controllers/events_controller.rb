@@ -4,6 +4,7 @@ class EventsController < ApplicationController
   def f_e_s
     render :text => params['hub.challenge'], :layout => false
   end
+
   def f_e_u
     render :text => "text to render...", :layout => false
   end

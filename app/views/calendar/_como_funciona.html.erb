@@ -3,47 +3,14 @@
     <div id="como-funciona" style="text-align:center"><h1>Como funciona?</h1></div>
     <div style="word-wrap:break-word;text-align:center;margin: 30px auto;">
       <ul>
-        <li>Seus eventos do Fb visíveis além da sua ilha de amigos</li>
-        <li>E do lado de fora da cerquinha do Facebook :)</li>
-        <li>Sem cadastro, sem e-mails, sem intermediário.</li>
+        <li><h4>Adicione esse cara no Facebook:</h4></li>
+        <li><%= link_to image_tag("http://profile.ak.fbcdn.net/hprofile-ak-ash4/187261_100004409290328_980579531_n.jpg", style: "height:80px;"), "http://www.facebook.com/fubuia.meiaum", :target => "_blank" %></li>
+        <li>
+          <h4>Depois é só lembrar de convidar ele pros os teus eventos e eles vão aparecer aqui,
+            <span style="font-weight:bold">e só!</span>
+            <%= image_tag "woo.png" %></h4>
+        </li>
       </ul>
     </div>
   <% end %>
-  <ul style="width:100%;float:left;">
-    <li style="float:left;width:25%;margin-left:20%;">
-      <span class="h2"><%= t 'pages.root.step1' %></span>
-    </li>
-    <li style="float:left;width:25%;margin-left:20%">
-      <span class="h2"><%= t 'pages.root.step2' %></span>
-    </li>
-  </ul>
-  <ul class="hormenu anchor" style="float:left;width:100%">
-    <li style="width:45%;float:left">
-      <a href="" class="selected" isdone="1" rel="1">
-        <span class="dot" style="text-align:left"><span></span></span>
-      </a>
-    </li>
-    <li style="width:10%;float:left">
-      <a href="" class="selected" isdone="0" rel="2">
-        <span class="dot"><span></span></span>
-      </a>
-    </li>
-    <li style="width:45%;float:left">
-      <a href="" class="selected" isdone="0" rel="3">
-        <span class="dot"><span></span></span>
-      </a>
-    </li>
-  </ul>
-  <ul style="width:100%;float:left;">
-    <li style="width:35%;float:left;text-align:left">
-      <span class="desc"><%= t 'pages.root.step1_d' %></span>
-    </li>
-    <li style="width:30%;float:left;text-align:center">
-      <span class="desc"><%= t 'pages.root.step2_d' %></span>
-    </li>
-    <li style="width:35%;float:left;text-align:right;">
-      <span class="desc"><%= t 'pages.root.step3_d' %></span>
-    </li>
-  </ul>
-
 </div>
