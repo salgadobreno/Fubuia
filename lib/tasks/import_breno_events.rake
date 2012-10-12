@@ -8,6 +8,8 @@ task :importa => :environment  do
   end
   graph = Koala::Facebook::API.new(buzaga.oauth_token)
 
+  all = graph.fql_query("select eid, name, creator, privacy, pic_small, pic_big, location, venue, start_time, end_time from event where eid in (SELECT eid FROM event_member WHERE uid=me())")
+
   events = all.map { |efql| FacebookEvent.new(efql)}
   events.map(&:eid).reject! {|eid| Event.all.map(&:fid).include? eid}
   #reject events we already have
