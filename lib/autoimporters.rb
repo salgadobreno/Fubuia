@@ -21,7 +21,7 @@ module AutoImporters
       #TODO: add autotag
       events.reject! {|e| Time.zone.parse(e.start_time) < Date.today.to_time }
       #reject past events
-      events.reject! {|e| e.privacy.upcase != "OPEN"}
+      events.reject! {|e| e.privacy.upcase != "OPEN" rescue true}
       #reject private events
       events.each do |event|
 

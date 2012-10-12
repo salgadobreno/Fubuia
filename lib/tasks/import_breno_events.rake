@@ -2,6 +2,7 @@ desc "importa os eventos do breno"
 task :importa => :environment  do
 
   buzaga = User.find_by_email "salgado.breno@gmail.com"
+  fubuia = User.find_by_email "fubuia@fubuia.com.br"
   unless buzaga.present?
     Rails.logger.warn "PERFIL dO BRENO N DISPONIVEL"
     return
@@ -16,7 +17,7 @@ task :importa => :environment  do
   #TODO: add autotag
   events.reject! {|e| Time.zone.parse(e.start_time) < Date.today.to_time }
   #reject past events
-  events.reject! {|e| e.privacy.upcase != "OPEN"}
+  events.reject! {|e| e.privacy.upcase != "OPEN" rescue true }
   #reject private events
   events.each do |event|
 
