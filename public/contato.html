@@ -7,24 +7,31 @@
 <body>
   <script type="text/javascript" src="https://jquery-jsonp.googlecode.com/files/jquery.jsonp-2.2.0.min.js"></script>
   <style type="text/css">
-    #contact_form { margin: 20px auto; width: 500px; }
+    #contact_form { margin: 20px auto; }
     #contact_form textarea {
-      width:470px;
     }
   </style>
   <div id="contact_form">
     <form id="test_form" name="contact" method="post" action="http://whatever.you.want.com/up_to_you" class="well">
-      <label for="name">Nome</label>
-      <input type="text" name="name" id="name" value="" class="span3" />
+      <p>
+        <label for="name">Nome</label>
+        <input type="text" name="name" id="name" value="" class="span3" />
+      </p>
 
-      <label for="email">Email</label>
-      <input type="email" name="email" id="email" value="" class="span3" />
+      <p>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" value="" class="span3" />
+      </p>
 
-      <label for="subject">Assunto</label>
-      <input type="text" name="subject" id="subject" value="" class="span3" />
+      <p>
+        <label for="subject">Assunto</label>
+        <input type="text" name="subject" id="subject" value="" class="span3" />
+      </p>
 
-      <label for="message">Mensagem</label>
-      <textarea name="message" id="message"></textarea>
+      <p>
+        <label for="message">Mensagem</label>
+        <textarea name="message" id="message"></textarea>
+      </p>
 
       <div class="form-actions">
         <button class="btn btn-primary" type="submit">Enviar</button>

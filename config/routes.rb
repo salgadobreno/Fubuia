@@ -1,4 +1,5 @@
 Fubuia::Application.routes.draw do
+
   post '/f_e_s', :to => "events#f_e_u"
   get '/f_e_s', :to => "events#f_e_s"
   get '/facebook_subscription', :to => "events#f_e_u"
