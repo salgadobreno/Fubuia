@@ -6,7 +6,7 @@ task :importa => :environment  do
     Rails.logger.warn "PERFIL dO BRENO N DISPONIVEL"
     return
   end
-  @graph = Koala::Facebook::API.new(buzaga.access_token)
+  @graph = Koala::Facebook::API.new(buzaga.oauth_token)
 
   @all_fucking_events = @graph.fql_query("select eid, name, creator, privacy, pic_small, pic_big, location, venue, start_time, end_time from event where eid in (SELECT eid FROM event_member WHERE uid=me())")
 
