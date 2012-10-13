@@ -401,7 +401,7 @@ module EventCalendar
           num_event_rows = 0
         end
       end
-      row_heights
+      row_heights + options[:day_names_height]
     end
 
     #
