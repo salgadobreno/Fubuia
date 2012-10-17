@@ -15,7 +15,7 @@ class CalendarController < ApplicationController
     @tag = Tag.find_by_name(params[:tag]) if params[:tag].present?
     flash[:error] = "Tag não encontrada" if params[:tag].present? && @tag.nil?
 
-    events = @city.events.for_date_range(strip_start, strip_end).active
+    events = @city.events.for_date_range(strip_start, strip_end + 1).active # ?
     events = events.active.tagged_with(@tag) if @tag
 
     query = "select eid, name, description, creator, privacy, pic_small, pic_big, location, venue, start_time, end_time from event where eid in (%s)" % events.map(&:fid).join(',')
