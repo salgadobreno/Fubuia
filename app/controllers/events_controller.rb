@@ -1,16 +1,7 @@
 # coding: UTF-8
 class EventsController < ApplicationController
 
-  def f_e_s
-    render :text => params['hub.challenge'], :layout => false
-  end
-
-  def f_e_u
-    render :text => "text to render...", :layout => false
-  end
-  def gmailtest
-    render :file => "events/gmailtest.html.erb", :layout => false
-  end
+  caches_action :show, :cache_path => Proc.new {|c| { :xhr => request.xhr? }.merge c.params }
 
   def show
     @event_db = Event.find(params[:id])

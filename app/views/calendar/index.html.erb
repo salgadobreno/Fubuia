@@ -31,7 +31,9 @@
   </div>
 </div>
 <div class="hero-unit featured_banner_dark" style="padding:25px 0 50px 0; clear:both;">
-  <%= raw(event_calendar) %>
+  <%= cache "events-#{Date.today.to_s}-#{Event.most_recent_updated_at.to_i}" do %>
+    <%= raw(event_calendar) %>
+  <% end %>
   <% if false %>
     <%= link_to new_event_path, :class => "button next new", :style => "float:right;margin-right:19px;margin-top:12px;"  do %>
       <% t('pages.events.new').html_safe %>
