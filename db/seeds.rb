@@ -34,7 +34,7 @@ if Rails.env.mock?
 
   random_tags = "rock, 0800, gls, open-bar, gospel, black, dubstep, brasiliacapitaldorock".split(',')
   events_query.each do |x|
-    Factory.create(:event, :active => true, :city => City.first, :user => User.first, :fid => x["eid"], :start_at => rand_time(DateTime.now - 3.days, DateTime.now + 3.days), :tag_list => random_tags.sample(4).join(',') ) unless Event.where(fid:x["eid"]).present?
+    FactoryGirl.create(:event, :active => true, :city => City.first, :user => User.first, :fid => x["eid"], :start_at => rand_time(DateTime.now - 3.days, DateTime.now + 3.days), :tag_list => random_tags.sample(4).join(',') ) unless Event.where(fid:x["eid"]).present?
   end
 
 end
