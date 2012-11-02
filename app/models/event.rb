@@ -25,6 +25,10 @@ class Event < ActiveRecord::Base
     attrs
   end
 
+  def deactivate!
+    self.active = false
+    save
+  end
 
   private
 
