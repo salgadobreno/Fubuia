@@ -16,7 +16,8 @@ module AutoImporters
       all = graph.fql_query("select eid, name, creator, privacy, pic_small, pic_big, location, venue, start_time, end_time from event where eid in (SELECT eid FROM event_member WHERE uid=me())")
 
       events = all.map { |efql| FacebookEvent.new(efql)}
-      events.map(&:eid).reject! {|eid| Event.all.map(&:fid).include? eid.to_s }
+      all_db_events_fids = Event.all.map(&:fid)
+      events.reject! {|e| all_db_events_fids.include? e.eid }
       #reject events we already have
       #TODO: add autotag
       events.reject! {|e| Time.zone.parse(e.start_time) < Date.today.to_time }
