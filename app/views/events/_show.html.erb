@@ -14,6 +14,10 @@
       <i class="icon-map-marker"></i> &nbsp;
       <%= @event.location %>
     </h3>
+    <h3>
+      <i class="icon-group red"></i> &nbsp;
+      <%= @event.attending_count %>
+    </h3>
     <% if @creator %>
       <h4>
         <i class="icon-user"></i> &nbsp;
@@ -21,6 +25,11 @@
         <%= image_tag @creator.pic_small, :style => "height:18px" %>
       </h4>
     <% end %>
+    <h3>
+      <i class="icon-external-link"></i> &nbsp;
+      <i class="icon-facebook-sign fblue"></i> &nbsp;
+      <%= link_to @event.name, "http://www.facebook.com/#{@event.eid}" %>
+    </h3>
     <h3>
       <i class="icon-tags"></i> &nbsp;
       <% @event_db.tags.each do |tag| %>
