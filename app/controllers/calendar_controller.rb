@@ -10,14 +10,16 @@ class CalendarController < ApplicationController
     strip_start = Date.today - 3 + @shift
     strip_end = Date.today + 4 + @shift
 
-    @tags = Rails.cache.fetch "tags-#{Date.today.to_s}-#{Tagging.most_recent_created_at.to_i}" do
+    today = Date.today + @shift # needed so I don't cache wrong shit
+
+    @tags = Rails.cache.fetch "tags-#{today.to_s}-#{Tagging.most_recent_created_at.to_i}" do
       Tag.event_tags_for_date_range(Date.today - 3 + @shift, Date.today + 3 + @shift).in_city(@city)
     end
 
     @tag = Tag.find_by_name(params[:tag]) if params[:tag].present?
     flash[:error] = "Tag não encontrada" if params[:tag].present? && @tag.nil?
 
-    @events = Rails.cache.fetch "events-#{Date.today.to_s}-#{Event.most_recent_updated_at.to_i}" do
+    @events = Rails.cache.fetch "events-#{today.to_s}-#{Event.most_recent_updated_at.to_i}" do
 
       events = @city.events.for_date_range(strip_start, strip_end + 1).active # ?
       events = events.active.tagged_with(@tag) if @tag
