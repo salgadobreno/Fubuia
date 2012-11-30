@@ -256,7 +256,12 @@ module EventCalendar
               no_bg = no_event_bg?(event, options)
               class_name = event.class.name.tableize.singularize
 
-              cal << %(<td class="ec-event-cell essential" colspan="#{(dates[1]-dates[0]).to_i + 1}" ) if [2,3,4].include?(index)
+              # responsive shit
+              # of the 3 at the center, for responsiveness not to break:
+              # first one can only span to 3, second can only span to 2, third can't span
+              colspan_check_class = {2 => 'colspan_3', 3 => 'colspan_2', 4 => 'colspan_1'}
+
+              cal << %(<td class="ec-event-cell essential #{colspan_check_class[index]}" colspan="#{(dates[1]-dates[0]).to_i + 1}" ) if [2,3,4].include?(index)
               cal << %(<td class="ec-event-cell optional" colspan="#{(dates[1]-dates[0]).to_i + 1}" ) if [1,5].include?(index)
               cal << %(<td class="ec-event-cell" colspan="#{(dates[1]-dates[0]).to_i + 1}" ) if [0,6].include?(index)
 
@@ -311,7 +316,14 @@ module EventCalendar
 
           else
             # there wasn't an event, so create an empty cell and container
-            cal << %(<td class="ec-event-cell ec-no-event-cell essential" ) if [2,3,4].include?(index)
+            #
+            # responsive shit
+            # of the 3 at the center, for responsiveness not to break:
+            # first one can only span to 3, second can only span to 2, third can't span
+            colspan_check_class = {2 => 'colspan_3', 3 => 'colspan_2', 4 => 'colspan_1'}
+
+
+            cal << %(<td class="ec-event-cell ec-no-event-cell essential #{colspan_check_class[index]}" ) if [2,3,4].include?(index)
             cal << %(<td class="ec-event-cell ec-no-event-cell optional" ) if [1,5].include?(index)
             cal << %(<td class="ec-event-cell ec-no-event-cell" ) if [0,6].include?(index)
 

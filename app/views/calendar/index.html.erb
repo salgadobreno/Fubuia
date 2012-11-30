@@ -44,3 +44,22 @@
 <div class="container">
   <%= render :partial => "como_funciona" %>
 </div>
+<script type="text/javascript">
+  $(window).resize(function() {
+      mobile_size = 767;
+      var newWidth = $(window).width();
+      if (newWidth <= mobile_size) {
+        $('td.colspan_1').attr('colspan', 1);
+        $('.colspan_2').attr('colspan', function(){
+          if (parseInt( $(this).attr('colspan') ) > 2) {
+          $(this).attr('colspan', 2)
+          }
+          });
+        $('.colspan_3').attr('colspan', function(){
+          if (parseInt( $(this).attr('colspan') ) > 3) {
+          $(this).attr('colspan', 3)
+          }
+          });
+      }
+      });
+</script>
