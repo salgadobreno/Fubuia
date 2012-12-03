@@ -1,7 +1,7 @@
 # coding: UTF-8
 class EventsController < ApplicationController
 
-  caches_action :show, :cache_path => Proc.new {|c| { :xhr => request.xhr? }.merge c.params }
+  caches_action :show, :cache_path => Proc.new {|c| { :xhr => request.xhr? }.merge c.params }, :expires_in => 3.hours
 
   def show
     @event_db = Event.find(params[:id])
