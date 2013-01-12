@@ -16,7 +16,7 @@
   border-radius: 3px;
 }
 .label.label-rock {
-  background-color:#E8272C;
+  background-color:#E8272C; /*#E2054A*/
 }
 .label.label-0800 {
   background-color:#FE7A15;
@@ -31,13 +31,13 @@
   background-color:#293a5d;
 }
 .label.label-black {
-  background-color:#212178;
+  background-color:#761780;
 }
 .label.label-samba {
   background-color:salmon;
 }
 .label.label-sertanejo {
-  background-color:#037187;
+  background-color:#293a5d;
 }
 .label.label-open-bar {
   background-color:#A4C639;
@@ -54,7 +54,6 @@
   background: -ms-linear-gradient(top,  #a90329 0%,#8f0222 44%,#6d0019 100%); /* IE10+ */
   background: linear-gradient(to bottom,  #a90329 0%,#8f0222 44%,#6d0019 100%); /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', endColorstr='#6d0019',GradientType=0 ); /* IE6-9 */
-
 }
 /*.label.label-0800.hover {
 background-color:#C67605;
