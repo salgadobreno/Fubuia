@@ -11,7 +11,7 @@
   City.find_or_create_by_name_and_subdomain(ar[0], ar[1])
 end
 
-%w[ rock 0800 gospel dubstep black samba sertanejo open-bar gls brasiliacapitaldorock ].each do |tag|
+%w[ rock 0800 gospel dubstep black samba sertanejo open-bar gls brasiliacapitaldorock funk ].each do |tag|
   Tag.find_or_create_by_name(tag)
 end
 

@@ -27,17 +27,20 @@
 .label.label-dubstep {
   background-color:#73abb3;
 }
-.label.label-black {
+.label.label-funk {
   background-color:#293a5d;
+}
+.label.label-black {
+  background-color:#212178;
 }
 .label.label-samba {
   background-color:salmon;
 }
 .label.label-sertanejo {
-  background-color:#855E42;
+  background-color:#037187;
 }
 .label.label-open-bar {
-  background-color:#00CD00;
+  background-color:#A4C639;
 }
 .label.label-gls {
   background-color:deepPink;
