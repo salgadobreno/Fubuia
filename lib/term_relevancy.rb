@@ -8,6 +8,7 @@ class TermRelevancy
   def rank
     result = []
     for matchthis in @words
+      matchthis.gsub! '-', ' '
       h = {frequency:0, tag:matchthis}
 
       @text.scan(Regexp.new(matchthis, Regexp::IGNORECASE)) do |match|
