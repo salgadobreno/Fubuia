@@ -31,7 +31,7 @@
   </div>
 </div>
 <div class="hero-unit featured_banner_dark" style="padding:25px 0 50px 0; clear:both;">
-  <%= cache "events-#{Date.today.to_s}-#{Event.most_recent_updated_at.to_i}-shift#{params[:shift]}" do %>
+  <%= cache "events-#{Date.today.to_s}-#{Event.most_recent_updated_at.to_i}-shift#{params[:shift]}-tag#{params[:tag]}" do %>
     <%= raw(event_calendar) %>
   <% end %>
   <% if false %>
