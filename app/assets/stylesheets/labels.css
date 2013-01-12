@@ -30,8 +30,14 @@
 .label.label-black {
   background-color:#293a5d;
 }
-.label.label-beer {
-  background-color:gold;
+.label.label-samba {
+  background-color:salmon;
+}
+.label.label-sertanejo {
+  background-color:#855E42;
+}
+.label.label-open-bar {
+  background-color:#00CD00;
 }
 .label.label-gls {
   background-color:deepPink;

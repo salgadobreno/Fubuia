@@ -19,10 +19,13 @@ class CalendarController < ApplicationController
     @tag = Tag.find_by_name(params[:tag]) if params[:tag].present?
     flash[:error] = "Tag não encontrada" if params[:tag].present? && @tag.nil?
 
-    @events = Rails.cache.fetch "events-#{today.to_s}-#{Event.most_recent_updated_at.to_i}" do
+    @events = Rails.cache.fetch "events-#{today.to_s}-#{Event.most_recent_updated_at.to_i}-#{@tag}" do
 
-      events = @city.events.for_date_range(strip_start, strip_end + 1).active # ?
-      events = events.active.tagged_with(@tag) if @tag
+      if @tag
+        events = @city.events.for_date_range(strip_start, strip_end + 1).active.tagged_with(@tag)
+      else
+        events = @city.events.for_date_range(strip_start, strip_end + 1).active # ?
+      end
 
       query = "select eid, name, description, creator, privacy, pic_small, pic_big, location, venue, start_time, end_time from event where eid in (%s)" % events.map(&:fid).join(',')
 
