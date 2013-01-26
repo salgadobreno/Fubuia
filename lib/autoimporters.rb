@@ -29,7 +29,7 @@ module AutoImporters
       events.each do |event|
 
         event_db = Event.find_or_initialize_by_fid(event.eid)
-        event_db.attributes = {:user => fubuia, :city => City.first, :start_at => Time.zone.parse(event.start_time.to_s), :end_at => Time.zone.parse(event.end_time.to_s)}
+        event_db.attributes = {:user => fubuia.id, :city => City.first, :start_at => Time.zone.parse(event.start_time.to_s), :end_at => Time.zone.parse(event.end_time.to_s)}
         #autotag
         tr = TermRelevancy.new event.description, tag_names
         tag_list = tr.rank.reject { |e| e[:relevancy] == 0 }.map { |e| e[:tag] }.compact.join(', ')
