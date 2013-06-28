@@ -66,11 +66,11 @@ module EventCalendar
         # but they are needed to perform height calculations
         :width => nil,
         :height => 114,
-        :day_names_height => 18,
-        :day_nums_height => 18,
+        :day_names_height => 23,
+        :day_nums_height => 23,
         :event_height => 18,
-        :event_margin => 1,
-        :event_padding_top => 2,
+        :event_margin => 0,
+        :event_padding_top => 1,
 
         :use_all_day => false,
         :use_javascript => true,
@@ -268,7 +268,7 @@ module EventCalendar
               #BRENO: commenting this out produces some bugs, but events doesnt disappear in mobile
               #cal << %(<td class="ec-event-cell essential" colspan="#{(dates[1]-dates[0]).to_i + 1}" )
 
-              cal << %(style="padding-top: #{options[:event_margin]}px;">)
+              cal << %(style="padding-top: #{options[:event_padding_top]}px;">)
               cal << %(<div class="ec-event ec-#{class_name}-#{event.id} ec-event-bg label )
               cal << ( event.css_class ? %(label-#{event.css_class}" ) : %(" ) )
               #if no_bg
@@ -327,7 +327,7 @@ module EventCalendar
             cal << %(<td class="ec-event-cell ec-no-event-cell optional" ) if [1,5].include?(index)
             cal << %(<td class="ec-event-cell ec-no-event-cell" ) if [0,6].include?(index)
 
-            cal << %(style="padding-top: #{options[:event_margin]}px;">)
+            cal << %(style="padding-top: #{options[:event_padding_top]}px;">)
             cal << %(<div class="ec-event" )
             cal << %(style="padding-top: #{options[:event_padding_top]}px; )
             cal << %(height: #{options[:event_height] - options[:event_padding_top]}px;" )
@@ -405,15 +405,15 @@ module EventCalendar
         num_event_rows = [num_event_rows, num_events].max
         # if we reached the end of the week, calculate this row's height
         if index % 7 == 0
-          total_event_height = options[:event_height] + options[:event_margin]
-          calc_row_height = (num_event_rows * total_event_height) + options[:day_nums_height] + options[:event_margin]
+          total_event_height = options[:event_height] + options[:event_padding_top] + 1
+          calc_row_height = (num_event_rows * total_event_height) + options[:day_nums_height]
           row_height = [min_height, calc_row_height].max
           #row_heights << row_height
           row_heights = row_height
           num_event_rows = 0
         end
       end
-      row_heights + options[:day_names_height]
+      row_heights + options[:day_names_height] - 6
     end
 
     #
