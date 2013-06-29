@@ -1,18 +1,23 @@
-<div class="card fourteen columns">
+<div itemscope itemtype="http://data-vocabulary.org/Event" class="card fourteen columns">
   <div class="four columns" style="float:left; margin:10px 10px;">
-    <%= image_tag @event.pic_big, :style => "border:1px solid black;" %>
+    <%= image_tag @event.pic_big, :style => "border:1px solid black;", :itemprop => 'photo' %>
   </div>
   <div class="eight columns" style="word-wrap:break-word;">
-    <h1>
+    <h1 itemprop="summary">
       <%= word_wrap(@event.name, 60) %>
     </h1>
     <h3>
       <i class="icon-calendar"></i> &nbsp;
-      <%=l Time.zone.parse(@event.start_time) %>
+      <span>
+        <meta itemprop="startDate" content="<%= Time.zone.parse(@event.start_time).iso8601 %>}"/>
+        <%=l Time.zone.parse(@event.start_time) %>
+      </span>
     </h3>
     <h3>
       <i class="icon-map-marker"></i> &nbsp;
-      <%= @event.location %>
+      <span itemprop="location">
+        <%= @event.location %>
+      </span>
     </h3>
     <h3>
       <i class="icon-group red"></i> &nbsp;
@@ -36,7 +41,7 @@
         <%= tag_span(tag) %>
       <% end %>
     </h3>
-    <blockquote>
+    <blockquote itemprop="description">
       <%= simple_format(word_wrap(@event.description, 60)) %>
     </blockquote>
   </div>

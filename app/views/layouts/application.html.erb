@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US" xml:lang="en-US">
   <head>
-    <title>Fubúia</title>
+    <% if content_for? :title %>
+      <title>
+        <%= yield(:title) %> | Fubúia
+      </title>
+    <% else %>
+      <title>Fubúia</title>
+    <% end %>
     <!-- Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="Keywords" content="festa balada hoje brasilia show rock underground" />
