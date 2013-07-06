@@ -1,5 +1,6 @@
 # encoding: utf-8
 class ApplicationController < ActionController::Base
+  http_basic_authenticate_with name:'buzaga', password:'withlove', only:'filter_me_out'
   protect_from_forgery
 
   before_filter :set_app_data
@@ -16,6 +17,10 @@ class ApplicationController < ActionController::Base
 
   rescue_from NotLoggedIn do |e|
     redirect_to root_url, :flash => {:error => t('errors.messages.not_logged_in')}
+  end
+
+  def filter_me_out
+    render :file => "filter_me_out.html"
   end
 
   protected

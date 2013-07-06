@@ -1,4 +1,5 @@
 Fubuia::Application.routes.draw do
+  get '/cofcof/filter_me' => 'application#filter_me_out'
 
   post '/f_e_s', :to => "events#f_e_u"
   get '/f_e_s', :to => "events#f_e_s"
