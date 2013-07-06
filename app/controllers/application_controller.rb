@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   end
 
   def filter_me_out
-    render :file => "filter_me_out.html"
+    render :file => "filter_me_out.html", layout:false
   end
 
   protected
