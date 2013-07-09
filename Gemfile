@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~> 3.2'
+gem 'rails'
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
@@ -11,9 +11,9 @@ gem 'turbolinks'
 #gem 'pg'
 
 #gem 'hitchens'
+gem 'activeadmin'
 gem 'omniauth-facebook'
 gem 'whenever', :require => false
-gem 'monologue'
 
 gem 'mysql2'
 gem 'execjs'
@@ -22,7 +22,6 @@ gem 'koala'
 gem 'authlogic'
 gem 'twitter-bootstrap-rails'
 #gem 'cancan'
-#gem 'activeadmin'
 gem 'acts-as-taggable-on', :git => "http://github.com/mbleigh/acts-as-taggable-on.git" #removing git:// link cause of the shitty proxies here
 #gem 'event-calendar', :require => 'event_calendar', :git => "/home/buzaga/Dropbox/railsapps/event_calendar.git"
 gem 'event-calendar', :require => 'event_calendar', :path => 'vendor/event_calendar'
@@ -61,9 +60,9 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
+  gem 'sass-rails'
   gem 'coffee-rails'
-  gem 'uglifier', '>= 1.0.3'
+  gem 'uglifier'
 end
 
 gem 'jquery-rails'
