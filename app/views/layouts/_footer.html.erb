@@ -10,22 +10,14 @@
             <%= link_to t('pages.root.menu.como_funciona'), '#como-funciona' %>
           </li>
           <li>
-            <a href="/blog">Blog</a>
-          </li>
-          <li>
             <%= link_to t('pages.root.menu.contato'), '#contato' %>
           </li>
         </ul>
       </div>
     </div>
     <div class="footer_widget">
-      <h3 class="widgettitle">Do Blog</h3>
+      <h3 class="widgettitle"></h3>
       <ul id="recentcomments">
-        <% for post in Monologue::Post.published %>
-          <li class="recentcomments">
-            <%= link_to post.latest_revision.title, "/blog/#{post.latest_revision.title}" %>
-          </li>
-        <% end %>
       </ul>
     </div>
     <div class="footer_widget">
