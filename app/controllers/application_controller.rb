@@ -26,6 +26,9 @@ class ApplicationController < ActionController::Base
   protected
 
   def set_app_data
+    #set locale
+    I18n.locale = 'pt-BR'
+    #subdomain stuff
     @app_data = Facebook::CONFIG.merge("callback_url" => "#{request.scheme}://#{request.host}/")
     if request.subdomain.present? && request.subdomain != 'www'
       @city = City.find_by_subdomain(request.subdomain) || City.find_by_subdomain('brasilia')
@@ -36,6 +39,7 @@ class ApplicationController < ActionController::Base
 
   def app_access_token
     #"115184478532515|hHi14dQEY9-VLL_Tw4v9SczDbkg"
+    #TODO: extract this shit into a constant
     "495058763843807|3HXV1gMmTu1lbHsYXEUSs9IzVeI"
   end
 

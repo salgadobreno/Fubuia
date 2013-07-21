@@ -1,0 +1,12 @@
+<%= form_tag(import_event_admin_events_path, :method => :post) do %>
+  <div>
+    <label>
+      Facebook Event FID or URL:
+      <%= text_field_tag "fid", params[:fid] %>
+    </label>
+  </div>
+
+  <div>
+    <%= submit_tag "Submit" %>
+  </div>
+<% end %>

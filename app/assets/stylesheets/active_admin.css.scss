@@ -11,6 +11,16 @@
 @import "active_admin/mixins";
 @import "active_admin/base";
 
+body.active_admin {
+  #header {
+    height:40px;
+  }
+  #site_title_image {
+    height:40px;
+    background-color:pink;
+  }
+}
+
 // Overriding any non-variable SASS must be done after the fact.
 // For example, to change the default status-tag color:
 //
