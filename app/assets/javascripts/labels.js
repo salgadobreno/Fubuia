@@ -1,7 +1,8 @@
-jQuery(document).ready(function($){
-
-    $(".label").live("hover", function(){
-      $(this).toggleClass("hover");
-    });
-
-});
+//TODO: use CSS instead
+//$(document).ready(function(){
+//
+//    $(document).on("mouseenter mouseleave", ".label", function(){
+//      $(this).toggleClass("hover");
+//    });
+//
+//});
