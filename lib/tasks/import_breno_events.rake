@@ -1,3 +1,4 @@
+# coding: UTF-8
 desc "importa os eventos do breno"
 task :importa => :environment  do
 

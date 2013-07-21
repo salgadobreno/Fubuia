@@ -1,3 +1,4 @@
+# coding: UTF-8
 module TagExtensions
 
   def self.included(base)
