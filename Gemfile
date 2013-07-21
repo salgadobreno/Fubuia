@@ -6,12 +6,13 @@ gem 'rails'
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
 #gem 'tf_idf', :require => false, :git => "https://github.com/VivekNair/TF-IDF"
-gem 'turbolinks'
+#gem 'turbolinks'
 #gem 'unicorn'
 #gem 'pg'
 
 #gem 'hitchens'
 gem 'activeadmin'
+gem 'jquery-ui-rails' #for activeadmin
 gem 'omniauth-facebook'
 gem 'whenever', :require => false
 
@@ -61,6 +62,7 @@ end
 # in production environments by default.
 group :assets do
   gem 'sass-rails'
+  gem 'less-rails'
   gem 'coffee-rails'
   gem 'uglifier'
 end
