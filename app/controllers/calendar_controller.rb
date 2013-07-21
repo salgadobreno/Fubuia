@@ -39,6 +39,10 @@ class CalendarController < ApplicationController
 
     @event_strips = Event.create_event_strips(strip_start, strip_end, @events)
 
+    respond_to do |format|
+      format.html {}
+      format.js {}
+    end
   end
 
 end

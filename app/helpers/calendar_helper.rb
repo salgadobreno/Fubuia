@@ -6,14 +6,14 @@ module CalendarHelper
 
   def proximo_dia_link
     #link_to ">>", {:shift => @shift + 1}, :title => "Ver próximos"
-    link_to({:shift => @shift + 1}) do
+    link_to({:shift => @shift + 1}, id:"right-arrow", class:"nav-links", remote:true) do
       image_tag "/assets/right-arrow.png", :style => "position: absolute; z-index: 999; right: 0%; top: 50%; height: 30px; opacity: 0.5; margin-right: -10px;"
     end
   end
 
   def dia_anterior_link
     #link_to "<<", {:shift => @shift - 1}, :title => "Ver anteriores"
-    link_to({:shift => @shift - 1}) do
+    link_to({:shift => @shift - 1}, id:"left-arrow", class:"nav-links", remote:true) do
       image_tag "/assets/left-arrow.png", :style => "position: absolute; z-index: 999; left: 0%; top: 50%; height: 30px; opacity: 0.5; margin-left: -10px;"
     end
   end
