@@ -1,3 +1,4 @@
+# coding: UTF-8
 class Event < ActiveRecord::Base
 
   has_event_calendar
