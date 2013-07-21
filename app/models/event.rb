@@ -4,6 +4,7 @@ class Event < ActiveRecord::Base
   acts_as_ordered_taggable
 
   belongs_to :city
+  belongs_to :user
 
   validates :city, :presence => true
   validates :fid, :presence => true
@@ -28,6 +29,47 @@ class Event < ActiveRecord::Base
   def deactivate!
     self.active = false
     save
+  end
+
+  def self.pull_and_create(fid, user, city)
+    if fid =~ /facebook.*\d/ # facebook url with event id
+      url = fid
+      fid = url[/(\d+)/]
+    end
+    graph = Koala::Facebook::API.new(user.oauth_token)
+    result = graph.fql_query(
+      "SELECT
+      eid, name, description, creator, privacy, pic_small, pic_big,
+      location, venue, start_time, end_time
+      FROM event WHERE eid = #{fid}"
+    )
+    if result[0]
+      event = FacebookEvent.new(result[0])
+      create_from_facebook(event, user, city)
+    else
+      raise "Puts :/ não conseguimo achar esse evento bisho"
+    end
+  end
+
+  require 'term_relevancy'
+  def self.create_from_facebook(event, user = default_user(), city)
+    event_db = Event.find_or_initialize_by_fid(event.eid)
+    event_db.attributes = {
+      :name => event.name,
+      :user => user,
+      :city => city,
+      :start_at => Time.zone.parse(event.start_time.to_s),
+      :end_at => Time.zone.parse(event.end_time.to_s)
+    }
+    #autotag
+    tr = TermRelevancy.new event.description, Tag.all.map(&:name)
+    tag_list = tr.rank.reject { |e| e[:relevancy] == 0 }.map { |e| e[:tag] }.compact.join(', ')
+    #/autotag
+
+    event_db.tag_list = tag_list
+    event_db.active = true
+
+    event_db.save!
   end
 
   private
