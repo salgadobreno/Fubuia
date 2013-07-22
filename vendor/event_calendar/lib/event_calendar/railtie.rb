@@ -3,7 +3,7 @@ require 'event_calendar/calendar_helper'
 require 'rails'
 
 module EventCalendar
-  class Railtie < Rails::Engine
+  class Railtie < Rails::Railtie
     initializer :after_initialize do
       if defined?(ActionController::Base)
         ActionController::Base.helper EventCalendar::CalendarHelper
