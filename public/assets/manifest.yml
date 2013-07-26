@@ -150,8 +150,8 @@ active_admin.js: active_admin-eaf2390ec2dd232a2b3ae4cec7049300.js
 active_admin/index.js: active_admin-eaf2390ec2dd232a2b3ae4cec7049300.js
 application.js: application-443f6dfbd4074e99b7de32405e483fb2.js
 application/index.js: application-443f6dfbd4074e99b7de32405e483fb2.js
-calendar.js: calendar-aafdf5bd314d9b8f40e27c07ef295d20.js
-calendar/index.js: calendar-aafdf5bd314d9b8f40e27c07ef295d20.js
+calendar.js: calendar-7ab58ec6bdd543f8bf26de600df1d501.js
+calendar/index.js: calendar-7ab58ec6bdd543f8bf26de600df1d501.js
 events.js: events-426b5fd69261e66dea41b708205ac22b.js
 events/index.js: events-426b5fd69261e66dea41b708205ac22b.js
 active_admin.css: active_admin-ca5894edb323ab62ab86ba18202ce727.css
