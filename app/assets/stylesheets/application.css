@@ -13,7 +13,7 @@
 */
 
 body {
-  background: #F2F2F2 url(/assetsbg.jpg) repeat-x top !important;
+  background: #F2F2F2 repeat-x top !important;
 }
 .ec-calendar {
   margin: 0 15px;
