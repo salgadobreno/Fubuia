@@ -11,4 +11,3 @@
 //= require jquery.fittext
 //= require labels
 //= require jQuery.menutron
-//
