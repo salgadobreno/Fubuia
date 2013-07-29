@@ -2,11 +2,12 @@ module AutoImporters
   class FubuiaImporter
 
     def self.run(options = {})
+      logger.info "Importer running"
 
       # Set user
       fubuia = User.find_by_email "fubuia@fubuia.com.br"
       unless fubuia.present?
-        Rails.logger.warn "PERFIL dO FUBA N DISPONIVEL"
+        logger.warn "PERFIL dO FUBA N DISPONIVEL"
         return
       end
 
@@ -39,25 +40,31 @@ module AutoImporters
       city = City.first
 
       require 'term_relevancy'
+      hash_log = {:returned => events.count, :created => []}
       events.each do |event|
 
-        Event.create_from_facebook(event, fubuia, city)
+        if Event.create_from_facebook(event, fubuia, city)
+          hash_log[:created] << 1
+        end
 
       end
+      logger.info "Done."
+      logger.info "Returned: #{hash_log[:returned]}"
+      logger.info "Created: #{hash_log[:created].count}"
+    end
+
+    def self.logger
+      logfile = File.open('./log/imports.log', 'a')
+      logfile.sync = true
+      log = ImporterLogger.new(logfile)
     end
 
   end
 
-#      tag_names = Tag.all.map(&:name)
-#        event_db = Event.find_or_initialize_by_fid(event.eid)
-#        event_db.attributes = {:user => fubuia.id, :city => City.first, :start_at => Time.zone.parse(event.start_time.to_s), :end_at => Time.zone.parse(event.end_time.to_s)}
-#        #autotag
-#        tr = TermRelevancy.new event.description, tag_names
-#        tag_list = tr.rank.reject { |e| e[:relevancy] == 0 }.map { |e| e[:tag] }.compact.join(', ')
-#        #/autotag
-#
-#        event_db.tag_list = tag_list
-#        event_db.active = true
-#
-#        event_db.save!
+  class ImporterLogger < Logger
+    def format_message(severity, timestamp, progname, msg)
+      "#{timestamp.to_formatted_s(:db)} #{severity} #{msg}\n"
+    end
+  end
+
 end

@@ -4,4 +4,5 @@ namespace :autoimporters do
     require 'autoimporters'
     AutoImporters::FubuiaImporter.run
   end
+
 end

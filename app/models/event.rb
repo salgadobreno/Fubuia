@@ -48,7 +48,7 @@ class Event < ActiveRecord::Base
       event = FacebookEvent.new(result[0])
       create_from_facebook(event, user, city)
     else
-      raise "Puts :/ não conseguimo achar esse evento bisho"
+      nil
     end
   end
 
@@ -70,7 +70,7 @@ class Event < ActiveRecord::Base
     event_db.tag_list = tag_list
     event_db.active = true
 
-    event_db.save!
+    event_db.save
   end
 
   private
