@@ -1,7 +1,11 @@
 env :PATH, '$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH'
 
-every 10.minutes do
+every 15.minutes do
   rake "autoimporters:fubuia"
+end
+
+every 1.day, :at => '5:00 am' do
+  rake '-s sitemap:refresh'
 end
 
 # Use this file to easily define all of your cron jobs.

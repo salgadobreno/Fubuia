@@ -5,8 +5,6 @@ gem 'rails'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-#gem 'tf_idf', :require => false, :git => "https://github.com/VivekNair/TF-IDF"
-#gem 'turbolinks'
 #gem 'unicorn'
 #gem 'pg'
 
@@ -22,10 +20,13 @@ gem 'therubyracer'
 gem 'koala'
 gem 'authlogic'
 gem 'twitter-bootstrap-rails'
-#gem 'cancan'
 gem 'acts-as-taggable-on', :git => "http://github.com/mbleigh/acts-as-taggable-on.git" #removing git:// link cause of the shitty proxies here
-#gem 'event-calendar', :require => 'event_calendar', :git => "/home/buzaga/Dropbox/railsapps/event_calendar.git"
 gem 'event-calendar', :require => 'event_calendar', :path => 'vendor/event_calendar'
+
+#gem 'cancan'
+#gem 'event-calendar', :require => 'event_calendar', :git => "/home/buzaga/Dropbox/railsapps/event_calendar.git"
+
+gem 'sitemap_generator'
 
 group :development do
   gem 'awesome_print'
@@ -79,6 +80,3 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
-
-#gem 'rubber'
-#gem 'open4'
