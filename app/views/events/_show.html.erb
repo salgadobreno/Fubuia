@@ -33,7 +33,7 @@
     <h3>
       <i class="icon-external-link"></i> &nbsp;
       <i class="icon-facebook-sign fblue"></i> &nbsp;
-      <%= link_to @event.name, "http://www.facebook.com/#{@event.eid}" %>
+      <%= link_to @event.name, "http://www.facebook.com/#{@event.eid}", :rel => 'nofollow' %>
     </h3>
     <h3>
       <i class="icon-tags"></i> &nbsp;
