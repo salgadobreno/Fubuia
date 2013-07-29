@@ -1,4 +1,4 @@
-env :PATH, '$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH'
+set :output, '/home/ubuntu/cronerrors'
 
 every 15.minutes do
   rake "autoimporters:fubuia"
