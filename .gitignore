@@ -20,3 +20,4 @@ resources
 Capfile
 /config/deploy.rb
 briefing
+other/
