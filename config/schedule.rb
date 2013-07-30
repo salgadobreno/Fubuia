@@ -1,4 +1,5 @@
 set :output, '/home/ubuntu/cronerrors'
+env :PATH, ENV['PATH']
 
 every 15.minutes do
   rake "autoimporters:fubuia"
