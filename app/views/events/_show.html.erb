@@ -1,6 +1,6 @@
 <div itemscope itemtype="http://data-vocabulary.org/Event" class="fourteen columns">
-  <div class="four columns" style="float:left; margin:10px 10px;">
-    <%= image_tag @event.pic_big, :style => "width:100%; border:1px solid black;", :itemprop => 'photo' %>
+  <div class="four columns event-pic">
+    <%= image_tag @event.pic_big, :itemprop => 'photo' %>
   </div>
   <div class="eight columns" style="word-wrap:break-word;">
     <h1 itemprop="summary">

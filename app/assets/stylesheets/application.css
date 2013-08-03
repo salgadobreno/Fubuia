@@ -103,3 +103,12 @@ div.panel {
   border-radius:10px;
   display:none;
 }
+
+
+div.event-pic {
+  float:left; margin:10px 10px;
+}
+.event-pic img {
+  width:100%; border:1px solid black;
+}
+
