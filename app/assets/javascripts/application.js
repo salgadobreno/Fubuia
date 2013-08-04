@@ -11,3 +11,5 @@
 //= require jquery.fittext
 //= require labels
 //= require jQuery.menutron
+//= require signals
+//= require crossroads
