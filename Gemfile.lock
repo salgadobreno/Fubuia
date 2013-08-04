@@ -1,4 +1,10 @@
 GIT
+  remote: git@github.com:salgadobreno/rack-escaped-fragment.git
+  revision: 644edb4a6e26031d4ceacc7612513ecfbbccb748
+  specs:
+    rack-escaped-fragment (0.0.1)
+
+GIT
   remote: http://github.com/mbleigh/acts-as-taggable-on.git
   revision: 2f2768f854324000ea28d441ef3c0a378158ed40
   specs:
@@ -290,6 +296,7 @@ DEPENDENCIES
   mocha
   mysql2
   omniauth-facebook
+  rack-escaped-fragment!
   rails
   rspec-rails (~> 2.6)
   sass-rails

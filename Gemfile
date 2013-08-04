@@ -8,6 +8,8 @@ gem 'rails'
 #gem 'unicorn'
 #gem 'pg'
 
+gem 'rack-escaped-fragment', :git => 'git@github.com:salgadobreno/rack-escaped-fragment.git'
+
 #gem 'hitchens'
 gem 'activeadmin'
 gem 'jquery-ui-rails' #for activeadmin
