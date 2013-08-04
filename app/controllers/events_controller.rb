@@ -10,9 +10,7 @@ class EventsController < ApplicationController
     @event = FacebookEvent.new(@multiquery['event'][0])
     @creator = TransientUser.new(@multiquery["creator"][0]) if @multiquery["creator"][0]
 
-    if request.xhr?
-      render :partial => "show"
-    end
+    render :partial => "show", :layout => false
   end
 
   def new

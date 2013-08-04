@@ -1,37 +1,28 @@
-//= require jquery-ui-1.10.3.custom.min.js
-//= require jquery.ui.touch-punch.min.js
+
 $(document).ready(function() {
   var loadingTimer;
+
+  eRoute = crossroads.addRoute('#!/events/{id}', function(id) {
+    console.log(id);
+    $.fancybox('/events/' + id, {
+      type:'ajax', 
+      fixed:true,
+      afterClose:function() {
+        history.replaceState(null, '', '/');
+      }
+    })
+  });
+
+  $('a.e-sesamo').click(function(e){
+    e.preventDefault();
+    history.replaceState(null, '', this.href);
+    crossroads.parse($(this).attr('href'));
+  });
+
 
   $.ajaxSetup({
     cache: true
   });
-
-  // TODO
-  //var drag_start, drag_stop;
-  //function applyDraggable() {
-  //  $('.ec-body').draggable({
-  //    axis:"x",
-  //    distance:20,
-  //    scroll:false,
-  //    revert: true,
-  //    start:function(event,ui) {
-  //      drag_start = ui.position.left;
-  //    },
-  //    stop:function(event,ui) {
-  //      drag_stop = ui.position.left;
-  //      var moved = drag_start < drag_stop ? 0 : 1 // right : left
-  //      var distance = drag_start - drag_stop;
-  //      if (Math.abs(distance) >= 100) {
-  //        if (moved == 0) {
-  //          $('#left-arrow').click();
-  //        } else if (moved == 1) {
-  //          $('#right-arrow').click();
-  //        }
-  //      }
-  //    },
-  //  });
-  //}
 
   $(document).on('ajax:beforeSend', 'a.nav-links', function(){ 
     loadingTimer = setTimeout(function() { 
@@ -61,12 +52,12 @@ $(document).ready(function() {
 
   if (history && history.pushState) {
     $(document).on('click', '#right-arrow, #left-arrow', function(){ 
-      console.log('clicked')
+      //console.log('clicked')
       history.pushState(null, '', this.href);
     });
 
     $(window).on('popstate', function() {
-      console.log('fired');
+      //console.log('fired');
       $.getScript(location.href);
     });
   }
