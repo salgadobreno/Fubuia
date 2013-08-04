@@ -39,11 +39,19 @@ module CalendarHelper
     # args is an argument hash containing :event, :day, and :options
     calendar event_calendar_opts do |args|
       event = args[:event]
-      r = %(<a itemprop="url" class="open_ajax" href="/events/#{event.to_param}" title="#{h(event.name)}">)
+      #TODO: fix messy html in here, use helper
+      r = %(<a class="e-sesamo" itemprop="url" href="/#!/events/#{event.to_param}" title="#{h(event.name)}">)
       r << %(<span itemprop="summary"> #{h(event.name)} </span>)
       r << %(</a>)
       r << %(<meta itemprop="startDate" content="#{event.start_at.iso8601}"/>) # Microformats!
       r
     end
+  end
+
+  private
+
+  def link_to_hashbang(*args, &block)
+    link = link_to(*args, &block)
+    "#!#{link}"
   end
 end
