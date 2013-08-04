@@ -3,7 +3,7 @@ SitemapGenerator::Sitemap.default_host = "http://www.fubuia.com.br"
 
 SitemapGenerator::Sitemap.create do
   Event.order('id DESC').find_each do |event|
-    add event_path(event.to_param), :lastmod => event.updated_at,
+    add "/!##{event_path(event.to_param)}", :lastmod => event.updated_at,
       :changefreq => 'never',
       :priority => event.start_at.past? ? '0.2' : '0.7'
   end
