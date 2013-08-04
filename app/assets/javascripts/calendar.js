@@ -3,10 +3,12 @@ $(document).ready(function() {
   var loadingTimer;
 
   eRoute = crossroads.addRoute('#!/events/{id}', function(id) {
-    console.log(id);
     $.fancybox('/events/' + id, {
       type:'ajax', 
       fixed:true,
+      afterLoad:function() {
+        _gaq.push(['_trackPageview', document.location.href]);
+      },
       afterClose:function() {
         history.replaceState(null, '', '/');
       }
