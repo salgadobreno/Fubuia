@@ -17,7 +17,9 @@ $(document).ready(function() {
 
   $('a.e-sesamo').click(function(e){
     e.preventDefault();
-    history.replaceState(null, '', this.href);
+    console.log('replaceState');
+    history.replaceState(null, '', $(this).attr('href'));
+    console.log('parse');
     crossroads.parse($(this).attr('href'));
   });
 
