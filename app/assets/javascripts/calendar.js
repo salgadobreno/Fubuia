@@ -1,6 +1,7 @@
 
 $(document).ready(function() {
-  var loadingTimer;
+  var loadingTimer, popped;
+  popped = false;
 
   eRoute = crossroads.addRoute('#!/events/{id}', function(id) {
     $.fancybox('/events/' + id, {
@@ -16,11 +17,11 @@ $(document).ready(function() {
   });
 
   $('a.e-sesamo').click(function(e){
-    e.preventDefault();
     console.log('replaceState');
     history.replaceState(null, '', $(this).attr('href'));
     console.log('parse');
     crossroads.parse($(this).attr('href'));
+    e.preventDefault();
   });
 
 
@@ -57,12 +58,13 @@ $(document).ready(function() {
   if (history && history.pushState) {
     $(document).on('click', '#right-arrow, #left-arrow', function(){ 
       //console.log('clicked')
+      popped = true
       history.pushState(null, '', this.href);
     });
 
     $(window).on('popstate', function() {
       //console.log('fired');
-      $.getScript(location.href);
+      popped && $.getScript(location.href);
     });
   }
 });
