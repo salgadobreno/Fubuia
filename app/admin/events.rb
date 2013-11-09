@@ -33,8 +33,9 @@ ActiveAdmin.register Event do
       Event.pull_and_create(params[:fid], User.first, City.first) 
       redirect_to action: :index
     elsif params[:fids].present?
-      fids = params[:fids].split(/(,|\n)/).map(&:strip)
+      fids = params[:fids].split(/(,|\r\n|\n)/).map(&:strip)
       fids.each {|f| Event.pull_and_create(f, User.first, City.first)}
+      redirect_to action: :index
     else
       flash[:error] = "Please provide a FID, bisho"
       redirect_to :back
