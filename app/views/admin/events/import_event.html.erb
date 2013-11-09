@@ -1,6 +1,12 @@
 <%= form_tag('', :method => :post) do %>
   <label>
     Facebook Event FID or URL:
-    <%= text_field_tag "fid" %>
+    <div>
+      <%= text_field_tag "fid" %>
+    </div>
+    <strong>OR</strong>
+    <div>
+      <%= text_area_tag "fids" %>
+    </div>
   </label>
 <% end %>
