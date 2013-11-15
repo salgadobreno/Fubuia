@@ -1,9 +1,9 @@
 
 $(document).ready(function() {
-  var loadingTimer, popped;
+  var loadingTimer, popped, route;
   popped = false;
 
-  crossroads.addRoute('#!/events/{id}', function(id) {
+  route = crossroads.addRoute('#!/events/{id}', function(id) {
     $.fancybox('/events/' + id, {
       type:'ajax', 
       fixed:true,
@@ -12,14 +12,15 @@ $(document).ready(function() {
       },
       afterClose:function() {
         history.replaceState(null, '', '/');
+        crossroads.resetState();
       }
     })
   });
 
   $('#calendar').on("click", 'a.e-sesamo', function(e){
-    console.log('replaceState');
+    //console.log('replaceState');
     history.replaceState(null, '', $(this).attr('href'));
-    console.log('parse');
+    //console.log('parse');
     crossroads.parse($(this).attr('href'));
     e.preventDefault();
   });
