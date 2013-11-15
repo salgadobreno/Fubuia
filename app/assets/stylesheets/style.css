@@ -24,7 +24,7 @@ body, input, textarea, select {
   font-size:13px;
   line-height:18px;
   color:#333;
-  text-shadow:0 1px 0 #FFFFFF;
+  /*text-shadow:0 1px 0 #FFFFFF;*/
   font-family:Arial,Verdana,Helvetica,sans-serif;
 }
 
